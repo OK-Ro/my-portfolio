@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { FaSun, FaMoon, FaFileAlt } from "react-icons/fa";
+import { FaSun, FaMoon, FaFileAlt, FaBars } from "react-icons/fa";
+import { useTheme } from "./ThemeProvider";
 
 const NavContainer = styled.div`
   position: fixed;
-  top: 4rem;
-  left: 5rem;
-  right: 5rem;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
   z-index: 1000;
+
+  @media (min-width: 768px) {
+    top: 4rem;
+    left: 5rem;
+    right: 5rem;
+  }
 `;
 
 const Nav = styled.nav`
@@ -18,33 +25,57 @@ const Nav = styled.nav`
       : props.theme.navBackground};
   backdrop-filter: blur(10px);
   color: ${(props) => props.theme.navText};
-  padding: 2rem 2rem;
+  padding: 1rem;
   border-radius: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid ${(props) => props.theme.navBorder};
   transition: all 0.3s ease-in-out;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: 2rem;
+  }
 `;
 
 const Logo = styled(Link)`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-shadow: 0 0 10px ${(props) => props.theme.navTextShadow};
   text-decoration: none;
   color: ${(props) => props.theme.navText};
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
 `;
 
 const NavList = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
-  display: flex;
+  display: ${(props) => (props.isOpen ? "flex" : "none")};
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
 `;
 
 const NavItem = styled.li`
-  margin: 0 1rem;
+  margin: 0.5rem 0;
+
+  @media (min-width: 768px) {
+    margin: 0 1rem;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -71,6 +102,14 @@ const NavLink = styled(Link)`
 const RightSection = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    justify-content: flex-end;
+  }
 `;
 
 const ThemeToggle = styled.button`
@@ -98,9 +137,44 @@ const LetsTalkButton = styled(Link)`
   }
 `;
 
-function NavBar({ toggleTheme, isDarkTheme }) {
+const ResumeLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  color: ${(props) => props.theme.navText};
+  text-decoration: none;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid ${(props) => props.theme.navText};
+  border-radius: 5px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => props.theme.navText};
+    color: ${(props) => props.theme.navBackground};
+  }
+
+  svg {
+    margin-right: 0.5rem;
+  }
+`;
+
+const MenuToggle = styled.button`
+  display: block;
+  background: none;
+  border: none;
+  color: ${(props) => props.theme.navText};
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+function NavBar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,11 +191,16 @@ function NavBar({ toggleTheme, isDarkTheme }) {
     };
   }, [scrolled]);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
     <NavContainer>
       <Nav scrolled={scrolled}>
         <Logo to="/">My Portfolio</Logo>
-        <NavList>
+        <MenuToggle onClick={toggleMenu}>
+          <FaBars />
+        </MenuToggle>
+        <NavList isOpen={isOpen}>
           <NavItem>
             <NavLink
               to="/"
@@ -154,19 +233,14 @@ function NavBar({ toggleTheme, isDarkTheme }) {
               Portfolio
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink
-              to="/resume"
-              className={location.pathname === "/resume" ? "active" : ""}
-            >
-              <FaFileAlt style={{ marginRight: "0.5rem" }} />
-              Resume
-            </NavLink>
-          </NavItem>
         </NavList>
         <RightSection>
+          <ResumeLink to="/resume">
+            <FaFileAlt />
+            Resume
+          </ResumeLink>
           <ThemeToggle onClick={toggleTheme}>
-            {isDarkTheme ? <FaSun /> : <FaMoon />}
+            {isDarkMode ? <FaSun /> : <FaMoon />}
           </ThemeToggle>
           <LetsTalkButton to="/contact">Let's Talk</LetsTalkButton>
         </RightSection>

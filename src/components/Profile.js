@@ -109,8 +109,8 @@ const Profile = () => {
         />
       </PhotoContainer>
       <ProfileInfo>
-        <Name>Gole Layla</Name>
-        <Title>Product Designer & Developer</Title>
+        <Name>Robert Okuni</Name>
+        <Title>Full Stack Web Developer</Title>
         <Bio>
           As a skilled Product designer, illustrator, and visual development
           expert, my diverse background has allowed me to apply my talents

@@ -42,6 +42,8 @@ const fadeIn = keyframes`
 `;
 
 const ServicesContainer = styled.div`
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   margin: 0 auto;
   padding: 5rem;
   animation: ${fadeIn} 0.5s ease-in;

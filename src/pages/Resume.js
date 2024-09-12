@@ -9,6 +9,8 @@ import TabInterface from "../components/TabInterface";
 import NavBar from "../components/NavBar";
 
 const ResumeContainer = styled.div`
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
@@ -22,7 +24,6 @@ const ResumeTitle = styled.h2`
   color: ${(props) => props.theme.text};
   border-bottom: 2px solid ${(props) => props.theme.buttonBackground};
   padding-bottom: 0.5rem;
-  margin-top: 15rem;
 `;
 
 const ProfileSection = styled.section`
@@ -255,6 +256,7 @@ function Resume() {
 
   return (
     <ResumeContainer>
+      <NavBar />
       <h1>{profile.name}'s Resume</h1>
       <DownloadResumeButton pdfUrl="resume.pdf" />
       <TabInterface tabs={tabsData} />

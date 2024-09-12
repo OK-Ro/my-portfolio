@@ -10,75 +10,147 @@ import Skills from "../components/Skills";
 import HomeServices from "../components/HomeServices";
 
 const CardContainer = styled.div`
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(200px, auto);
-  gap: 40px;
-  padding: 50px;
-  margin-top: 8rem;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 6rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px;
+    margin-top: 7rem;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 50px;
+    margin-top: 8rem;
+  }
 `;
 
 const BaseCard = styled.div`
-  padding: 20px;
+  padding: 15px;
   border-radius: 1rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
+  background-color: ${(props) => props.theme.cardBackground};
+  color: ${(props) => props.theme.text};
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  @media (min-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 const ProfileCard = styled(BaseCard)`
-  background-color: #e6f3ff;
   grid-column: 1;
-  grid-row: 1 / span 2;
-  height: 55rem;
-  width: 45rem;
+  grid-row: 1;
+  height: auto;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    grid-row: 1 / span 2;
+    height: 55rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 45rem;
+  }
 `;
 
 const WorkExperienceCard = styled(BaseCard)`
-  background-color: #fff0e6;
-  grid-column: 2;
-  grid-row: 1;
+  grid-column: 1;
+  grid-row: 2;
   height: 25rem;
-  width: 60rem;
+  width: 100%;
   overflow-y: auto;
+
+  @media (min-width: 768px) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  @media (min-width: 1024px) {
+    width: 60rem;
+  }
+
   &::-webkit-scrollbar {
-    width: 0em;
+    width: 0.5em;
   }
   &::-webkit-scrollbar-thumb {
-    background: #8c8c8c;
+    background-color: ${(props) => props.theme.scrollbarThumb};
     border-radius: 10px;
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: #555555;
+    background-color: ${(props) => props.theme.scrollbarThumbHover};
   }
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background-color: ${(props) => props.theme.scrollbarTrack};
   }
 `;
 
 const SkillsCard = styled(BaseCard)`
-  background-color: #e6e6ff;
-  grid-column: 2;
-  grid-row: 2;
+  grid-column: 1;
+  grid-row: 3;
   height: 24rem;
+
+  @media (min-width: 768px) {
+    grid-column: 2;
+    grid-row: 2;
+  }
 `;
 
 const ProjectsCard = styled(BaseCard)`
-  background-color: #e6ffe6;
-  grid-column: 3;
-  grid-row: 1 / span 2;
+  grid-column: 1;
+  grid-row: 4;
   height: 55rem;
   overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: ${(props) =>
+    `${props.theme.scrollbarThumb} ${props.theme.scrollbarTrack}`};
+
+  @media (min-width: 768px) {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+  }
+
+  @media (min-width: 1024px) {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 0.5em;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.scrollbarThumb};
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: ${(props) => props.theme.scrollbarThumbHover};
+  }
+  &::-webkit-scrollbar-track {
+    background-color: ${(props) => props.theme.scrollbarTrack};
   }
 `;
 
 const ServicesCard = styled(BaseCard)`
-  background-color: #ffe6e6;
-  grid-column: 1 / span 2;
-  grid-row: 3;
+  grid-column: 1;
+  grid-row: 5;
+
+  @media (min-width: 768px) {
+    grid-column: 1 / span 2;
+    grid-row: 4;
+  }
+
+  @media (min-width: 1024px) {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+  }
 `;
 
 const waveAnimation = keyframes`
@@ -88,9 +160,9 @@ const waveAnimation = keyframes`
 `;
 
 const glowAnimation = keyframes`
-  0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); }
-  50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
-  100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); }
+  0% { text-shadow: 0 0 5px ${(props) => props.theme.textShadow}; }
+  50% { text-shadow: 0 0 20px ${(props) => props.theme.textShadow}; }
+  100% { text-shadow: 0 0 5px ${(props) => props.theme.textShadow}; }
 `;
 
 const shootAndExplode = keyframes`
@@ -101,19 +173,33 @@ const shootAndExplode = keyframes`
 `;
 
 const ContactCard = styled(BaseCard)`
-  background: linear-gradient(135deg, #e6fff2, #ccf2ff);
-  grid-column: 3;
-  grid-row: 3;
-  height: 20rem;
-  width: 55rem;
-  padding: 4rem;
+  background: ${(props) => props.theme.contactCardGradient};
+  grid-column: 1;
+  grid-row: 6;
+  height: auto;
+  width: 100%;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
 
+  @media (min-width: 768px) {
+    grid-column: 1 / span 2;
+    grid-row: 5;
+    padding: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    grid-column: 3;
+    grid-row: 3;
+    height: 20rem;
+    width: 55rem;
+    padding: 4rem;
+  }
+
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px ${(props) => props.theme.boxShadow};
   }
 
   &::before {
@@ -123,11 +209,7 @@ const ContactCard = styled(BaseCard)`
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(255, 255, 255, 0) 70%
-    );
+    background: ${(props) => props.theme.contactCardShine};
     transform: rotate(45deg);
     transition: all 0.5s ease;
   }
@@ -144,25 +226,49 @@ const LetsTalkContainer = styled.div`
   align-items: flex-start;
   text-align: left;
   line-height: 1.5;
-  margin-top: 4rem;
+  margin-top: 2rem;
   position: relative;
   z-index: 1;
+
+  @media (min-width: 768px) {
+    margin-top: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: 4rem;
+  }
 `;
 
 const LetsTalkTop = styled.span`
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: normal;
-  color: #333;
+  color: ${(props) => props.theme.text};
   animation: ${waveAnimation} 2s ease-in-out infinite;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 4rem;
+  }
 `;
 
 const LetsTalkMiddle = styled.span`
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  background: ${(props) => props.theme.letsTalkGradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: ${glowAnimation} 3s ease-in-out infinite;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 4rem;
+  }
 `;
 
 const BulletIcon = styled.svg`
@@ -170,6 +276,7 @@ const BulletIcon = styled.svg`
   height: 20px;
   margin-left: 10px;
   transition: transform 0.3s ease;
+  fill: ${(props) => props.theme.text};
 
   ${(props) =>
     props.isAnimating &&
@@ -179,15 +286,24 @@ const BulletIcon = styled.svg`
 `;
 
 const LetsTalkLink = styled(Link)`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #4caf50;
+  color: ${(props) => props.theme.letsTalkLink};
   text-decoration: none;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   position: relative;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 2rem;
+  }
 
   &::before {
     content: "";
@@ -196,14 +312,14 @@ const LetsTalkLink = styled(Link)`
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: #4caf50;
+    background-color: ${(props) => props.theme.letsTalkLink};
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out;
   }
 
   &:hover {
-    color: #45a049;
+    color: ${(props) => props.theme.letsTalkLinkHover};
 
     &::before {
       visibility: visible;
@@ -220,7 +336,15 @@ const PageContainer = styled.div`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};
   min-height: 100vh;
-  padding: 20px;
+  padding: 10px;
+
+  @media (min-width: 768px) {
+    padding: 15px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 20px;
+  }
 `;
 
 function Home({ toggleTheme, isDarkTheme }) {

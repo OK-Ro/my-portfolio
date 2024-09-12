@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import {
   FaFacebookF,
@@ -11,65 +11,172 @@ import NavBar from "../components/NavBar";
 
 const AboutContainer = styled.div`
   margin: 0 auto;
-  padding: 5rem;
+  padding: 2rem;
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+
+  @media (min-width: 768px) {
+    padding: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 5rem;
+  }
 `;
 
 const ProfileSection = styled.section`
-  margin-top: 15em;
+  margin-top: 8em;
   display: flex;
-  gap: 5rem;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 3rem;
+    margin-top: 10em;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 5rem;
+    margin-top: 15em;
+  }
 `;
 
 const LeftColumn = styled.div`
   flex: 1;
-  min-width: 300px;
+  min-width: 250px;
 `;
 
 const RightColumn = styled.div`
   flex: 2;
-  min-width: 600px;
+  min-width: 300px;
 `;
 
 const Card = styled.div`
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin-bottom: 2rem;
+  padding: 15px;
+  border-radius: 1rem;
+  box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
+  background-color: ${(props) => props.theme.backgroundCala};
+  color: ${(props) => props.theme.text};
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 20px solid ${(props) => props.theme.cardBorderline};
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px ${(props) => props.theme.boxShadow};
+  }
 `;
 
 const ProfilePictureCard = styled(Card)`
   text-align: center;
-  height: 30rem;
-  background-color: #f0f0f0;
+  height: auto;
+  background-color: ${(props) => props.theme.cardBackground};
+`;
+
+const ProfilePictureWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+const CircularText = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: ${rotate} 20s linear infinite;
+`;
+
+const CircularTextSpan = styled.span`
+  position: absolute;
+  left: 50%;
+  font-size: 10px;
+  transform-origin: 0 100px;
+  color: ${(props) => props.theme.accent};
+
+  @media (min-width: 768px) {
+    font-size: 12px;
+    transform-origin: 0 125px;
+  }
+
+  @media (min-width: 1024px) {
+    transform-origin: 0 150px;
+  }
 `;
 
 const ProfilePicture = styled.img`
-  width: 400px;
-  height: 400px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  border: 5px solid ${(props) => props.theme.accent};
+
+  @media (min-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const IntroCard = styled(Card)`
-  height: 30rem;
+  height: auto;
 `;
 
 const Header = styled.h1`
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: ${(props) => props.theme.text};
+  font-weight: 700;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 const Subheader = styled.p`
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #666;
+  color: ${(props) => props.theme.secondaryText};
+  font-weight: 500;
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const ThreeColumnSection = styled.section`
   display: flex;
-  gap: 2rem;
-  margin-top: 5rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 5rem;
+  }
 `;
 
 const Column = styled.div`
@@ -84,29 +191,41 @@ const StatisticsSection = styled(Card)`
 
 const StatItem = styled.div`
   text-align: center;
-  background-color: #f0f0f0;
+  background-color: ${(props) => props.theme.cardBackground};
   padding: 1rem;
   border-radius: 10px;
+  border: 1px solid ${(props) => props.theme.cardBorder};
 `;
 
 const StatNumber = styled.h2`
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #0066cc;
+  color: ${(props) => props.theme.accent};
+  font-weight: 700;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const ExperienceItem = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
-// Updated Footer Styles
 const FooterSection = styled.section`
-  margin-top: 5rem;
+  margin-top: 3rem;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 5rem;
+  }
 `;
 
 const FooterCard = styled(Card)`
@@ -118,29 +237,39 @@ const FooterCard = styled(Card)`
 
 const FooterHeader = styled.h2`
   font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: #333;
+  margin-bottom: 1rem;
+  color: ${(props) => props.theme.text};
+  font-weight: 600;
+
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const FooterText = styled.p`
   margin-bottom: 1rem;
-  color: #666;
+  color: ${(props) => props.theme.secondaryText};
+  font-size: 1rem;
+  line-height: 1.5;
 `;
 
 const CTAButton = styled(Link)`
   display: inline-block;
-  background-color: #0066cc;
+  background-color: ${(props) => props.theme.accent};
   color: white;
   padding: 0.75rem 1.5rem;
   text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
   align-self: flex-start;
   margin-top: auto;
+  font-size: 1rem;
 
   &:hover {
-    background-color: #0052a3;
+    background-color: ${(props) => props.theme.accentHover};
+    transform: translateY(-2px);
   }
 `;
 
@@ -152,25 +281,65 @@ const SocialLinks = styled.div`
 
 const SocialIcon = styled.a`
   font-size: 1.5rem;
-  color: #333;
+  color: ${(props) => props.theme.text};
   transition: color 0.3s ease;
 
   &:hover {
-    color: #0066cc;
+    color: ${(props) => props.theme.accent};
   }
 `;
 
+const List = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
+const ListItem = styled.li`
+  margin-bottom: 0.5rem;
+  color: ${(props) => props.theme.secondaryText};
+  font-size: 1rem;
+`;
+
+const ExperienceTitle = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: ${(props) => props.theme.text};
+`;
+
+const ExperienceDetails = styled.p`
+  font-size: 1rem;
+  color: ${(props) => props.theme.secondaryText};
+`;
+
 const About = () => {
+  const text = "Available for Work • Available for Work • ";
+  const characters = text.split("");
+
   return (
     <AboutContainer>
       <NavBar />
       <ProfileSection>
         <LeftColumn>
           <ProfilePictureCard>
-            <ProfilePicture
-              src="https://www.bing.com/th?id=OIP.F8N47NFCKAaMf97INBReHQHaJz&w=150&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
-              alt="Gole Layla"
-            />
+            <ProfilePictureWrapper>
+              <CircularText>
+                {characters.map((char, i) => (
+                  <CircularTextSpan
+                    key={i}
+                    style={{
+                      transform: `rotate(${i * 7.5}deg)`,
+                    }}
+                  >
+                    {char}
+                  </CircularTextSpan>
+                ))}
+              </CircularText>
+              <ProfilePicture
+                src="https://www.bing.com/th?id=OIP.F8N47NFCKAaMf97INBReHQHaJz&w=150&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                alt="Gole Layla"
+              />
+            </ProfilePictureWrapper>
           </ProfilePictureCard>
         </LeftColumn>
 
@@ -178,12 +347,12 @@ const About = () => {
           <IntroCard>
             <Header>Hello, I'm Gole Layla</Header>
             <Subheader>An Award-Winning Product Designer</Subheader>
-            <p>
+            <FooterText>
               As a skilled Product designer, illustrator, and visual development
               expert, my diverse background has allowed me to apply my talents
               across different fields and industries, demonstrating adaptability
               and versatility.
-            </p>
+            </FooterText>
           </IntroCard>
         </RightColumn>
       </ProfileSection>
@@ -193,52 +362,52 @@ const About = () => {
           <StatisticsSection>
             <StatItem>
               <StatNumber>7+</StatNumber>
-              <p>YEARS EXPERIENCE</p>
+              <FooterText>YEARS EXPERIENCE</FooterText>
             </StatItem>
             <StatItem>
               <StatNumber>125</StatNumber>
-              <p>TOTAL PROJECTS</p>
+              <FooterText>TOTAL PROJECTS</FooterText>
             </StatItem>
             <StatItem>
               <StatNumber>9</StatNumber>
-              <p>RECOGNITIONS</p>
+              <FooterText>RECOGNITIONS</FooterText>
             </StatItem>
             <StatItem>
               <StatNumber>0</StatNumber>
-              <p>UNHAPPY CLIENTS</p>
+              <FooterText>UNHAPPY CLIENTS</FooterText>
             </StatItem>
           </StatisticsSection>
         </Column>
         <Column>
           <Card>
-            <h2>What I Do</h2>
-            <ul>
-              <li>Branding</li>
-              <li>Illustration</li>
-              <li>Logo Design</li>
-              <li>Typography</li>
-              <li>Card Design</li>
-            </ul>
+            <FooterHeader>What I Do</FooterHeader>
+            <List>
+              <ListItem>Branding</ListItem>
+              <ListItem>Illustration</ListItem>
+              <ListItem>Logo Design</ListItem>
+              <ListItem>Typography</ListItem>
+              <ListItem>Card Design</ListItem>
+            </List>
           </Card>
         </Column>
         <Column>
           <Card>
-            <h2>My Experience</h2>
+            <FooterHeader>My Experience</FooterHeader>
             <ExperienceItem>
-              <h3>UI Designer</h3>
-              <p>Apple | 2021 - Now</p>
+              <ExperienceTitle>UI Designer</ExperienceTitle>
+              <ExperienceDetails>Apple | 2021 - Now</ExperienceDetails>
             </ExperienceItem>
             <ExperienceItem>
-              <h3>Front-end Dev</h3>
-              <p>Google | 2015 - 2020</p>
+              <ExperienceTitle>Front-end Dev</ExperienceTitle>
+              <ExperienceDetails>Google | 2015 - 2020</ExperienceDetails>
             </ExperienceItem>
             <ExperienceItem>
-              <h3>UI/UX Designer</h3>
-              <p>Intel | 2010 - 2015</p>
+              <ExperienceTitle>UI/UX Designer</ExperienceTitle>
+              <ExperienceDetails>Intel | 2010 - 2015</ExperienceDetails>
             </ExperienceItem>
             <ExperienceItem>
-              <h3>UI Designer</h3>
-              <p>Intel | 2009 - 2010</p>
+              <ExperienceTitle>UI Designer</ExperienceTitle>
+              <ExperienceDetails>Intel | 2009 - 2010</ExperienceDetails>
             </ExperienceItem>
           </Card>
         </Column>

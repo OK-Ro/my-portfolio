@@ -5,91 +5,113 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import NavBar from "../components/NavBar";
 
 const PortfolioContainer = styled.div`
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   margin: 0 auto;
-  padding: 5rem;
+  padding: 2rem;
+
+  @media (min-width: 768px) {
+    padding: 5rem;
+  }
 `;
 
-const ContentWrapper = styled.div`
-  margin-top: 10rem;
-`;
+const ContentWrapper = styled.div``;
 
 const BackToHome = styled(Link)`
   text-decoration: none;
-  color: #0066cc;
+  color: ${(props) => props.theme.accent};
   font-weight: bold;
   margin-bottom: 2rem;
   display: inline-block;
+  margin-top: 6rem;
+
+  @media (min-width: 768px) {
+    margin-top: 10rem;
+  }
 `;
 
 const Header = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const Subheader = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 2rem;
-  color: #666;
+  color: ${(props) => props.theme.secondaryText};
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const FilterContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 2rem;
 `;
 
 const FilterButton = styled.button`
-  background-color: ${(props) => (props.active ? "#0066cc" : "#f0f0f0")};
-  color: ${(props) => (props.active ? "white" : "#333")};
+  background-color: ${(props) =>
+    props.active ? props.theme.accent : props.theme.cardBackground};
+  color: ${(props) =>
+    props.active ? props.theme.buttonText : props.theme.text};
   border: none;
   padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
+  margin: 0.5rem;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 0.9rem;
 
   &:hover {
-    background-color: ${(props) => (props.active ? "#0052a3" : "#e0e0e0")};
+    background-color: ${(props) => props.theme.accent};
+    color: ${(props) => props.theme.buttonText};
   }
 `;
 
 const ProjectGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 300px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 `;
 
 const ProjectCard = styled.div`
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  aspect-ratio: 1 / 1;
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
 
-  &:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 2;
-    height: 615px;
-  }
+  @media (min-width: 768px) {
+    &:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
 
-  &:nth-child(4) {
-    grid-column: span 2;
-  }
+    &:nth-child(4) {
+      grid-column: span 2;
+    }
 
-  &:nth-child(5) {
-    grid-row: span 2;
-    height: 615px;
-  }
+    &:nth-child(5) {
+      grid-row: span 2;
+    }
 
-  &:nth-child(9) {
-    grid-column: span 2;
-    grid-row: span 2;
-    height: 615px;
+    &:nth-child(9) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
   }
 `;
 
@@ -106,6 +128,7 @@ const ProjectOverlay = styled.div`
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,6 +144,8 @@ const ProjectOverlay = styled.div`
 const ProjectTitle = styled.h3`
   color: white;
   margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  text-align: center;
 `;
 
 const ProjectLinks = styled.div`
@@ -134,9 +159,14 @@ const ProjectLink = styled.a`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 
   &:hover {
-    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.3);
   }
 `;
 
@@ -144,21 +174,25 @@ const CTASection = styled.div`
   text-align: center;
   margin-top: 3rem;
   padding: 2rem;
-  background-color: #f0f0f0;
-  border-radius: 10px;
+  background-color: ${(props) => props.theme.cardBackground};
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 `;
 
 const CTAButton = styled(Link)`
-  background-color: #0066cc;
-  color: white;
+  background-color: ${(props) => props.theme.accent};
+  color: ${(props) => props.theme.buttonText};
   padding: 0.75rem 1.5rem;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 25px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  margin-top: 1rem;
 
   &:hover {
-    background-color: #0052a3;
+    background-color: ${(props) => props.theme.accentHover};
+    transform: translateY(-2px);
   }
 `;
 
@@ -255,8 +289,8 @@ const Portfolio = () => {
 
   return (
     <PortfolioContainer>
-      <NavBar />
       <ContentWrapper>
+        <NavBar />
         <BackToHome to="/">← Back To Home</BackToHome>
         <Header>My Portfolio</Header>
         <Subheader>Check Out My Latest Projects</Subheader>
