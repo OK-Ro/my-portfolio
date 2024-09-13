@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import NavBar from "../components/NavBar";
+import { FaArrowLeft } from "react-icons/fa";
 
 const PortfolioContainer = styled.div`
   background-color: ${(props) => props.theme.body};
@@ -18,18 +19,50 @@ const PortfolioContainer = styled.div`
 const ContentWrapper = styled.div``;
 
 const BackToHome = styled(Link)`
+  margin-top: 10rem;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   color: ${(props) => props.theme.accent};
   font-weight: bold;
   margin-bottom: 2rem;
-  display: inline-block;
-  margin-top: 6rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid ${(props) => props.theme.accent};
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 
-  @media (min-width: 768px) {
-    margin-top: 10rem;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: ${(props) => props.theme.accent};
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: ${(props) => props.theme.buttonText};
+
+    &:before {
+      width: 100%;
+    }
+
+    svg {
+      transform: translateX(-5px);
+    }
+  }
+
+  svg {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
   }
 `;
-
 const Header = styled.h1`
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -291,7 +324,9 @@ const Portfolio = () => {
     <PortfolioContainer>
       <ContentWrapper>
         <NavBar />
-        <BackToHome to="/">← Back To Home</BackToHome>
+        <BackToHome to="/">
+          <FaArrowLeft /> Back To Home
+        </BackToHome>
         <Header>My Portfolio</Header>
         <Subheader>Check Out My Latest Projects</Subheader>
         <p>

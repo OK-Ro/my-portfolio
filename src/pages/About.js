@@ -1,4 +1,15 @@
 import React from "react";
+import {
+  FaReact,
+  FaNodeJs,
+  FaDatabase,
+  FaCode,
+  FaMobile,
+  FaRocket,
+  FaGitAlt,
+  FaPaintBrush,
+} from "react-icons/fa";
+
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import {
@@ -8,6 +19,7 @@ import {
   FaDribbble,
 } from "react-icons/fa";
 import NavBar from "../components/NavBar";
+import ColoredText from "./ColoredText";
 
 const AboutContainer = styled.div`
   margin: 0 auto;
@@ -55,7 +67,7 @@ const RightColumn = styled.div`
 `;
 
 const Card = styled.div`
-  padding: 15px;
+  padding: 1px;
   border-radius: 1rem;
   box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
   background-color: ${(props) => props.theme.backgroundCala};
@@ -105,7 +117,7 @@ const CircularText = styled.div`
 const CircularTextSpan = styled.span`
   position: absolute;
   left: 50%;
-  font-size: 10px;
+  font-size: 8rem;
   transform-origin: 0 100px;
   color: ${(props) => props.theme.accent};
 
@@ -141,12 +153,12 @@ const ProfilePicture = styled.img`
 `;
 
 const IntroCard = styled(Card)`
-  height: auto;
+  height: 20rem;
 `;
 
 const Header = styled.h1`
   font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: ${(props) => props.theme.text};
   font-weight: 700;
 
@@ -156,7 +168,7 @@ const Header = styled.h1`
 `;
 
 const Subheader = styled.p`
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   color: ${(props) => props.theme.secondaryText};
   font-weight: 500;
@@ -169,8 +181,8 @@ const Subheader = styled.p`
 const ThreeColumnSection = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 3rem;
+  gap: 1rem;
+  margin-top: 2rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -186,7 +198,7 @@ const Column = styled.div`
 const StatisticsSection = styled(Card)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 0.2rem;
 `;
 
 const StatItem = styled.div`
@@ -225,6 +237,33 @@ const FooterSection = styled.section`
     flex-direction: row;
     gap: 2rem;
     margin-top: 5rem;
+  }
+`;
+const ColumnCard = styled.div`
+  padding: 15px;
+  border-radius: 1rem;
+  height: 30rem;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
+  background-color: ${(props) => props.theme.backgroundCala};
+  color: ${(props) => props.theme.text};
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 20px solid ${(props) => props.theme.cardBorderline};
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px ${(props) => props.theme.boxShadow};
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 
@@ -289,17 +328,6 @@ const SocialIcon = styled.a`
   }
 `;
 
-const List = styled.ul`
-  list-style-type: none;
-  padding: 0;
-`;
-
-const ListItem = styled.li`
-  margin-bottom: 0.5rem;
-  color: ${(props) => props.theme.secondaryText};
-  font-size: 1rem;
-`;
-
 const ExperienceTitle = styled.h3`
   font-size: 1.2rem;
   font-weight: 600;
@@ -311,6 +339,114 @@ const ExperienceDetails = styled.p`
   font-size: 1rem;
   color: ${(props) => props.theme.secondaryText};
 `;
+const SkillsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background-color: ${(props) => props.theme.backgroundCala};
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const SkillCard = styled.div`
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const SkillIcon = styled.div`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white;
+`;
+
+const SkillTitle = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+`;
+
+const SkillDescription = styled.p`
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+`;
+
+const skills = [
+  {
+    icon: <FaReact />,
+    title: "Front-end",
+    description: "React, NextJS",
+    gradient: "linear-gradient(135deg, #61dafb, #764abc)",
+  },
+  {
+    icon: <FaNodeJs />,
+    title: "Back-end",
+    description: "Node.js, Express",
+    gradient: "linear-gradient(135deg, #68a063, #3c873a)",
+  },
+  {
+    icon: <FaDatabase />,
+    title: "Databases",
+    description: "MySQL, MongoDB",
+    gradient: "linear-gradient(135deg, #4db33d, #00758f)",
+  },
+  {
+    icon: <FaCode />,
+    title: "API",
+    description: "RESTful, GraphQL",
+    gradient: "linear-gradient(135deg, #e535ab, #ff7eb3)",
+  },
+  {
+    icon: <FaMobile />,
+    title: "Responsive",
+    description: "Mobile-first design",
+    gradient: "linear-gradient(135deg, #f12711, #f5af19)",
+  },
+  {
+    icon: <FaRocket />,
+    title: "Performance",
+    description: "Optimization techniques",
+    gradient: "linear-gradient(135deg, #396afc, #2948ff)",
+  },
+  {
+    icon: <FaGitAlt />,
+    title: "Version Control",
+    description: "Git, GitHub",
+    gradient: "linear-gradient(135deg, #f05033, #6e5494)",
+  },
+  {
+    icon: <FaPaintBrush />,
+    title: "UI/UX",
+    description: "Intuitive interfaces",
+    gradient: "linear-gradient(135deg, #ff00cc, #333399)",
+  },
+];
+
+const SkillsSection = () => (
+  <SkillsContainer>
+    {skills.map((skill, index) => (
+      <SkillCard key={index} style={{ background: skill.gradient }}>
+        <SkillIcon>{skill.icon}</SkillIcon>
+        <SkillTitle>{skill.title}</SkillTitle>
+        <SkillDescription>{skill.description}</SkillDescription>
+      </SkillCard>
+    ))}
+  </SkillsContainer>
+);
 
 const About = () => {
   const text = "Available for Work • Available for Work • ";
@@ -345,13 +481,40 @@ const About = () => {
 
         <RightColumn>
           <IntroCard>
-            <Header>Hello, I'm Gole Layla</Header>
-            <Subheader>An Award-Winning Product Designer</Subheader>
+            <Header>Hello, I'm Robert Okuni</Header>
+            <Subheader>A Full Stack Web Developer</Subheader>
             <FooterText>
-              As a skilled Product designer, illustrator, and visual development
-              expert, my diverse background has allowed me to apply my talents
-              across different fields and industries, demonstrating adaptability
-              and versatility.
+              <ColoredText>
+                As a passionate Full Stack Developer, I bring a robust skill set
+                to the table, honed through my experience with Hack Your Future
+                and continuous self-improvement. My expertise spans both
+                front-end and back-end technologies, allowing me to create
+                seamless, end-to-end web solutions. On the front-end, I excel in
+                crafting responsive and interactive user interfaces using React,
+                enhanced by the powerful features of NextJS. I leverage
+                Typescript to ensure type-safe, maintainable code, resulting in
+                more reliable and scalable applications. My proficiency in HTML,
+                CSS, and TailwindCSS enables me to create visually appealing and
+                performant designs that adapt flawlessly across devices. In
+                back-end development, I'm well-versed in NodeJS, using it to
+                build robust server-side applications and RESTful APIs. My
+                experience with both SQL and NoSQL databases, specifically MySql
+                and MongoDB, allows me to design efficient data storage
+                solutions tailored to each project's unique requirements.
+                Version control and collaboration are second nature to me, with
+                Github being an integral part of my development workflow. This
+                not only ensures code integrity but also facilitates seamless
+                teamwork and project management. My journey in web development
+                is driven by a constant thirst for knowledge and a commitment to
+                staying abreast of the latest industry trends. Whether it's
+                optimizing application performance, implementing secure
+                authentication systems, or integrating third-party APIs, I
+                approach each challenge with enthusiasm and a problem-solving
+                mindset. I'm excited about the opportunity to bring my technical
+                skills, creative thinking, and passion for clean, efficient code
+                to new projects, contributing to innovative web solutions that
+                make a real difference.
+              </ColoredText>
             </FooterText>
           </IntroCard>
         </RightColumn>
@@ -361,11 +524,11 @@ const About = () => {
         <Column>
           <StatisticsSection>
             <StatItem>
-              <StatNumber>7+</StatNumber>
+              <StatNumber>2+</StatNumber>
               <FooterText>YEARS EXPERIENCE</FooterText>
             </StatItem>
             <StatItem>
-              <StatNumber>125</StatNumber>
+              <StatNumber>5</StatNumber>
               <FooterText>TOTAL PROJECTS</FooterText>
             </StatItem>
             <StatItem>
@@ -379,16 +542,10 @@ const About = () => {
           </StatisticsSection>
         </Column>
         <Column>
-          <Card>
+          <ColumnCard>
             <FooterHeader>What I Do</FooterHeader>
-            <List>
-              <ListItem>Branding</ListItem>
-              <ListItem>Illustration</ListItem>
-              <ListItem>Logo Design</ListItem>
-              <ListItem>Typography</ListItem>
-              <ListItem>Card Design</ListItem>
-            </List>
-          </Card>
+            <SkillsSection />
+          </ColumnCard>
         </Column>
         <Column>
           <Card>

@@ -13,12 +13,13 @@ const ExperienceContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 2rem;
-  background-color: #f8f9fa;
+  background-color: ${(props) => props.theme.cardBackground};
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px ${(props) => props.theme.boxShadow};
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  backdrop-filter: blur(10px);
 
   &::-webkit-scrollbar {
     display: none;
@@ -27,7 +28,7 @@ const ExperienceContainer = styled.div`
 
 const Title = styled.h2`
   font-size: 2rem;
-  color: #333;
+  color: ${(props) => props.theme.text};
   margin-bottom: 2rem;
   text-align: center;
 `;
@@ -41,7 +42,7 @@ const Timeline = styled.div`
     top: 0;
     bottom: 0;
     width: 2px;
-    background-color: #0066cc;
+    background-color: ${(props) => props.theme.accent};
   }
 `;
 
@@ -55,16 +56,16 @@ const TimelineItem = styled.div`
 const TimelineContent = styled.div`
   width: 45%;
   padding: 1.5rem;
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px ${(props) => props.theme.boxShadow};
   }
 
   &::before {
@@ -73,7 +74,7 @@ const TimelineContent = styled.div`
     top: 20px;
     width: 20px;
     height: 20px;
-    background-color: #0066cc;
+    background-color: ${(props) => props.theme.accent};
     border-radius: 50%;
     ${(props) => (props.position === "left" ? "right: -30px;" : "left: -30px;")}
   }
@@ -81,30 +82,31 @@ const TimelineContent = styled.div`
 
 const JobTitle = styled.h3`
   font-size: 1.2rem;
-  color: #0066cc;
+  color: ${(props) => props.theme.accent};
   margin-bottom: 0.5rem;
 `;
 
 const Company = styled.h4`
   font-size: 1rem;
-  color: #555;
+  color: ${(props) => props.theme.text};
   margin-bottom: 0.5rem;
 `;
 
 const Period = styled.p`
   font-size: 0.9rem;
-  color: #777;
+  color: ${(props) => props.theme.secondaryText};
   margin-bottom: 1rem;
 `;
 
 const Description = styled.p`
   font-size: 1rem;
-  color: #333;
+  color: ${(props) => props.theme.text};
   line-height: 1.6;
 `;
 
 const Icon = styled(FaBriefcase)`
   margin-right: 0.5rem;
+  color: ${(props) => props.theme.accent};
 `;
 
 const experiences = [

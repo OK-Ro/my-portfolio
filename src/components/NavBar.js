@@ -196,7 +196,7 @@ function NavBar() {
   return (
     <NavContainer>
       <Nav scrolled={scrolled}>
-        <Logo to="/">My Portfolio</Logo>
+        <Logo to="/">ROBFOLIO</Logo>
         <MenuToggle onClick={toggleMenu}>
           <FaBars />
         </MenuToggle>

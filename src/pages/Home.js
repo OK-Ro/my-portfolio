@@ -108,8 +108,15 @@ const ProjectsCard = styled(BaseCard)`
   grid-column: 1;
   grid-row: 4;
   height: 55rem;
-  overflow-y: scroll;
-  scrollbar-width: thin;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   scrollbar-color: ${(props) =>
     `${props.theme.scrollbarThumb} ${props.theme.scrollbarTrack}`};
 

@@ -1,62 +1,53 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaHeart, FaStar, FaLink } from "react-icons/fa";
-
 const ProjectsContainer = styled.div`
   width: 100%;
   height: 100%;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f0f2f5;
+  background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px ${(props) => props.theme.boxShadow};
   height: 80vh;
   overflow-y: auto;
+  backdrop-filter: blur(10px);
 
   &::-webkit-scrollbar {
-    width: 8px;
+    display: none;
   }
 
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 const ProjectCard = styled.div`
-  background-color: white;
+  background-color: ${(props) => props.theme.cardBackground};
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  box-shadow: 0 2px 4px ${(props) => props.theme.boxShadow};
+  transition: transform 0.2s, box-shadow 0.2s;
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
   }
 `;
 
 const ProjectTitle = styled.h3`
   margin: 0 0 10px 0;
-  color: #1877f2;
+  color: ${(props) => props.theme.accent};
 `;
 
 const ProjectDescription = styled.p`
-  color: #606770;
+  color: ${(props) => props.theme.secondaryText};
   margin-bottom: 15px;
 `;
 
 const ProjectImage = styled.img`
   width: 100%;
-  height: 500px;
+  height: 30rem;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -71,26 +62,34 @@ const InteractionBar = styled.div`
 const LikeButton = styled.button`
   background: none;
   border: none;
-  color: ${(props) => (props.liked ? "#1877f2" : "#606770")};
+  color: ${(props) =>
+    props.liked ? props.theme.accent : props.theme.secondaryText};
   cursor: pointer;
   font-size: 16px;
   display: flex;
   align-items: center;
+  transition: color 0.2s;
+
+  &:hover {
+    color: ${(props) => props.theme.accent};
+  }
 `;
 
 const RatingDisplay = styled.div`
   display: flex;
   align-items: center;
-  color: #f1c40f;
+  color: ${(props) => props.theme.warning};
 `;
 
 const ProjectLink = styled.a`
-  color: #1877f2;
+  color: ${(props) => props.theme.accent};
   text-decoration: none;
   display: flex;
   align-items: center;
+  transition: color 0.2s;
 
   &:hover {
+    color: ${(props) => props.theme.accentHover};
     text-decoration: underline;
   }
 `;

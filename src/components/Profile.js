@@ -9,7 +9,7 @@ const ProfileContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding: 3rem;
-  background-color: #f8f9fa;
+  background-color: ${(props) => props.theme.cardBackground};
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 `;
@@ -42,12 +42,12 @@ const Name = styled.h1`
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: ${(props) => props.theme.text};
 `;
 
 const Title = styled.h2`
   font-size: 1.5rem;
-  color: #0066cc;
+  color: ${(props) => props.theme.accent};
   margin-bottom: 1.5rem;
   font-weight: 500;
 `;
@@ -55,11 +55,10 @@ const Title = styled.h2`
 const Bio = styled.p`
   margin-bottom: 2rem;
   line-height: 1.8;
-  color: #555;
+  color: ${(props) => props.theme.secondaryText};
   font-size: 1.1rem;
   text-align: center;
 `;
-
 const SkillTags = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -69,8 +68,8 @@ const SkillTags = styled.div`
 `;
 
 const SkillTag = styled.span`
-  background-color: #e9ecef;
-  color: #495057;
+  background-color: ${(props) => props.theme.backgroundCala};
+  color: ${(props) => props.theme.text};
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -78,8 +77,8 @@ const SkillTag = styled.span`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #0066cc;
-    color: #ffffff;
+    background-color: ${(props) => props.theme.accent};
+    color: ${(props) => props.theme.buttonText};
   }
 `;
 
@@ -90,11 +89,11 @@ const SocialLinks = styled.div`
 
 const SocialIcon = styled.a`
   font-size: 1.8rem;
-  color: #495057;
+  color: ${(props) => props.theme.secondaryText};
   transition: all 0.3s ease;
 
   &:hover {
-    color: #0066cc;
+    color: ${(props) => props.theme.accent};
     transform: translateY(-3px);
   }
 `;

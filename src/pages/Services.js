@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import {
@@ -48,6 +50,7 @@ const ServicesContainer = styled.div`
   padding: 5rem;
   animation: ${fadeIn} 0.5s ease-in;
 `;
+
 const ContentWrapper = styled.div`
   margin-top: 10rem;
 `;
@@ -61,6 +64,7 @@ const PageLayout = styled.div`
 const LeftColumn = styled.div`
   flex: 1;
   min-width: 300px;
+  animation: ${fadeIn} 0.9s ease-in;
 `;
 
 const RightColumn = styled.div`
@@ -69,15 +73,47 @@ const RightColumn = styled.div`
 `;
 
 const BackToHome = styled(Link)`
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  color: #0066cc;
+  color: ${(props) => props.theme.accent};
   font-weight: bold;
   margin-bottom: 2rem;
-  display: inline-block;
-  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border: 2px solid ${(props) => props.theme.accent};
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: ${(props) => props.theme.accent};
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
 
   &:hover {
-    color: #004499;
+    color: ${(props) => props.theme.buttonText};
+
+    &:before {
+      width: 100%;
+    }
+
+    svg {
+      transform: translateX(-5px);
+    }
+  }
+
+  svg {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
   }
 `;
 
@@ -85,14 +121,14 @@ const Header = styled.h1`
   font-size: 3rem;
   margin-bottom: 1rem;
   text-align: center;
-  color: #333;
+  color: ${(props) => props.theme.text};
 `;
 
 const Subheader = styled.p`
   font-size: 1.2rem;
   margin-bottom: 3rem;
   text-align: center;
-  color: #666;
+  color: ${(props) => props.theme.secondaryText};
 `;
 
 const ServicesGrid = styled.div`
@@ -103,11 +139,12 @@ const ServicesGrid = styled.div`
 `;
 
 const ServiceCard = styled.div`
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
   padding: 2rem;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 20px solid ${(props) => props.theme.cardBorderline};
 
   &:hover {
     transform: translateY(-10px);
@@ -125,34 +162,36 @@ const ServiceCard = styled.div`
 
 const ServiceIcon = styled.div`
   font-size: 3rem;
-  color: #0066cc;
+  color: ${(props) => props.theme.accent};
   margin-bottom: 1rem;
 `;
 
 const ServiceTitle = styled.h2`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: ${(props) => props.theme.text};
 `;
 
 const ServiceDescription = styled.p`
   margin-bottom: 1rem;
-  color: #666;
+  color: ${(props) => props.theme.secondaryText};
 `;
 
 const VisitorSection = styled.div`
   margin: 3rem 0;
   padding: 2rem;
   background-color: ${(props) => props.bgColor};
-  border-radius: 15px;
+  border-radius: 20px;
   text-align: center;
   transition: background-color 0.5s ease;
+  border: 20px solid ${(props) => props.theme.cardBorderline};
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 `;
 
 const VisitorCount = styled.div`
   font-size: 3rem;
   font-weight: bold;
-  color: #ffffff;
+  color: ${(props) => props.theme.text};
   margin: 1rem 0;
 `;
 
@@ -164,18 +203,19 @@ const ChartContainer = styled.div`
 const TotalVisitorSection = styled.div`
   margin: 3rem 0;
   padding: 2rem;
-  background-color: #f0f0f0;
+  background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
   text-align: center;
+  box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
+  border: 20px solid ${(props) => props.theme.cardBorderline};
 `;
 
 const TotalVisitorCount = styled.div`
   font-size: 3rem;
   font-weight: bold;
-  color: #0066cc;
+  color: ${(props) => props.theme.accent};
   margin: 1rem 0;
 `;
-
 const ProfilesSection = styled.div`
   margin-bottom: 3rem;
   text-align: center;
@@ -190,28 +230,32 @@ const SocialLinks = styled.div`
 
 const SocialIcon = styled.a`
   font-size: 1.8rem;
-  color: #333;
+  color: ${(props) => props.theme.text};
   transition: color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    color: #0066cc;
+    color: ${(props) => props.theme.accent};
     transform: translateY(-5px);
   }
 `;
 
 const EducationSection = styled.div`
   margin-bottom: 3rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 20px solid ${(props) => props.theme.cardBorderline};
 `;
 
 const EducationItem = styled.div`
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background-color: #f9f9f9;
+  background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 10px;
   transition: background-color 0.3s ease;
+  box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
+  border: 10px solid ${(props) => props.theme.cardBorderline};
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: ${(props) => props.theme.backgroundHover};
   }
 `;
 
@@ -219,13 +263,15 @@ const CTASection = styled.div`
   text-align: center;
   margin-top: 3rem;
   padding: 3rem;
-  background-color: #f0f0f0;
+  background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
+  box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
+  border: 20px solid ${(props) => props.theme.cardBorderline};
 `;
 
 const CTAButton = styled(Link)`
-  background-color: #0066cc;
-  color: white;
+  background-color: ${(props) => props.theme.accent};
+  color: ${(props) => props.theme.buttonText};
   padding: 1rem 2rem;
   text-decoration: none;
   border-radius: 30px;
@@ -234,7 +280,7 @@ const CTAButton = styled(Link)`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #004499;
+    background-color: ${(props) => props.theme.accentHover};
     transform: scale(1.05);
   }
 `;
@@ -311,7 +357,9 @@ const Services = () => {
       <ContentWrapper>
         <PageLayout>
           <LeftColumn>
-            <BackToHome to="/">← Back To Home</BackToHome>
+            <BackToHome to="/">
+              <FaArrowLeft /> Back To Home
+            </BackToHome>
             <Header>My Services</Header>
             <Subheader>
               Crafting digital experiences with expertise and passion
