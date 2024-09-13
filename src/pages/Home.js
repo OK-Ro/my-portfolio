@@ -55,6 +55,7 @@ const ProfileCard = styled(BaseCard)`
   @media (min-width: 768px) {
     grid-row: 1 / span 2;
     height: 55rem;
+    width: 100%;
   }
 
   @media (min-width: 1024px) {

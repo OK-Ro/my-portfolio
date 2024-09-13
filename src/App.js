@@ -14,6 +14,8 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import SmoothScroll from "./pages/SmoothScroll";
+import { Helmet } from "react-helmet";
+import GlobalStyles from "./GlobalStyles";
 
 const lightTheme = {
   body: "rgba(255, 255, 255, 0.8)",
@@ -87,6 +89,13 @@ function AppContent() {
 
   return (
     <StyledThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <GlobalStyles />
+      <Helmet>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+      </Helmet>
       <Router>
         <SmoothScroll>
           <Routes>

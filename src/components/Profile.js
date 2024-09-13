@@ -6,20 +6,40 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 1.5rem;
   background-color: ${(props) => props.theme.cardBackground};
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 3rem;
+  }
 `;
 
 const PhotoContainer = styled.div`
-  width: 400px;
-  height: 350px;
-  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 300px;
+  height: 260px;
+  margin-bottom: 1.5rem;
   position: relative;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    max-width: 350px;
+    height: 300px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 400px;
+    height: 350px;
+  }
 `;
 
 const Photo = styled.img`
@@ -36,45 +56,97 @@ const Photo = styled.img`
 
 const ProfileInfo = styled.div`
   text-align: center;
+  width: 100%;
 `;
 
 const Name = styled.h1`
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   color: ${(props) => props.theme.text};
+
+  @media (min-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const Title = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: ${(props) => props.theme.accent};
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 500;
+
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const Bio = styled.p`
-  margin-bottom: 2rem;
-  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
   color: ${(props) => props.theme.secondaryText};
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
 `;
+
 const SkillTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.8rem;
-  margin-bottom: 2rem;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 768px) {
+    gap: 0.6rem;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const SkillTag = styled.span`
   background-color: ${(props) => props.theme.backgroundCala};
   color: ${(props) => props.theme.text};
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   transition: all 0.3s ease;
+
+  @media (min-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
 
   &:hover {
     background-color: ${(props) => props.theme.accent};
@@ -84,13 +156,29 @@ const SkillTag = styled.span`
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    gap: 1.2rem;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 1.5rem;
+  }
 `;
 
 const SocialIcon = styled.a`
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: ${(props) => props.theme.secondaryText};
   transition: all 0.3s ease;
+
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.8rem;
+  }
 
   &:hover {
     color: ${(props) => props.theme.accent};

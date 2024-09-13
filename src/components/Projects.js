@@ -101,7 +101,7 @@ const Projects = () => {
       title: "E-commerce Platform",
       description: "A full-stack e-commerce solution with React and Node.js",
       image:
-        "https://cdn.pixabay.com/photo/2019/04/26/07/14/store-4156934_1280.png",
+        "https://cdn.dribbble.com/userupload/8957039/file/original-369cfc1847437d7b4d1beab9e1c652e3.png?resize=1504x1128&vertical=center",
       likes: 45,
       rating: 4.5,
       link: "https://github.com/yourusername/ecommerce-project",
@@ -111,7 +111,7 @@ const Projects = () => {
       title: "Weather App",
       description: "Real-time weather application using OpenWeatherMap API",
       image:
-        "https://cdn.pixabay.com/photo/2012/04/18/13/21/weather-37012_1280.png",
+        "https://cdn.buymeacoffee.com/uploads/project_updates/2021/10/16f5d0a9193ad3b7bff99c4ee1d279df.png",
       likes: 32,
       rating: 4.2,
       link: "https://github.com/yourusername/weather-app",
@@ -122,7 +122,7 @@ const Projects = () => {
       description:
         "A Kanban-style task management app with drag-and-drop functionality",
       image:
-        "https://cdn.pixabay.com/photo/2020/03/19/21/25/corkboard-4948005_1280.jpg",
+        "https://cdn.dribbble.com/users/1615584/screenshots/15378686/media/cff7c84fa3b7113a8b6ba2a42ea86dd0.jpg?resize=1000x750&vertical=center",
       likes: 58,
       rating: 4.7,
       link: "https://github.com/yourusername/task-management",
@@ -133,7 +133,7 @@ const Projects = () => {
       description:
         "Mobile app for tracking workouts and nutrition with data visualization",
       image:
-        "https://cdn.pixabay.com/photo/2017/01/09/11/30/dumbbell-1966247_1280.jpg",
+        "https://cdn.dribbble.com/userupload/11663757/file/original-626702a4d7db49ff2a3eb5022cf1211c.png?resize=1200x900",
       likes: 27,
       rating: 4.0,
       link: "https://github.com/yourusername/fitness-tracker",
@@ -144,7 +144,7 @@ const Projects = () => {
       description:
         "Dashboard for analyzing social media engagement and growth metrics",
       image:
-        "https://cdn.pixabay.com/photo/2020/04/25/12/14/circle-5090539_1280.jpg",
+        "https://cdn.dribbble.com/userupload/4177061/file/original-adab4509b4cab6df18d2a802975e9d08.png?resize=1200x900",
       likes: 39,
       rating: 4.3,
       link: "https://github.com/yourusername/social-analytics",
@@ -155,7 +155,7 @@ const Projects = () => {
       description:
         "Intelligent chatbot using natural language processing for customer support",
       image:
-        "https://cdn.pixabay.com/photo/2019/04/07/23/11/artificial-intelligence-4111587_1280.jpg",
+        "https://cdn.dribbble.com/userupload/8783875/file/original-9a4074fda16ab73133bdd0af4ee0308c.png?resize=1024x768&vertical=center",
       likes: 51,
       rating: 4.6,
       link: "https://github.com/yourusername/ai-chatbot",
@@ -166,43 +166,22 @@ const Projects = () => {
       description:
         "Real-time tracking of cryptocurrency investments and market trends",
       image:
-        "https://cdn.pixabay.com/photo/2018/01/18/07/31/bitcoin-3089728_1280.jpg",
+        "https://cdn.dribbble.com/userupload/7016069/file/original-45346f13929d4efb3c0c54e4e1139c57.png?resize=1200x900",
       likes: 35,
       rating: 4.1,
       link: "https://github.com/yourusername/crypto-tracker",
     },
-    {
-      id: 8,
-      title: "Augmented Reality Navigation",
-      description:
-        "Mobile app for AR-based indoor navigation in large buildings",
-      image:
-        "https://cdn.pixabay.com/photo/2018/06/07/16/49/virtual-3460451_1280.jpg",
-      likes: 42,
-      rating: 4.4,
-      link: "https://github.com/yourusername/ar-navigation",
-    },
+
     {
       id: 9,
       title: "Smart Home Control System",
       description:
         "IoT-based solution for controlling and monitoring home devices",
       image:
-        "https://cdn.pixabay.com/photo/2017/06/21/05/42/smart-home-2426903_1280.jpg",
+        "https://cdn.dribbble.com/userupload/9008964/file/original-17abfae69faaeaac8a8b42059d3118a5.png?resize=1200x1200&vertical=center",
       likes: 37,
       rating: 4.2,
       link: "https://github.com/yourusername/smart-home",
-    },
-    {
-      id: 10,
-      title: "Machine Learning Image Classifier",
-      description:
-        "Deep learning model for classifying images with high accuracy",
-      image:
-        "https://cdn.pixabay.com/photo/2018/09/18/11/19/artificial-intelligence-3685928_1280.png",
-      likes: 48,
-      rating: 4.5,
-      link: "https://github.com/yourusername/ml-image-classifier",
     },
   ]);
 
