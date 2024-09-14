@@ -8,11 +8,16 @@ const ProfileContainer = styled.div`
   align-items: center;
   width: 100%;
   max-width: 600px;
+
   margin: 0 auto;
   padding: 1.5rem;
   background-color: ${(props) => props.theme.cardBackground};
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  position: relative;
+  z-index: 1000;
+  overflow: visible;
 
   @media (min-width: 768px) {
     padding: 2rem;

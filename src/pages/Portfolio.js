@@ -17,52 +17,67 @@ const PortfolioContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div``;
-
 const BackToHome = styled(Link)`
-  margin-top: 10rem;
   display: inline-flex;
   align-items: center;
-  text-decoration: none;
-  color: ${(props) => props.theme.accent};
-  font-weight: bold;
-  margin-bottom: 2rem;
-  padding: 0.5rem 1rem;
-  border: 2px solid ${(props) => props.theme.accent};
-  border-radius: 25px;
-  transition: all 0.3s ease;
+  justify-content: center;
+  background-color: white;
+  width: 192px;
+  height: 56px;
+  border-radius: 16px;
   position: relative;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
   overflow: hidden;
-  z-index: 1;
+  margin-bottom: 2rem;
+  margin-top: 10rem;
+  border: 4px solid #4ade80;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  &:before {
+  &::before {
     content: "";
+    background-color: #4ade80;
+    border-radius: 12px;
+    height: 45px;
+    width: 60px;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: ${(props) => props.theme.accent};
-    transition: all 0.3s ease;
-    z-index: -1;
+    left: 4px;
+    top: 2px;
+    z-index: 1;
+    transition: width 0.5s;
+    border: 1px solid #fffff;
   }
 
-  &:hover {
-    color: ${(props) => props.theme.buttonText};
-
-    &:before {
-      width: 100%;
-    }
-
-    svg {
-      transform: translateX(-5px);
-    }
+  &:hover::before {
+    width: 178px;
   }
 
   svg {
-    margin-right: 0.5rem;
+    position: absolute;
+    left: 16px;
+    z-index: 2;
+    height: 20px;
+    width: 20px;
     transition: transform 0.3s ease;
   }
+
+  &:hover svg {
+    transform: translateX(-3px);
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+  }
+
+  &:hover span {
+    color: white;
+  }
 `;
+
 const Header = styled.h1`
   font-size: 2rem;
   margin-bottom: 1rem;

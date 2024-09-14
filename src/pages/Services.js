@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import {
@@ -27,6 +25,7 @@ import {
   Legend,
 } from "chart.js";
 import NavBar from "../components/NavBar";
+import { useEffect, useState } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -47,18 +46,39 @@ const ServicesContainer = styled.div`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};
   margin: 0 auto;
-  padding: 5rem;
+  padding: 2rem;
   animation: ${fadeIn} 0.5s ease-in;
+
+  @media (min-width: 768px) {
+    padding: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 5rem;
+  }
 `;
 
 const ContentWrapper = styled.div`
-  margin-top: 10rem;
+  margin-top: 5rem;
+
+  @media (min-width: 768px) {
+    margin-top: 7rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: 10rem;
+  }
 `;
 
 const PageLayout = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 4rem;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 4rem;
+  }
 `;
 
 const LeftColumn = styled.div`
@@ -75,161 +95,279 @@ const RightColumn = styled.div`
 const BackToHome = styled(Link)`
   display: inline-flex;
   align-items: center;
-  text-decoration: none;
-  color: ${(props) => props.theme.accent};
-  font-weight: bold;
-  margin-bottom: 2rem;
-  padding: 0.5rem 1rem;
-  border: 2px solid ${(props) => props.theme.accent};
-  border-radius: 25px;
-  transition: all 0.3s ease;
+  justify-content: center;
+  background-color: white;
+  width: 100%;
+  max-width: 192px;
+  height: 56px;
+  border-radius: 16px;
   position: relative;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
   overflow: hidden;
-  z-index: 1;
+  margin-bottom: 2rem;
+  border: 4px solid #4ade80;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  &:before {
+  &::before {
     content: "";
+    background-color: #4ade80;
+    border-radius: 12px;
+    height: 45px;
+    width: 60px;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: ${(props) => props.theme.accent};
-    transition: all 0.3s ease;
-    z-index: -1;
+    left: 4px;
+    top: 2px;
+    z-index: 1;
+    transition: width 0.5s;
+    border: 1px solid #fffff;
   }
 
-  &:hover {
-    color: ${(props) => props.theme.buttonText};
-
-    &:before {
-      width: 100%;
-    }
-
-    svg {
-      transform: translateX(-5px);
-    }
+  &:hover::before {
+    width: calc(100% - 8px);
   }
 
   svg {
-    margin-right: 0.5rem;
+    position: absolute;
+    left: 16px;
+    z-index: 2;
+    height: 20px;
+    width: 20px;
     transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(-3px);
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+  }
+
+  &:hover span {
+    color: white;
   }
 `;
 
 const Header = styled.h1`
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   text-align: center;
   color: ${(props) => props.theme.text};
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
 `;
 
 const Subheader = styled.p`
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
   text-align: center;
   color: ${(props) => props.theme.secondaryText};
+
+  @media (min-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
 `;
 
 const ServicesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 3rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 const ServiceCard = styled.div`
   background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
-  padding: 2rem;
+  padding: 1.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border: 20px solid ${(props) => props.theme.cardBorderline};
+  border: 10px solid ${(props) => props.theme.cardBorderline};
 
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
 
-  &:nth-child(1) {
-    grid-column: span 2;
+  @media (min-width: 768px) {
+    padding: 2rem;
+    border-width: 15px;
+
+    &:nth-child(1) {
+      grid-column: span 2;
+    }
+
+    &:nth-child(4) {
+      grid-column: span 2;
+    }
   }
 
-  &:nth-child(4) {
-    grid-column: span 2;
+  @media (min-width: 1024px) {
+    border-width: 20px;
   }
 `;
 
 const ServiceIcon = styled.div`
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: ${(props) => props.theme.accent};
   margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 const ServiceTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
   color: ${(props) => props.theme.text};
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const ServiceDescription = styled.p`
   margin-bottom: 1rem;
   color: ${(props) => props.theme.secondaryText};
+  font-size: 0.9rem;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const VisitorSection = styled.div`
-  margin: 3rem 0;
-  padding: 2rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
   background-color: ${(props) => props.bgColor};
   border-radius: 20px;
   text-align: center;
   transition: background-color 0.5s ease;
-  border: 20px solid ${(props) => props.theme.cardBorderline};
+  border: 10px solid ${(props) => props.theme.cardBorderline};
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: 768px) {
+    margin: 3rem 0;
+    padding: 2rem;
+    border-width: 15px;
+  }
+
+  @media (min-width: 1024px) {
+    border-width: 20px;
+  }
 `;
 
 const VisitorCount = styled.div`
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   color: ${(props) => props.theme.text};
   margin: 1rem 0;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
 `;
 
 const ChartContainer = styled.div`
-  height: 200px;
-  margin-top: 2rem;
+  height: 150px;
+  margin-top: 1.5rem;
+
+  @media (min-width: 768px) {
+    height: 175px;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    height: 200px;
+  }
 `;
 
 const TotalVisitorSection = styled.div`
-  margin: 3rem 0;
-  padding: 2rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
   background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
-  border: 20px solid ${(props) => props.theme.cardBorderline};
+  border: 10px solid ${(props) => props.theme.cardBorderline};
+
+  @media (min-width: 768px) {
+    margin: 3rem 0;
+    padding: 2rem;
+    border-width: 15px;
+  }
+
+  @media (min-width: 1024px) {
+    border-width: 20px;
+  }
 `;
 
 const TotalVisitorCount = styled.div`
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   color: ${(props) => props.theme.accent};
   margin: 1rem 0;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
 `;
+
 const ProfilesSection = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   text-align: center;
+
+  @media (min-width: 768px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 const SocialLinks = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 1rem;
+
+  @media (min-width: 768px) {
+    gap: 1.5rem;
+  }
 `;
 
 const SocialIcon = styled.a`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: ${(props) => props.theme.text};
   transition: color 0.3s ease, transform 0.3s ease;
 
@@ -237,51 +375,94 @@ const SocialIcon = styled.a`
     color: ${(props) => props.theme.accent};
     transform: translateY(-5px);
   }
+
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const EducationSection = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border: 20px solid ${(props) => props.theme.cardBorderline};
+  border: 10px solid ${(props) => props.theme.cardBorderline};
+
+  @media (min-width: 768px) {
+    margin-bottom: 3rem;
+    border-width: 15px;
+  }
+
+  @media (min-width: 1024px) {
+    border-width: 20px;
+  }
 `;
 
 const EducationItem = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 10px;
   transition: background-color 0.3s ease;
   box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
-  border: 10px solid ${(props) => props.theme.cardBorderline};
+  border: 5px solid ${(props) => props.theme.cardBorderline};
 
   &:hover {
     background-color: ${(props) => props.theme.backgroundHover};
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border-width: 7px;
+  }
+
+  @media (min-width: 1024px) {
+    border-width: 10px;
   }
 `;
 
 const CTASection = styled.div`
   text-align: center;
-  margin-top: 3rem;
-  padding: 3rem;
+  margin-top: 2rem;
+  padding: 2rem;
   background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
   box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
-  border: 20px solid ${(props) => props.theme.cardBorderline};
+  border: 10px solid ${(props) => props.theme.cardBorderline};
+
+  @media (min-width: 768px) {
+    margin-top: 3rem;
+    padding: 2.5rem;
+    border-width: 15px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 3rem;
+    border-width: 20px;
+  }
 `;
 
 const CTAButton = styled(Link)`
   background-color: ${(props) => props.theme.accent};
   color: ${(props) => props.theme.buttonText};
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   text-decoration: none;
   border-radius: 30px;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
 
   &:hover {
     background-color: ${(props) => props.theme.accentHover};
     transform: scale(1.05);
+  }
+
+  @media (min-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.2rem;
   }
 `;
 

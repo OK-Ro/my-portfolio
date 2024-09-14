@@ -1,5 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import {
+  FaUser,
+  FaBriefcase,
+  FaGraduationCap,
+  FaCode,
+  FaLanguage,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa";
 import SkillMeter from "../components/SkillMeter";
 import DownloadResumeButton from "../components/DownloadResumeButton";
 import LanguageProficiency from "../components/LanguangeProficiency";
@@ -8,36 +18,149 @@ import Project from "../components/Project";
 import TabInterface from "../components/TabInterface";
 import NavBar from "../components/NavBar";
 
-const ResumeContainer = styled.div`
-  background-color: ${(props) => props.theme.body};
-  color: ${(props) => props.theme.text};
-  max-width: 800px;
-  margin: 0 auto;
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f2f2f7;
+  color: #1c1c1e;
+  padding: 5rem;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0.5rem;
+  }
+`;
+
+const ResumeContainer = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  margin-top: 10rem;
   padding: 2rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
-const ResumeSection = styled.section`
+const ResumeHeader = styled.div`
+  text-align: center;
   margin-bottom: 2rem;
 `;
 
-const ResumeTitle = styled.h2`
-  color: ${(props) => props.theme.text};
-  border-bottom: 2px solid ${(props) => props.theme.buttonBackground};
+const ResumeTitle = styled.h1`
+  color: #007aff;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+const ResumeSection = styled(motion.section)`
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+`;
+
+const SectionTitle = styled.h2`
+  color: #007aff;
+  border-bottom: 2px solid #007aff;
   padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+
+  svg {
+    margin-right: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
-const ProfileSection = styled.section`
-  margin-bottom: 2rem;
-`;
+const ProfileSection = styled(ResumeSection)``;
 
 const ProfileInfo = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const SocialLinks = styled.div`
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+`;
+
+const SocialLink = styled.a`
+  color: #007aff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 0.5rem;
+  }
+
+  &:hover {
+    color: #0056b3;
+  }
+`;
+
+const WorkTimeline = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
+const WorkItem = styled(motion.li)`
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f2f2f7;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+const WorkTitle = styled.h3`
+  color: #007aff;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const WorkCompany = styled.p`
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+`;
+
+const WorkDate = styled.p`
+  color: #8e8e93;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 `;
 
 function Resume() {
@@ -119,25 +242,33 @@ function Resume() {
     { name: "French", level: 2 },
   ];
 
-  const WorkTimeline = ({ experiences }) => (
-    <ul>
+  const WorkExperience = ({ experiences }) => (
+    <WorkTimeline>
       {experiences.map((exp, index) => (
-        <li key={index}>
-          <h3>{exp.title}</h3>
-          <p>{exp.company}</p>
-          <p>{exp.date}</p>
+        <WorkItem
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+        >
+          <WorkTitle>{exp.title}</WorkTitle>
+          <WorkCompany>{exp.company}</WorkCompany>
+          <WorkDate>{exp.date}</WorkDate>
           <p>{exp.description}</p>
-        </li>
+        </WorkItem>
       ))}
-    </ul>
+    </WorkTimeline>
   );
 
   const tabsData = [
     {
       title: "Profile",
+      icon: <FaUser />,
       content: (
         <ProfileSection>
-          <ResumeTitle>Profile</ResumeTitle>
+          <SectionTitle>
+            <FaUser /> Profile
+          </SectionTitle>
           <ProfileInfo>
             <div>
               <p>
@@ -162,44 +293,47 @@ function Resume() {
               </p>
             </div>
           </ProfileInfo>
-          <ResumeTitle>Summary</ResumeTitle>
+          <SectionTitle>Summary</SectionTitle>
           <p>{profile.summary}</p>
           <SocialLinks>
-            <ResumeTitle>Find Me Online</ResumeTitle>
-            <p>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-            </p>
-            <p>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-            </p>
+            <SocialLink
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin /> LinkedIn
+            </SocialLink>
+            <SocialLink
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub /> GitHub
+            </SocialLink>
           </SocialLinks>
         </ProfileSection>
       ),
     },
     {
       title: "Experience",
+      icon: <FaBriefcase />,
       content: (
         <ResumeSection>
-          <WorkTimeline experiences={experiences} />
+          <SectionTitle>
+            <FaBriefcase /> Experience
+          </SectionTitle>
+          <WorkExperience experiences={experiences} />
         </ResumeSection>
       ),
     },
     {
       title: "Education",
+      icon: <FaGraduationCap />,
       content: (
         <ResumeSection>
+          <SectionTitle>
+            <FaGraduationCap /> Education
+          </SectionTitle>
           {education.map((edu, index) => (
             <Education
               key={index}
@@ -214,8 +348,12 @@ function Resume() {
     },
     {
       title: "Projects",
+      icon: <FaCode />,
       content: (
         <ResumeSection>
+          <SectionTitle>
+            <FaCode /> Projects
+          </SectionTitle>
           {projects.map((project, index) => (
             <Project
               key={index}
@@ -230,17 +368,21 @@ function Resume() {
     },
     {
       title: "Skills & Languages",
+      icon: <FaLanguage />,
       content: (
         <>
           <ResumeSection>
-            <NavBar />
-            <ResumeTitle>Skills</ResumeTitle>
+            <SectionTitle>
+              <FaCode /> Skills
+            </SectionTitle>
             {skills.map((skill, index) => (
               <SkillMeter key={index} skill={skill.name} level={skill.level} />
             ))}
           </ResumeSection>
           <ResumeSection>
-            <ResumeTitle>Languages</ResumeTitle>
+            <SectionTitle>
+              <FaLanguage /> Languages
+            </SectionTitle>
             {languages.map((lang, index) => (
               <LanguageProficiency
                 key={index}
@@ -255,12 +397,22 @@ function Resume() {
   ];
 
   return (
-    <ResumeContainer>
+    <PageWrapper>
       <NavBar />
-      <h1>{profile.name}'s Resume</h1>
-      <DownloadResumeButton pdfUrl="resume.pdf" />
-      <TabInterface tabs={tabsData} />
-    </ResumeContainer>
+      <ResumeContainer
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <ResumeHeader>
+          <ResumeTitle>{profile.name}'s Resume</ResumeTitle>
+          <DownloadResumeButton
+            pdfUrl={`${process.env.PUBLIC_URL}/RobertOkuniResume.pdf`}
+          />
+        </ResumeHeader>
+        <TabInterface tabs={tabsData} />
+      </ResumeContainer>
+    </PageWrapper>
   );
 }
 

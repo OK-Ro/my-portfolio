@@ -12,14 +12,10 @@ import {
 
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaDribbble,
-} from "react-icons/fa";
+import {} from "react-icons/fa";
 import NavBar from "../components/NavBar";
 import ColoredText from "./ColoredText";
+import FeedbackPopup from "./FeedbackPopup";
 
 const AboutContainer = styled.div`
   margin: 0 auto;
@@ -39,7 +35,7 @@ const AboutContainer = styled.div`
 `;
 
 const ProfileSection = styled.section`
-  margin-top: 8em;
+  margin-top: 4em;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -58,18 +54,26 @@ const ProfileSection = styled.section`
 
 const LeftColumn = styled.div`
   flex: 1;
+  height: 40rem;
   min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: ${(props) => props.theme.backgroundCala};
 `;
 
 const RightColumn = styled.div`
   flex: 2;
   min-width: 300px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 `;
 
 const Card = styled.div`
+  margin-top: 5rem;
   padding: 1px;
   border-radius: 1rem;
-  box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   background-color: ${(props) => props.theme.backgroundCala};
   color: ${(props) => props.theme.text};
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -88,6 +92,8 @@ const Card = styled.div`
 
 const ProfilePictureCard = styled(Card)`
   text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
   height: auto;
   background-color: ${(props) => props.theme.cardBackground};
 `;
@@ -154,6 +160,7 @@ const ProfilePicture = styled.img`
 
 const IntroCard = styled(Card)`
   height: 20rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 `;
 
 const Header = styled.h1`
@@ -182,7 +189,10 @@ const ThreeColumnSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 2rem;
+  height: 30rem;
+  margin-top: 1rem;
+
+  background-color: ${(props) => props.theme.cardBackground};
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -206,6 +216,7 @@ const StatItem = styled.div`
   background-color: ${(props) => props.theme.cardBackground};
   padding: 1rem;
   border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   border: 1px solid ${(props) => props.theme.cardBorder};
 `;
 
@@ -228,7 +239,7 @@ const ExperienceItem = styled.div`
 `;
 
 const FooterSection = styled.section`
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -242,11 +253,11 @@ const FooterSection = styled.section`
 const ColumnCard = styled.div`
   padding: 15px;
   border-radius: 1rem;
-  height: 30rem;
+  height: 35rem;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   background-color: ${(props) => props.theme.backgroundCala};
   color: ${(props) => props.theme.text};
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -309,22 +320,6 @@ const CTAButton = styled(Link)`
   &:hover {
     background-color: ${(props) => props.theme.accentHover};
     transform: translateY(-2px);
-  }
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-top: auto;
-`;
-
-const SocialIcon = styled.a`
-  font-size: 1.5rem;
-  color: ${(props) => props.theme.text};
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${(props) => props.theme.accent};
   }
 `;
 
@@ -595,25 +590,7 @@ const About = () => {
           </div>
         </FooterCard>
         <FooterCard>
-          <FooterHeader>Connect With Me</FooterHeader>
-          <FooterText>
-            Let's stay in touch! Follow me on social media for updates and
-            insights.
-          </FooterText>
-          <SocialLinks>
-            <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-              <FaFacebookF />
-            </SocialIcon>
-            <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-              <FaTwitter />
-            </SocialIcon>
-            <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-              <FaLinkedinIn />
-            </SocialIcon>
-            <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-              <FaDribbble />
-            </SocialIcon>
-          </SocialLinks>
+          <FeedbackPopup />
         </FooterCard>
       </FooterSection>
     </AboutContainer>

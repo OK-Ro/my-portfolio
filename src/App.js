@@ -49,6 +49,20 @@ const lightTheme = {
   buttonBackground: "rgba(0, 122, 255, 0.8)",
   buttonText: "#FFFFFF",
   buttonHoverBackground: "rgba(90, 200, 250, 0.8)",
+  // New properties for contact form
+  formBackground:
+    "linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%)",
+  formBorder: "rgb(255, 255, 255)",
+  formBoxShadow: "rgba(133, 189, 215, 0.8784313725)",
+  inputBackground: "white",
+  inputBorder: "#e0e0e0",
+  inputBoxShadow: "#cff0ff",
+  inputFocusBorder: "#12B1D1",
+  labelColor: "rgb(170, 170, 170)",
+  buttonGradient:
+    "linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%)",
+  buttonBoxShadow: "rgba(133, 189, 215, 0.8784313725)",
+  iconColor: "rgb(16, 137, 211)",
 };
 
 const darkTheme = {
@@ -83,6 +97,20 @@ const darkTheme = {
   buttonBackground: "rgba(10, 132, 255, 0.8)",
   buttonText: "#FFFFFF",
   buttonHoverBackground: "rgba(100, 210, 255, 0.8)",
+  // New properties for contact form (dark mode)
+  formBackground:
+    "linear-gradient(0deg, rgb(30, 37, 46) 0%, rgb(34, 41, 51) 100%)",
+  formBorder: "rgb(59, 68, 81)",
+  formBoxShadow: "rgba(0, 0, 0, 0.2)",
+  inputBackground: "rgba(45, 53, 64, 0.8)",
+  inputBorder: "rgba(59, 68, 81, 0.5)",
+  inputBoxShadow: "rgba(0, 0, 0, 0.1)",
+  inputFocusBorder: "rgb(64, 156, 255)",
+  labelColor: "rgb(170, 170, 170)",
+  buttonGradient:
+    "linear-gradient(45deg, rgb(64, 156, 255) 0%, rgb(100, 210, 255) 100%)",
+  buttonBoxShadow: "rgba(0, 0, 0, 0.2)",
+  iconColor: "rgb(64, 156, 255)",
 };
 function AppContent() {
   const { isDarkMode } = useTheme();

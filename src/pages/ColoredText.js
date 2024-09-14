@@ -4,14 +4,24 @@ import styled from "styled-components";
 const Pre = styled.pre`
   background-color: #1e1e1e;
   color: #d4d4d4;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 5px;
   overflow-x: auto;
   font-family: "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.5;
   white-space: pre-wrap;
   word-wrap: break-word;
+  height: 22rem;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 const colorClasses = [

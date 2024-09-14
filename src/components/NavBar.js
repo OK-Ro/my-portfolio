@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { FaSun, FaMoon, FaFileAlt, FaBars } from "react-icons/fa";
+import { FaSun, FaMoon, FaFileAlt, FaBars, FaRocket } from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 
+// Container for the navigation bar
 const NavContainer = styled.div`
   position: fixed;
   top: 1rem;
@@ -18,6 +19,7 @@ const NavContainer = styled.div`
   }
 `;
 
+// Style for the navigation bar itself
 const Nav = styled.nav`
   background-color: ${(props) =>
     props.scrolled
@@ -41,20 +43,64 @@ const Nav = styled.nav`
   }
 `;
 
+// Logo with new design and icon
 const Logo = styled(Link)`
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
   font-weight: bold;
-  text-shadow: 0 0 10px ${(props) => props.theme.navTextShadow};
+  color: transparent;
+  background: linear-gradient(45deg, #ff5c5c, #ffb36b, #7b92ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-decoration: none;
-  color: ${(props) => props.theme.navText};
-  margin-bottom: 1rem;
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    text-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 92, 92, 0.6),
+      rgba(255, 179, 107, 0.6),
+      rgba(123, 146, 255, 0.6)
+    );
+    border-radius: 10px;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  &:hover:before {
+    opacity: 1;
+    filter: blur(8px);
+  }
 
   @media (min-width: 768px) {
-    font-size: 1.5rem;
-    margin-bottom: 0;
+    font-size: 2rem;
   }
 `;
 
+// Icon inside the logo
+const LogoIcon = styled(FaRocket)`
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  color: ${(props) => props.theme.navText};
+`;
+
+// Navigation items
 const NavList = styled.ul`
   list-style-type: none;
   padding: 0;
@@ -170,6 +216,8 @@ const MenuToggle = styled.button`
     display: none;
   }
 `;
+
+// Navigation bar component
 function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -196,7 +244,10 @@ function NavBar() {
   return (
     <NavContainer>
       <Nav scrolled={scrolled}>
-        <Logo to="/">ROBFOLIO</Logo>
+        <Logo to="/">
+          <LogoIcon />
+          ROBFOLIO
+        </Logo>
         <MenuToggle onClick={toggleMenu}>
           <FaBars />
         </MenuToggle>

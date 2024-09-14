@@ -69,6 +69,7 @@ const WorkExperienceCard = styled(BaseCard)`
   height: 25rem;
   width: 100%;
   overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (min-width: 768px) {
     grid-column: 2;
@@ -98,6 +99,7 @@ const SkillsCard = styled(BaseCard)`
   grid-column: 1;
   grid-row: 3;
   height: 24rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (min-width: 768px) {
     grid-column: 2;
@@ -111,6 +113,7 @@ const ProjectsCard = styled(BaseCard)`
   height: 55rem;
   overflow-y: auto;
   backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   &::-webkit-scrollbar {
     display: none;
@@ -149,6 +152,7 @@ const ProjectsCard = styled(BaseCard)`
 const ServicesCard = styled(BaseCard)`
   grid-column: 1;
   grid-row: 5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (min-width: 768px) {
     grid-column: 1 / span 2;
@@ -190,6 +194,7 @@ const ContactCard = styled(BaseCard)`
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (min-width: 768px) {
     grid-column: 1 / span 2;
