@@ -24,7 +24,7 @@ const AboutContainer = styled.div`
     Arial, sans-serif;
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 `;
 
@@ -36,7 +36,7 @@ const ProfileSection = styled.section`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    margin-top: 5rem;
+    margin-top: 12rem;
     gap: 2rem;
   }
 `;
@@ -164,7 +164,7 @@ const IntroCard = styled(Card)`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    height: auto;
+    height: 29.5rem;
   }
 `;
 
@@ -175,7 +175,7 @@ const Header = styled.h1`
   font-weight: 700;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -186,7 +186,7 @@ const Subheader = styled.p`
   font-weight: 500;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 `;
 
@@ -220,6 +220,8 @@ const StatisticsSection = styled(Card)`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
   }
 `;
 
@@ -230,6 +232,16 @@ const StatItem = styled.div`
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   border: 1px solid ${(props) => props.theme.cardBorder};
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const StatNumber = styled.h2`
@@ -240,6 +252,7 @@ const StatNumber = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 0.3rem;
   }
 `;
 
@@ -248,6 +261,10 @@ const ExperienceItem = styled.div`
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
   }
 `;
 
@@ -259,7 +276,8 @@ const FooterSection = styled.section`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    gap: 0.1rem;
   }
 `;
 
@@ -299,7 +317,7 @@ const FooterCard = styled(Card)`
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -498,6 +516,27 @@ const SkillsSection = () => (
   </SkillsContainer>
 );
 
+const experiences = [
+  {
+    title: "Full Stack Developer",
+    company: "Hack Your Future",
+    date: "05/2023 - Present",
+    location: "Amsterdam",
+  },
+  {
+    title: "Digital Media Infrastructure Manager",
+    company: "Dstv Uganda",
+    date: "2017 - 2019",
+    location: "Kampala, Uganda",
+  },
+  {
+    title: "Digital Onboarding Specialist",
+    company: "Dfcu Bank Uganda",
+    date: "2016 - 2017",
+    location: "Kampala, Uganda",
+  },
+];
+
 const About = () => {
   const text = "Available for Work • Available for Work • ";
   const characters = text.split("");
@@ -600,22 +639,15 @@ const About = () => {
         <Column>
           <Card>
             <FooterHeader>My Experience</FooterHeader>
-            <ExperienceItem>
-              <ExperienceTitle>UI Designer</ExperienceTitle>
-              <ExperienceDetails>Apple | 2021 - Now</ExperienceDetails>
-            </ExperienceItem>
-            <ExperienceItem>
-              <ExperienceTitle>Front-end Dev</ExperienceTitle>
-              <ExperienceDetails>Google | 2015 - 2020</ExperienceDetails>
-            </ExperienceItem>
-            <ExperienceItem>
-              <ExperienceTitle>UI/UX Designer</ExperienceTitle>
-              <ExperienceDetails>Intel | 2010 - 2015</ExperienceDetails>
-            </ExperienceItem>
-            <ExperienceItem>
-              <ExperienceTitle>UI Designer</ExperienceTitle>
-              <ExperienceDetails>Intel | 2009 - 2010</ExperienceDetails>
-            </ExperienceItem>
+            {experiences.map((experience, index) => (
+              <ExperienceItem key={index}>
+                <ExperienceTitle>{experience.title}</ExperienceTitle>
+                <ExperienceDetails>
+                  {experience.company} | {experience.date} |{" "}
+                  {experience.location}
+                </ExperienceDetails>
+              </ExperienceItem>
+            ))}
           </Card>
         </Column>
       </ThreeColumnSection>

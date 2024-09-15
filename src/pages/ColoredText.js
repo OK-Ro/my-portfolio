@@ -16,6 +16,12 @@ const Pre = styled.pre`
   overflow-y: auto;
   backdrop-filter: blur(10px);
 
+  @media (max-width: 768px) {
+    padding: 0.6rem;
+    width: 19.3rem;
+    margin-left: -1.6rem;
+  }
+
   &::-webkit-scrollbar {
     display: none;
   }

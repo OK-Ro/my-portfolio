@@ -39,6 +39,13 @@ const FeedbackCard = styled.div`
     animation: ${shimmer} 6s infinite;
     transform: rotate(30deg);
   }
+
+  @media (max-width: 768px) {
+    height: 330px;
+    padding: 1rem;
+    width: 20rem;
+    margin-left: -2rem;
+  }
 `;
 
 const ChatHeader = styled.div`
@@ -60,6 +67,10 @@ const ChatTitle = styled.h3`
   svg {
     margin-right: 0.5rem;
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const MessageContainer = styled.div`
@@ -68,6 +79,11 @@ const MessageContainer = styled.div`
   animation: ${popIn} 0.5s ease-out;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 20rem;
+  }
 `;
 
 const ProfileIcon = styled.div`
@@ -81,6 +97,11 @@ const ProfileIcon = styled.div`
   margin-right: 1rem;
   flex-shrink: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 const MessageContent = styled.div`
   width: 100%;
@@ -106,6 +127,12 @@ const MessageBubble = styled.div`
     border-style: solid;
     border-color: transparent rgba(255, 255, 255, 0.9) transparent transparent;
   }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1rem;
+    height: 5rem;
+    width: 13rem;
+  }
 `;
 
 const Message = styled.p`
@@ -113,6 +140,13 @@ const Message = styled.p`
   color: #333;
   margin: 0;
   line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.1;
+  }
 `;
 
 const ClientInfo = styled.div`
@@ -122,6 +156,10 @@ const ClientInfo = styled.div`
   font-size: 0.9rem;
   color: #ffffff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const MessageStatus = styled.div`
@@ -150,12 +188,21 @@ const Reaction = styled.span`
   align-items: center;
   gap: 0.3rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+  }
 `;
 
 const StarRating = styled.div`
   display: flex;
   margin-top: 0.5rem;
   color: #ffd700;
+
+  @media (max-width: 768px) {
+    margin-top: 0.3rem;
+  }
 `;
 
 const feedbacks = [

@@ -43,9 +43,20 @@ const BaseCard = styled.div`
 const ProfileCard = styled(BaseCard)`
   grid-column: 1;
   grid-row: 1 / span 2;
-  height: 55rem;
+  height: 56rem;
   width: 60rem;
-  background: linear-gradient(45deg, #00c9ff, #92fe9d);
+  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 107, 107, 0.5),
+    rgba(254, 202, 87, 0.5),
+    rgba(72, 219, 251, 0.5),
+    rgba(255, 159, 243, 0.5)
+  );
+  background-size: 300% 300%;
+
+  backdrop-filter: blur(380px); /* For supported browsers */
+  -webkit-backdrop-filter: blur(80px);
 
   @media (max-width: 768px) {
     height: 55rem;
@@ -101,7 +112,7 @@ const ProjectsCard = styled(BaseCard)`
   height: 55rem;
   overflow-y: auto;
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 20px solid ${(props) => props.theme.inputb};
 
   &::-webkit-scrollbar {
     display: none;
@@ -117,6 +128,7 @@ const ProjectsCard = styled(BaseCard)`
     grid-row: 3;
     width: 20rem;
     height: auto;
+    border: 2px solid ${(props) => props.theme.inputb};
   }
 
   &::-webkit-scrollbar {
