@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import NavBar from "../components/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import MovingBanner from "./MovingBanner";
