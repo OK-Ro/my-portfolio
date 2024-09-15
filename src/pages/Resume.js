@@ -19,10 +19,12 @@ import TabInterface from "../components/TabInterface";
 import NavBar from "../components/NavBar";
 
 const PageWrapper = styled.div`
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #f2f2f7;
+
   color: #1c1c1e;
   padding: 5rem;
 
@@ -36,7 +38,8 @@ const ResumeContainer = styled(motion.div)`
   height: 100%;
   margin-top: 10rem;
   padding: 2rem;
-  background-color: white;
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 
@@ -51,7 +54,7 @@ const ResumeHeader = styled.div`
 `;
 
 const ResumeTitle = styled.h1`
-  color: #007aff;
+  color: ${(props) => props.theme.text};
   margin-bottom: 1rem;
   font-size: 2.5rem;
   font-weight: 700;
@@ -64,7 +67,7 @@ const ResumeTitle = styled.h1`
 const ResumeSection = styled(motion.section)`
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.body};
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
@@ -74,7 +77,7 @@ const ResumeSection = styled(motion.section)`
 `;
 
 const SectionTitle = styled.h2`
-  color: #007aff;
+  color: ${(props) => props.theme.text};
   border-bottom: 2px solid #007aff;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
@@ -113,7 +116,7 @@ const SocialLinks = styled.div`
 `;
 
 const SocialLink = styled.a`
-  color: #007aff;
+  color: ${(props) => props.theme.text};
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -137,13 +140,13 @@ const WorkTimeline = styled.ul`
 const WorkItem = styled(motion.li)`
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background-color: #f2f2f7;
+  background-color: ${(props) => props.theme.body};
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const WorkTitle = styled.h3`
-  color: #007aff;
+  color: ${(props) => props.theme.text};
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 

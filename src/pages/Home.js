@@ -13,23 +13,17 @@ const CardContainer = styled.div`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 20px;
-  margin-top: 6rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 50px;
+  margin-top: 10rem;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    padding: 30px;
-    margin-top: 7rem;
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding: 50px;
-    margin-top: 8rem;
+    padding: 3px;
+    margin-top: 12rem;
+    width: 100%;
   }
 `;
 
@@ -41,43 +35,37 @@ const BaseCard = styled.div`
   color: ${(props) => props.theme.text};
   transition: background-color 0.3s ease, color 0.3s ease;
 
-  @media (min-width: 768px) {
-    padding: 20px;
+  @media (max-width: 768px) {
+    padding: 5px;
   }
 `;
 
 const ProfileCard = styled(BaseCard)`
   grid-column: 1;
-  grid-row: 1;
-  height: auto;
-  width: 100%;
+  grid-row: 1 / span 2;
+  height: 55rem;
+  width: 60rem;
+  background: linear-gradient(45deg, #00c9ff, #92fe9d);
 
-  @media (min-width: 768px) {
-    grid-row: 1 / span 2;
+  @media (max-width: 768px) {
     height: 55rem;
-    width: 100%;
-  }
-
-  @media (min-width: 1024px) {
-    width: 45rem;
+    width: 20rem;
+    box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
+    background: ${(props) => props.theme.cardBackground};
   }
 `;
 
 const WorkExperienceCard = styled(BaseCard)`
-  grid-column: 1;
-  grid-row: 2;
-  height: 25rem;
+  grid-column: 2;
+  grid-row: 1;
+  height: 29rem;
   width: 100%;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     grid-column: 2;
     grid-row: 1;
-  }
-
-  @media (min-width: 1024px) {
-    width: 60rem;
   }
 
   &::-webkit-scrollbar {
@@ -96,20 +84,20 @@ const WorkExperienceCard = styled(BaseCard)`
 `;
 
 const SkillsCard = styled(BaseCard)`
-  grid-column: 1;
-  grid-row: 3;
+  grid-column: 2;
+  grid-row: 2;
   height: 24rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     grid-column: 2;
     grid-row: 2;
   }
 `;
 
 const ProjectsCard = styled(BaseCard)`
-  grid-column: 1;
-  grid-row: 4;
+  grid-column: 3;
+  grid-row: 1 / span 2;
   height: 55rem;
   overflow-y: auto;
   backdrop-filter: blur(10px);
@@ -124,14 +112,11 @@ const ProjectsCard = styled(BaseCard)`
   scrollbar-color: ${(props) =>
     `${props.theme.scrollbarThumb} ${props.theme.scrollbarTrack}`};
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     grid-column: 1 / span 2;
     grid-row: 3;
-  }
-
-  @media (min-width: 1024px) {
-    grid-column: 3;
-    grid-row: 1 / span 2;
+    width: 20rem;
+    height: auto;
   }
 
   &::-webkit-scrollbar {
@@ -150,18 +135,14 @@ const ProjectsCard = styled(BaseCard)`
 `;
 
 const ServicesCard = styled(BaseCard)`
-  grid-column: 1;
-  grid-row: 5;
+  grid-column: 1 / span 2;
+  grid-row: 3;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     grid-column: 1 / span 2;
     grid-row: 4;
-  }
-
-  @media (min-width: 1024px) {
-    grid-column: 1 / span 2;
-    grid-row: 3;
+    width: 20rem;
   }
 `;
 const gradientAnimation = keyframes`
@@ -184,28 +165,22 @@ const pulse = keyframes`
 
 const ContactCard = styled(BaseCard)`
   background: ${(props) => props.theme.contactCardGradient};
-  grid-column: 1;
-  grid-row: 6;
+  grid-column: 3;
+  grid-row: 3;
   height: auto;
-  width: 100%;
+  width: 51rem;
   padding: 2rem;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     grid-column: 1 / span 2;
     grid-row: 5;
-    padding: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    grid-column: 3;
-    grid-row: 3;
+    padding: 4px;
+    width: 20rem;
     height: 20rem;
-    width: 55rem;
-    padding: 4rem;
   }
 
   &:hover {
@@ -245,6 +220,11 @@ const LetsTalkContainer = styled.div`
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   }
+
+  @media (max-width: 768px) {
+    height: 100%;
+    padding: 5px;
+  }
 `;
 
 const LetsTalkTop = styled.div`
@@ -265,6 +245,10 @@ const LetsTalkMiddle = styled.div`
   background: linear-gradient(to right, #fff, #ffd700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const LetsTalkLink = styled(Link)`
@@ -322,14 +306,10 @@ const PageContainer = styled.div`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};
   min-height: 100vh;
-  padding: 10px;
+  padding: 20px;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     padding: 15px;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 20px;
   }
 `;
 

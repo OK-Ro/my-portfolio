@@ -112,6 +112,7 @@ const darkTheme = {
   buttonBoxShadow: "rgba(0, 0, 0, 0.2)",
   iconColor: "rgb(64, 156, 255)",
 };
+
 function AppContent() {
   const { isDarkMode } = useTheme();
 

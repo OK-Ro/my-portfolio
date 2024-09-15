@@ -13,6 +13,10 @@ const ProjectsContainer = styled.div`
   overflow-y: auto;
   backdrop-filter: blur(10px);
 
+  @media (max-width: 768px) {
+    padding: 2px;
+  }
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -33,6 +37,9 @@ const ProjectCard = styled.div`
     transform: translateY(-5px);
     box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
   }
+  @media (max-width: 768px) {
+    padding: 5px;
+  }
 `;
 
 const ProjectTitle = styled.h3`
@@ -51,6 +58,10 @@ const ProjectImage = styled.img`
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
+
+  @media (max-width: 768px) {
+    height: 18rem;
+  }
 `;
 
 const InteractionBar = styled.div`

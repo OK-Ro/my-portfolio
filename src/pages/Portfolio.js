@@ -9,9 +9,9 @@ const PortfolioContainer = styled.div`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};
   margin: 0 auto;
-  padding: 2rem;
-
-  @media (min-width: 768px) {
+  padding: 5rem;
+  width: 100%;
+  @media (max-width: 768px) {
     padding: 5rem;
   }
 `;
