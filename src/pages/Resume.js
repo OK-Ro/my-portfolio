@@ -165,66 +165,106 @@ const WorkDate = styled.p`
 
 function Resume() {
   const profile = {
-    name: "John Doe",
-    title: "Senior Software Engineer",
-    phone: "+1 (123) 456-7890",
-    email: "john.doe@example.com",
-    address: "123 Tech Street, San Francisco, CA 94122",
+    name: "Robert Okuni",
+    title: "Full Stack Developer",
+    phone: "+31 687693145",
+    email: "o.robert1994@hotmail.com",
+    address: "Fossa italica 17",
     authorizedToWork: "Authorized to work in the United States",
     summary:
-      "Experienced software engineer with a passion for creating efficient and scalable web applications. Skilled in React, Node.js, and cloud technologies.",
+      "I am a passionate and self-driven professional with a strong sense of responsibility and dedication to my work. I enjoy creating products that are both innovative and functional, solving real-world problems while offering engaging features. Collaboration is key for me, and I thrive in team environments where we work towards shared goals. My previous experiences have sharpened my communication, problem-solving, and results-oriented skills, making me a reliable and effective team player.",
     linkedin: "https://www.linkedin.com/in/johndoe",
     github: "https://github.com/johndoe",
   };
 
   const experiences = [
     {
-      title: "Software Engineer",
-      company: "Tech Corp",
-      date: "2020 - Present",
-      description:
-        "Developed and maintained web applications using React and Node.js.",
+      title: "Full Stack Developer",
+      company: "Hack Your Future",
+      date: "05/2023 - Present",
+      location: "Amsterdam",
+      description: `
+        • Completed several web development projects using pure HTML, CSS, and JavaScript.
+        • Hands-on experience with front-end frameworks like React.js.
+        • Knowledge of server-side technologies, including Node.js and Express.
+        • Skilled in creating and managing databases using SQL and NoSQL.
+        • Familiarity with version control using Git for collaborative development.
+        • Practical understanding of deployment strategies and responsive design principles.
+      `,
     },
     {
-      title: "Frontend Developer",
-      company: "Innovative Startups",
-      date: "2018 - 2020",
-      description:
-        "Led the development of responsive web interfaces using React and modern frontend technologies.",
+      title: "Digital Media Infrastructure Manager",
+      company: "Dstv Uganda",
+      date: "2017 - 2019",
+      location: "Kampala, Uganda",
+      description: `
+        • Guided new customers through the account opening process.
+        • Provided information on account types, services, and banking products.
+        • Addressed customer inquiries and resolved issues.
+        • Contributed to improving account opening procedures.
+      `,
+    },
+    {
+      title: "Digital Onboarding Specialist",
+      company: "Dfcu Bank Uganda",
+      date: "2016 - 2017",
+      location: "Kampala, Uganda",
+      description: `
+        • Led and managed a team of technicians for the digital TV upgrade project in Uganda.
+        • Coordinated installation activities.
+        • Conducted technical assessments and resolved challenges to ensure a smooth upgrade process.
+        • Maintained documentation of project specifications and installation procedures.
+      `,
     },
   ];
 
   const education = [
     {
-      degree: "Master of Science in Computer Science",
-      institution: "University of Technology",
-      date: "2018 - 2020",
+      degree: "Full Stack Web Development Course",
+      institution: "Hack Your Future",
+      date: "05/2023 - 11/2023",
       description:
-        'Specialized in Artificial Intelligence and Machine Learning. Thesis on "Deep Learning Applications in Natural Language Processing".',
+        "Intensive 7-month program covering front-end and back-end web development technologies.",
     },
     {
-      degree: "Bachelor of Science in Software Engineering",
-      institution: "State University",
-      date: "2014 - 2018",
-      description:
-        "Graduated with honors. Participated in multiple hackathons and coding competitions.",
+      degree: "Front-End Web Development using JavaScript and React.js",
+      institution: "DevTown",
+      date: "01/2023 - 03/2023",
+      description: "Certificate: https://cert.devtown.in/verify/Z2rj35k",
+    },
+    {
+      degree: "Bachelor Of Information Technology",
+      institution: "St Peters University",
+      date: "2015 - 2016",
+      description: "Foundational studies in Information Technology.",
     },
   ];
 
   const projects = [
     {
-      title: "E-commerce Platform",
+      title: "AzielNet",
       description:
-        "Developed a full-stack e-commerce platform with user authentication, product catalog, and payment integration.",
+        "Social Media network to connect refugees living in the Netherlands",
       technologies: ["React", "Node.js", "Express", "MongoDB"],
-      link: "https://github.com/yourusername/ecommerce-project",
+      link: "https://c44-group-a-574c03ac3629.herokuapp.com",
+      image:
+        "https://s3-alpha.figma.com/hub/file/4091828761/7919e472-3e59-41ba-b950-a5292f2c8dd3-cover.png",
     },
     {
-      title: "Weather App",
-      description:
-        "Created a weather application that provides real-time weather data and forecasts for any location.",
-      technologies: ["JavaScript", "React Native", "OpenWeatherMap API"],
-      link: "https://github.com/yourusername/weather-app",
+      title: "Robarts Website",
+      description: "Website to showcase my own created Art pieces",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      link: "https://golden-crostata-ada880.netlify.app/",
+      image:
+        "https://static.wixstatic.com/media/ff0b90_7472365d377e42749049ec29162e6c75~mv2.png/v1/fill/w_1000,h_610,al_c,q_90,usm_0.66_1.00_0.01/ff0b90_7472365d377e42749049ec29162e6c75~mv2.png",
+    },
+    {
+      title: "Music App",
+      description: "App allows users to stream and listen to music",
+      technologies: ["React", "Node.js", "Express", "MongoDB"],
+      link: "https://antifymusic.netlify.app/",
+      image:
+        "https://cdn.dribbble.com/users/12064044/screenshots/19513113/music_application_v2.2_4x.jpg",
     },
   ];
 
@@ -232,14 +272,18 @@ function Resume() {
     { name: "React", level: 90 },
     { name: "JavaScript", level: 85 },
     { name: "Node.js", level: 80 },
-    { name: "HTML/CSS", level: 95 },
-    { name: "Python", level: 75 },
+    { name: "HTML", level: 95 },
+    { name: "CSS", level: 95 },
+    { name: "ExpressJS", level: 80 },
+    { name: "Git", level: 85 },
+    { name: "MongoDB", level: 75 },
+    { name: "API", level: 80 },
+    { name: "MySQL", level: 75 },
   ];
 
   const languages = [
-    { name: "English", level: 5 },
-    { name: "Spanish", level: 3 },
-    { name: "French", level: 2 },
+    { name: "English", level: 5, proficiency: "Native" },
+    { name: "Dutch", level: 4, proficiency: "Advanced" },
   ];
 
   const WorkExperience = ({ experiences }) => (
@@ -361,11 +405,13 @@ function Resume() {
               description={project.description}
               technologies={project.technologies}
               link={project.link}
+              image={project.image} // Add this line to pass the image to the component
             />
           ))}
         </ResumeSection>
       ),
     },
+
     {
       title: "Skills & Languages",
       icon: <FaLanguage />,

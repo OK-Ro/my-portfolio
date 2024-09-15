@@ -4,38 +4,38 @@ import { FaChevronRight } from "react-icons/fa";
 
 const scroll = keyframes`
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); }
 `;
 
 const BannerContainer = styled.div`
-  background-color: ${(props) => props.theme.bannerBackground || "#f8f9fa"};
+  background-color: ${(props) => props.theme.bannerBackground || "#ffffff"};
   overflow: hidden;
-  padding: 15px 0;
+  padding: 20px 0;
   position: relative;
   width: 100%;
-  border-top: 1px solid ${(props) => props.theme.bannerBorder || "#e9ecef"};
-  border-bottom: 1px solid ${(props) => props.theme.bannerBorder || "#e9ecef"};
 `;
 
 const ScrollingContent = styled.div`
-  display: inline-flex;
+  display: flex;
+  align-items: center;
   white-space: nowrap;
-  animation: ${scroll} 30s linear infinite;
+  animation: ${scroll} 20s linear infinite;
 `;
 
 const Item = styled.div`
   display: inline-flex;
   align-items: center;
-  margin-right: 50px;
-  color: ${(props) => props.theme.bannerText || "#495057"};
-  font-size: 1rem;
-  font-weight: 500;
+  margin-right: 30px;
+  color: ${(props) => props.theme.bannerText || "#333333"};
+  font-size: 1.1rem;
+  font-weight: 600;
+  white-space: nowrap;
 `;
 
 const Separator = styled(FaChevronRight)`
-  margin: 0 15px;
-  color: ${(props) => props.theme.bannerSeparator || "#adb5bd"};
-  font-size: 0.8rem;
+  margin: 0 10px;
+  color: ${(props) => props.theme.bannerSeparator || "#9e9e9e"};
+  font-size: 1rem;
 `;
 
 const items = [

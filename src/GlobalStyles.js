@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
   * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
@@ -14,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Montserrat', sans-serif;
   }
 
   body {
@@ -39,6 +42,11 @@ const GlobalStyles = createGlobalStyle`
 
   p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
+  }
+
+  @keyframes brighten {
+    0%, 100% { filter: brightness(100%); }
+    50% { filter: brightness(150%); }
   }
 `;
 

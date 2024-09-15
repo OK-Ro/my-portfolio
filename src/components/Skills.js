@@ -11,27 +11,43 @@ import {
 import { SiMysql, SiMongodb, SiExpress } from "react-icons/si";
 
 const SkillsContainer = styled.div`
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  text-align: center;
+`;
+
+const Header = styled.header`
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+
+  font-family: "Roboto", sans-serif;
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ff6f61, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+  }
 `;
 
 const HexGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-left: 50px;
-  margin-bottom: 50px;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
 `;
 
 const HexItem = styled.div`
   width: 100px;
-  margin: 0 12px 21px;
   position: relative;
   transition: all 0.3s ease;
-
-  &:nth-child(even) {
-    margin-top: 25px;
-  }
 
   &:hover {
     transform: scale(1.1);
@@ -39,7 +55,6 @@ const HexItem = styled.div`
 `;
 
 const HexInner = styled.div`
-  position: absolute;
   width: 96px;
   height: 110px;
   background-color: ${(props) => props.color};
@@ -72,6 +87,30 @@ const SkillDetails = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
 `;
 
 const skills = [
@@ -151,7 +190,9 @@ const Skills = () => {
 
   return (
     <SkillsContainer>
-      <h2>Skills</h2>
+      <Header>
+        <h1>My Skills</h1>
+      </Header>
       <HexGrid>
         {skills.map((skill, index) => (
           <HexItem key={index} onClick={() => setSelectedSkill(skill)}>

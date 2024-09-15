@@ -16,39 +16,28 @@ import {} from "react-icons/fa";
 import NavBar from "../components/NavBar";
 import ColoredText from "./ColoredText";
 import FeedbackPopup from "./FeedbackPopup";
-
 const AboutContainer = styled.div`
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem;
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
 
-  @media (min-width: 768px) {
-    padding: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 5rem;
+  @media (max-width: 768px) {
+    padding: 1.5rem;
   }
 `;
 
 const ProfileSection = styled.section`
-  margin-top: 4em;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  flex-direction: row;
+  gap: 3rem;
+  margin-top: 10rem;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    gap: 3rem;
-    margin-top: 10em;
-  }
-
-  @media (min-width: 1024px) {
-    gap: 5rem;
-    margin-top: 15em;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 5rem;
+    gap: 2rem;
   }
 `;
 
@@ -61,17 +50,27 @@ const LeftColumn = styled.div`
   border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   background-color: ${(props) => props.theme.backgroundCala};
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-width: 100%;
+  }
 `;
 
 const RightColumn = styled.div`
   flex: 2;
   min-width: 300px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+  }
 `;
 
 const Card = styled.div`
   margin-top: 5rem;
-  padding: 1px;
+  padding: 2rem;
+  margin-bottom: 2rem;
   border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   background-color: ${(props) => props.theme.backgroundCala};
@@ -79,23 +78,26 @@ const Card = styled.div`
   transition: background-color 0.3s ease, color 0.3s ease;
   border: 20px solid ${(props) => props.theme.cardBorderline};
 
-  @media (min-width: 768px) {
-    padding: 2rem;
-    margin-bottom: 2rem;
-  }
-
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px ${(props) => props.theme.boxShadow};
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin-top: 2rem;
   }
 `;
 
 const ProfilePictureCard = styled(Card)`
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-
   height: auto;
   background-color: ${(props) => props.theme.cardBackground};
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 const ProfilePictureWrapper = styled.div`
@@ -103,6 +105,11 @@ const ProfilePictureWrapper = styled.div`
   display: inline-block;
   width: 300px;
   height: 300px;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 const rotate = keyframes`
@@ -113,6 +120,7 @@ const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
+
 const CircularText = styled.div`
   position: absolute;
   width: 100%;
@@ -123,23 +131,19 @@ const CircularText = styled.div`
 const CircularTextSpan = styled.span`
   position: absolute;
   left: 50%;
-  font-size: 8rem;
-  transform-origin: 0 100px;
+  font-size: 12px;
+  transform-origin: 0 150px;
   color: ${(props) => props.theme.accent};
 
-  @media (min-width: 768px) {
-    font-size: 12px;
-    transform-origin: 0 125px;
-  }
-
-  @media (min-width: 1024px) {
-    transform-origin: 0 150px;
+  @media (max-width: 768px) {
+    font-size: 10px;
+    transform-origin: 0 100px;
   }
 `;
 
 const ProfilePicture = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
   position: absolute;
@@ -147,30 +151,31 @@ const ProfilePicture = styled.img`
   left: 25px;
   border: 5px solid ${(props) => props.theme.accent};
 
-  @media (min-width: 768px) {
-    width: 200px;
-    height: 200px;
-  }
-
-  @media (min-width: 1024px) {
-    width: 250px;
-    height: 250px;
+  @media (max-width: 768px) {
+    width: 170px;
+    height: 170px;
+    top: 15px;
+    left: 15px;
   }
 `;
 
 const IntroCard = styled(Card)`
   height: 20rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 const Header = styled.h1`
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
   color: ${(props) => props.theme.text};
   font-weight: 700;
 
-  @media (min-width: 768px) {
-    font-size: 3rem;
+  @media (max-width: 768px) {
+    font-size: 2rem;
   }
 `;
 
@@ -180,35 +185,42 @@ const Subheader = styled.p`
   color: ${(props) => props.theme.secondaryText};
   font-weight: 500;
 
-  @media (min-width: 768px) {
-    font-size: 1.4rem;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
 
 const ThreeColumnSection = styled.section`
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
+  gap: 2rem;
   height: 30rem;
-  margin-top: 1rem;
-
+  margin-top: 5rem;
   background-color: ${(props) => props.theme.cardBackground};
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    gap: 2rem;
-    margin-top: 5rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    margin-top: 2rem;
   }
 `;
 
 const Column = styled.div`
   flex: 1;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const StatisticsSection = styled(Card)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const StatItem = styled.div`
@@ -221,37 +233,39 @@ const StatItem = styled.div`
 `;
 
 const StatNumber = styled.h2`
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
   color: ${(props) => props.theme.accent};
   font-weight: 700;
 
-  @media (min-width: 768px) {
-    font-size: 2.5rem;
+  @media (max-width: 768px) {
+    font-size: 2rem;
   }
 `;
 
 const ExperienceItem = styled.div`
   margin-bottom: 1.5rem;
+
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
 const FooterSection = styled.section`
-  margin-top: 1rem;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 5rem;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    gap: 2rem;
-    margin-top: 5rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 2rem;
   }
 `;
+
 const ColumnCard = styled.div`
-  padding: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
   border-radius: 1rem;
   height: 35rem;
   overflow-y: auto;
@@ -263,11 +277,6 @@ const ColumnCard = styled.div`
   transition: background-color 0.3s ease, color 0.3s ease;
   border: 20px solid ${(props) => props.theme.cardBorderline};
 
-  @media (min-width: 768px) {
-    padding: 2rem;
-    margin-bottom: 2rem;
-  }
-
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px ${(props) => props.theme.boxShadow};
@@ -276,6 +285,11 @@ const ColumnCard = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 1rem;
+  }
 `;
 
 const FooterCard = styled(Card)`
@@ -283,17 +297,20 @@ const FooterCard = styled(Card)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
 `;
 
 const FooterHeader = styled.h2`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
   color: ${(props) => props.theme.text};
   font-weight: 600;
 
-  @media (min-width: 768px) {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
 
@@ -302,6 +319,10 @@ const FooterText = styled.p`
   color: ${(props) => props.theme.secondaryText};
   font-size: 1rem;
   line-height: 1.5;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const CTAButton = styled(Link)`
@@ -321,6 +342,10 @@ const CTAButton = styled(Link)`
     background-color: ${(props) => props.theme.accentHover};
     transform: translateY(-2px);
   }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+  }
 `;
 
 const ExperienceTitle = styled.h3`
@@ -328,12 +353,21 @@ const ExperienceTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 0.25rem;
   color: ${(props) => props.theme.text};
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ExperienceDetails = styled.p`
   font-size: 1rem;
   color: ${(props) => props.theme.secondaryText};
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
+
 const SkillsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -342,6 +376,10 @@ const SkillsContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const SkillCard = styled.div`
@@ -360,12 +398,21 @@ const SkillCard = styled.div`
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
+
+  @media (max-width: 768px) {
+    padding: 0.75rem;
+  }
 `;
 
 const SkillIcon = styled.div`
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const SkillTitle = styled.h3`
@@ -373,11 +420,19 @@ const SkillTitle = styled.h3`
   font-weight: 600;
   color: white;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const SkillDescription = styled.p`
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.8);
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const skills = [

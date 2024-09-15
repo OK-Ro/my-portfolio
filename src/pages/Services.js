@@ -1,4 +1,5 @@
-import { FaArrowLeft } from "react-icons/fa";
+import React from "react";
+import { FaArrowLeft, FaGraduationCap } from "react-icons/fa";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import {
@@ -10,10 +11,8 @@ import {
   FaServer,
   FaMobile,
   FaRocket,
-  FaUsers,
-  FaUserFriends,
 } from "react-icons/fa";
-import { Line } from "react-chartjs-2";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -25,7 +24,8 @@ import {
   Legend,
 } from "chart.js";
 import NavBar from "../components/NavBar";
-import { useEffect, useState } from "react";
+import AdmissionStats from "./AdmissionStats";
+import VisitorSection from "./VisitorSection";
 
 ChartJS.register(
   CategoryScale,
@@ -50,7 +50,7 @@ const ServicesContainer = styled.div`
   animation: ${fadeIn} 0.5s ease-in;
 
   @media (min-width: 768px) {
-    padding: 3rem;
+    padding: 0.1rem;
   }
 
   @media (min-width: 1024px) {
@@ -152,34 +152,86 @@ const BackToHome = styled(Link)`
     color: white;
   }
 `;
+const gradientAnimation = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
 
 const Header = styled.h1`
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
   text-align: center;
-  color: ${(props) => props.theme.text};
+  color: transparent;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7aa, #6a2c70);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: ${gradientAnimation} 10s ease infinite, ${fadeIn} 1s ease-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 50px;
+    height: 4px;
+    background: #4ecdc4;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
 
   @media (min-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
 `;
 
 const Subheader = styled.p`
-  font-size: 1rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
   text-align: center;
   color: ${(props) => props.theme.secondaryText};
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  animation: ${fadeIn} 1s ease-out 0.5s both;
+  position: relative;
+  padding: 0 20px;
+
+  &::before,
+  &::after {
+    content: '"';
+    font-size: 3rem;
+    color: #4ecdc4;
+    position: absolute;
+    opacity: 0.3;
+  }
+
+  &::before {
+    top: -20px;
+    left: 0;
+  }
+
+  &::after {
+    bottom: -40px;
+    right: 0;
+  }
 
   @media (min-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 3rem;
   }
 `;
@@ -201,21 +253,44 @@ const ServicesGrid = styled.div`
 `;
 
 const ServiceCard = styled.div`
-  background-color: ${(props) => props.theme.backgroundCala};
+  background-color: ${(props) => props.bgColor || props.theme.backgroundCala};
   border-radius: 15px;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border: 10px solid ${(props) => props.theme.cardBorderline};
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: 3px solid
+    ${(props) => props.borderColor || props.theme.cardBorderline};
+  position: relative;
+  overflow: hidden;
 
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
 
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+  }
+
+  &:hover::before {
+    top: -75%;
+    left: -75%;
+  }
+
   @media (min-width: 768px) {
     padding: 2rem;
-    border-width: 15px;
 
     &:nth-child(1) {
       grid-column: span 2;
@@ -225,16 +300,17 @@ const ServiceCard = styled.div`
       grid-column: span 2;
     }
   }
-
-  @media (min-width: 1024px) {
-    border-width: 20px;
-  }
 `;
 
 const ServiceIcon = styled.div`
   font-size: 2.5rem;
-  color: ${(props) => props.theme.accent};
+  color: ${(props) => props.iconColor || props.theme.accent};
   margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+
+  ${ServiceCard}:hover & {
+    transform: scale(1.1);
+  }
 
   @media (min-width: 768px) {
     font-size: 3rem;
@@ -245,6 +321,23 @@ const ServiceTitle = styled.h2`
   font-size: 1.3rem;
   margin-bottom: 1rem;
   color: ${(props) => props.theme.text};
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: ${(props) => props.theme.accent};
+    transition: width 0.3s ease;
+  }
+
+  ${ServiceCard}:hover &::after {
+    width: 100%;
+  }
 
   @media (min-width: 768px) {
     font-size: 1.5rem;
@@ -255,59 +348,10 @@ const ServiceDescription = styled.p`
   margin-bottom: 1rem;
   color: ${(props) => props.theme.secondaryText};
   font-size: 0.9rem;
+  line-height: 1.6;
 
   @media (min-width: 768px) {
     font-size: 1rem;
-  }
-`;
-
-const VisitorSection = styled.div`
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background-color: ${(props) => props.bgColor};
-  border-radius: 20px;
-  text-align: center;
-  transition: background-color 0.5s ease;
-  border: 10px solid ${(props) => props.theme.cardBorderline};
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-
-  @media (min-width: 768px) {
-    margin: 3rem 0;
-    padding: 2rem;
-    border-width: 15px;
-  }
-
-  @media (min-width: 1024px) {
-    border-width: 20px;
-  }
-`;
-
-const VisitorCount = styled.div`
-  font-size: 2rem;
-  font-weight: bold;
-  color: ${(props) => props.theme.text};
-  margin: 1rem 0;
-
-  @media (min-width: 768px) {
-    font-size: 2.5rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 3rem;
-  }
-`;
-
-const ChartContainer = styled.div`
-  height: 150px;
-  margin-top: 1.5rem;
-
-  @media (min-width: 768px) {
-    height: 175px;
-    margin-top: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    height: 200px;
   }
 `;
 
@@ -316,7 +360,6 @@ const TotalVisitorSection = styled.div`
   padding: 1.5rem;
   background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
-  text-align: center;
   box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
   border: 10px solid ${(props) => props.theme.cardBorderline};
 
@@ -328,21 +371,6 @@ const TotalVisitorSection = styled.div`
 
   @media (min-width: 1024px) {
     border-width: 20px;
-  }
-`;
-
-const TotalVisitorCount = styled.div`
-  font-size: 2rem;
-  font-weight: bold;
-  color: ${(props) => props.theme.accent};
-  margin: 1rem 0;
-
-  @media (min-width: 768px) {
-    font-size: 2.5rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 3rem;
   }
 `;
 
@@ -381,79 +409,155 @@ const SocialIcon = styled.a`
   }
 `;
 
-const EducationSection = styled.div`
+const SectionTitle = styled.h2`
+  color: ${(props) => (props.theme.dark ? "#e0e0e0" : "#333")};
+  font-size: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border: 10px solid ${(props) => props.theme.cardBorderline};
-
-  @media (min-width: 768px) {
-    margin-bottom: 3rem;
-    border-width: 15px;
-  }
-
-  @media (min-width: 1024px) {
-    border-width: 20px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 `;
 
-const EducationItem = styled.div`
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: ${(props) => props.theme.backgroundCala};
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
-  border: 5px solid ${(props) => props.theme.cardBorderline};
+const EducationSection = styled.div`
+  margin: 4rem 0;
+`;
+
+const EducationGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+`;
+
+const EducationCard = styled.div`
+  background: ${(props) => (props.theme.dark ? "#2a2a2a" : "#ffffff")};
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-top: 10px solid #4caf50;
 
   &:hover {
-    background-color: ${(props) => props.theme.backgroundHover};
-  }
-
-  @media (min-width: 768px) {
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
-    border-width: 7px;
-  }
-
-  @media (min-width: 1024px) {
-    border-width: 10px;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   }
 `;
 
+const EducationTitle = styled.h3`
+  font-size: 1.4rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+`;
+
+const EducationInstitute = styled.h4`
+  font-size: 1.1rem;
+  color: ${(props) => (props.theme.dark ? "#e0e0e0" : "#333")};
+  margin-bottom: 0.5rem;
+`;
+
+const EducationDate = styled.p`
+  font-size: 0.9rem;
+  color: ${(props) => (props.theme.dark ? "#b0b0b0" : "#666")};
+  margin-bottom: 1rem;
+`;
+
+const EducationDescription = styled.p`
+  font-size: 1rem;
+  color: ${(props) => (props.theme.dark ? "#d0d0d0" : "#444")};
+  line-height: 1.6;
+`;
 const CTASection = styled.div`
-  text-align: center;
+  perspective: 1000px;
   margin-top: 2rem;
-  padding: 2rem;
-  background-color: ${(props) => props.theme.backgroundCala};
-  border-radius: 15px;
-  box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
-  border: 10px solid ${(props) => props.theme.cardBorderline};
 
   @media (min-width: 768px) {
     margin-top: 3rem;
+  }
+`;
+
+const CTACard = styled.div`
+  background: linear-gradient(45deg, #00c9ff, #92fe9d);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  color: #1a1a1a;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+  }
+
+  @media (min-width: 768px) {
     padding: 2.5rem;
-    border-width: 15px;
   }
 
   @media (min-width: 1024px) {
     padding: 3rem;
-    border-width: 20px;
   }
 `;
 
+const CTAContent = styled.div`
+  transform: translateZ(60px);
+  transition: transform 0.6s;
+
+  ${CTACard}:hover & {
+    transform: translateZ(80px);
+  }
+`;
+
+const CTATitle = styled.h2`
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+`;
+
+const CTAText = styled.p`
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #333;
+`;
+
 const CTAButton = styled(Link)`
-  background-color: ${(props) => props.theme.accent};
-  color: ${(props) => props.theme.buttonText};
+  display: inline-block;
+  background-color: #ff6b6b;
+  color: white;
   padding: 0.75rem 1.5rem;
   text-decoration: none;
   border-radius: 30px;
   font-weight: bold;
   font-size: 1rem;
   transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: all 0.6s;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
 
   &:hover {
-    background-color: ${(props) => props.theme.accentHover};
-    transform: scale(1.05);
+    background-color: #ff8787;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
   @media (min-width: 768px) {
@@ -467,70 +571,28 @@ const CTAButton = styled(Link)`
 `;
 
 const Services = () => {
-  const [visitorCount, setVisitorCount] = useState(0);
-  const [totalVisitors, setTotalVisitors] = useState(10000);
-  const [chartData, setChartData] = useState({
-    labels: [],
-    datasets: [
-      {
-        label: "Visitors",
-        data: [],
-        borderColor: "rgba(255, 255, 255, 0.8)",
-        tension: 0.1,
-      },
-    ],
-  });
-
-  const getBackgroundColor = (count) => {
-    if (count === 0) return "#cccccc";
-    if (count < 50) return "#ff9999";
-    if (count < 100) return "#ff6666";
-    if (count < 200) return "#ff3333";
-    return "#ff0000";
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const newVisitors = Math.floor(Math.random() * 5);
-      setVisitorCount((prevCount) => {
-        const newCount = prevCount + newVisitors;
-        setChartData((prevData) => {
-          const newLabels = [
-            ...prevData.labels,
-            new Date().toLocaleTimeString(),
-          ].slice(-10);
-          const newData = [...prevData.datasets[0].data, newCount].slice(-10);
-          return {
-            labels: newLabels,
-            datasets: [{ ...prevData.datasets[0], data: newData }],
-          };
-        });
-        return newCount;
-      });
-      setTotalVisitors((prevTotal) => prevTotal + newVisitors);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: { color: "white" },
-      },
-      x: {
-        ticks: { color: "white" },
-      },
+  // Define education data array
+  const education = [
+    {
+      degree: "Full Stack Web Development Course",
+      institution: "Hack Your Future",
+      date: "05/2023 - 11/2023",
+      description:
+        "Intensive 7-month program covering front-end and back-end web development technologies.",
     },
-    plugins: {
-      legend: {
-        display: false,
-      },
+    {
+      degree: "Front-End Web Development using JavaScript and React.js",
+      institution: "DevTown",
+      date: "01/2023 - 03/2023",
+      description: "Certificate: https://cert.devtown.in/verify/Z2rj35k",
     },
-  };
+    {
+      degree: "Bachelor Of Information Technology",
+      institution: "St Peters University",
+      date: "2015 - 2016",
+      description: "Foundational studies in Information Technology.",
+    },
+  ];
 
   return (
     <ServicesContainer>
@@ -539,16 +601,19 @@ const Services = () => {
         <PageLayout>
           <LeftColumn>
             <BackToHome to="/">
-              <FaArrowLeft /> Back To Home
+              <FaArrowLeft /> <span>Back To Home</span>
             </BackToHome>
             <Header>My Services</Header>
             <Subheader>
-              Crafting digital experiences with expertise and passion
+              Designing and developing engaging, responsive user interfaces with
+              modern frameworks such as React, Vue, and Angular. Transforming
+              ideas into high-quality, interactive experiences through
+              meticulous, efficient code.
             </Subheader>
 
             <ServicesGrid>
-              <ServiceCard>
-                <ServiceIcon>
+              <ServiceCard bgColor="#FF6B6B" borderColor="#FF8787">
+                <ServiceIcon iconColor="#FFD93D">
                   <FaCode />
                 </ServiceIcon>
                 <ServiceTitle>Front-End Development</ServiceTitle>
@@ -559,8 +624,8 @@ const Services = () => {
                 </ServiceDescription>
               </ServiceCard>
 
-              <ServiceCard>
-                <ServiceIcon>
+              <ServiceCard bgColor="#4ECDC4" borderColor="#45B7AA">
+                <ServiceIcon iconColor="#FF6B6B">
                   <FaServer />
                 </ServiceIcon>
                 <ServiceTitle>Back-End Development</ServiceTitle>
@@ -571,8 +636,8 @@ const Services = () => {
                 </ServiceDescription>
               </ServiceCard>
 
-              <ServiceCard>
-                <ServiceIcon>
+              <ServiceCard bgColor="#FFD93D" borderColor="#FFC300">
+                <ServiceIcon iconColor="#6A2C70">
                   <FaMobile />
                 </ServiceIcon>
                 <ServiceTitle>Full-Stack Development</ServiceTitle>
@@ -583,8 +648,8 @@ const Services = () => {
                 </ServiceDescription>
               </ServiceCard>
 
-              <ServiceCard>
-                <ServiceIcon>
+              <ServiceCard bgColor="#6A2C70" borderColor="#9B4DCA">
+                <ServiceIcon iconColor="#FFD93D">
                   <FaRocket />
                 </ServiceIcon>
                 <ServiceTitle>Web Performance Optimization</ServiceTitle>
@@ -597,52 +662,41 @@ const Services = () => {
             </ServicesGrid>
 
             <EducationSection>
-              <h2>Education</h2>
-              <EducationItem>
-                <h3>Bachelor's Degree in Computer Science</h3>
-                <p>University of Technology | 2015 - 2019</p>
-              </EducationItem>
-              <EducationItem>
-                <h3>Master's Degree in Software Engineering</h3>
-                <p>Tech Institute | 2019 - 2021</p>
-              </EducationItem>
+              <SectionTitle>
+                <FaGraduationCap /> Education
+              </SectionTitle>
+              <EducationGrid>
+                {education.map((edu, index) => (
+                  <EducationCard key={index}>
+                    <EducationTitle>{edu.degree}</EducationTitle>
+                    <EducationInstitute>{edu.institution}</EducationInstitute>
+                    <EducationDate>{edu.date}</EducationDate>
+                    <EducationDescription>
+                      {edu.description}
+                    </EducationDescription>
+                  </EducationCard>
+                ))}
+              </EducationGrid>
             </EducationSection>
           </LeftColumn>
 
           <RightColumn>
-            <VisitorSection bgColor={getBackgroundColor(visitorCount)}>
-              <h2 style={{ color: "white" }}>Real-time Page Popularity</h2>
-              <p style={{ color: "white" }}>
-                Watch as more people discover our services!
-              </p>
-              <FaUsers
-                style={{ fontSize: "3rem", color: "white", margin: "1rem 0" }}
-              />
-              <VisitorCount>
-                {visitorCount.toLocaleString()} active visitors
-              </VisitorCount>
-              <ChartContainer>
-                <Line data={chartData} options={chartOptions} />
-              </ChartContainer>
-            </VisitorSection>
-
+            <VisitorSection />
             <TotalVisitorSection>
-              <h2>Total Visitors</h2>
-              <p>
-                Join the growing community of people exploring our services!
-              </p>
-              <FaUserFriends
-                style={{ fontSize: "3rem", color: "#0066cc", margin: "1rem 0" }}
-              />
-              <TotalVisitorCount>
-                {totalVisitors.toLocaleString()} total visitors
-              </TotalVisitorCount>
+              <h2 className="text-xl font-bold mb-4">Admission Statistics</h2>
+              <AdmissionStats />
             </TotalVisitorSection>
 
             <CTASection>
-              <h2>Ready to bring your ideas to life?</h2>
-              <p>Let's collaborate and create something amazing together!</p>
-              <CTAButton to="/contact">Get In Touch</CTAButton>
+              <CTACard>
+                <CTAContent>
+                  <CTATitle>Ready to bring your ideas to life?</CTATitle>
+                  <CTAText>
+                    Let's collaborate and create something amazing together!
+                  </CTAText>
+                  <CTAButton to="/contact">Get In Touch</CTAButton>
+                </CTAContent>
+              </CTACard>
             </CTASection>
           </RightColumn>
         </PageLayout>

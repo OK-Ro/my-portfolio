@@ -164,24 +164,22 @@ const ServicesCard = styled(BaseCard)`
     grid-row: 3;
   }
 `;
+const gradientAnimation = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
 
-const waveAnimation = keyframes`
-  0% { transform: translateY(0); }
+const float = keyframes`
+  0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  100% { transform: translateY(0px); }
 `;
 
-const glowAnimation = keyframes`
-  0% { text-shadow: 0 0 5px ${(props) => props.theme.textShadow}; }
-  50% { text-shadow: 0 0 20px ${(props) => props.theme.textShadow}; }
-  100% { text-shadow: 0 0 5px ${(props) => props.theme.textShadow}; }
-`;
-
-const shootAndExplode = keyframes`
-  0% { transform: translateX(0) scale(1); opacity: 1; }
-  50% { transform: translateX(100px) scale(1); opacity: 1; }
-  75% { transform: translateX(100px) scale(2); opacity: 0.5; }
-  100% { transform: translateX(100px) scale(0); opacity: 0; }
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 `;
 
 const ContactCard = styled(BaseCard)`
@@ -234,53 +232,81 @@ const ContactCard = styled(BaseCard)`
 `;
 
 const LetsTalkContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  line-height: 1.5;
-  margin-top: 2rem;
-  position: relative;
-  z-index: 1;
+  background: linear-gradient(-45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+  background-size: 400% 400%;
+  animation: ${gradientAnimation} 15s ease infinite;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 
-  @media (min-width: 768px) {
-    margin-top: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    margin-top: 4rem;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   }
 `;
 
-const LetsTalkTop = styled.span`
-  font-size: 2.5rem;
-  font-weight: normal;
-  color: ${(props) => props.theme.text};
-  animation: ${waveAnimation} 2s ease-in-out infinite;
-
-  @media (min-width: 768px) {
-    font-size: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 4rem;
-  }
-`;
-
-const LetsTalkMiddle = styled.span`
+const LetsTalkTop = styled.div`
   font-size: 2.5rem;
   font-weight: bold;
-  background: ${(props) => props.theme.letsTalkGradient};
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  animation: ${float} 3s ease-in-out infinite;
+`;
+
+const LetsTalkMiddle = styled.div`
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #fff, #ffd700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: ${glowAnimation} 3s ease-in-out infinite;
+`;
 
-  @media (min-width: 768px) {
-    font-size: 3rem;
+const LetsTalkLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  background-color: #fff;
+  color: #ff6b6b;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: all 0.4s;
   }
 
-  @media (min-width: 1024px) {
-    font-size: 4rem;
+  &:hover:before {
+    left: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background-color: #ff6b6b;
+    color: #fff;
   }
 `;
 
@@ -288,63 +314,10 @@ const BulletIcon = styled.svg`
   width: 20px;
   height: 20px;
   margin-left: 10px;
-  transition: transform 0.3s ease;
-  fill: ${(props) => props.theme.text};
-
-  ${(props) =>
-    props.isAnimating &&
-    css`
-      animation: ${shootAndExplode} 0.8s forwards;
-    `}
+  fill: currentColor;
+  animation: ${({ isAnimating }) => (isAnimating ? pulse : "none")} 0.5s
+    ease-in-out;
 `;
-
-const LetsTalkLink = styled(Link)`
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: ${(props) => props.theme.letsTalkLink};
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-top: 1.5rem;
-
-  @media (min-width: 768px) {
-    font-size: 1.8rem;
-    margin-top: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 2rem;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: ${(props) => props.theme.letsTalkLink};
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-  }
-
-  &:hover {
-    color: ${(props) => props.theme.letsTalkLinkHover};
-
-    &::before {
-      visibility: visible;
-      transform: scaleX(1);
-    }
-
-    ${BulletIcon} {
-      transform: translateX(10px);
-    }
-  }
-`;
-
 const PageContainer = styled.div`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};

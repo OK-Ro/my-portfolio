@@ -16,11 +16,13 @@ const ProfileContainer = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
   position: relative;
-  z-index: 1000;
+  z-index: 100000;
   overflow: visible;
 
-  @media (min-width: 768px) {
-    padding: 2rem;
+  @media (max-width: 768px) {
+    padding: 0.4rem;
+    width: 100%;
+    z-index: auto;
   }
 
   @media (min-width: 1024px) {
@@ -36,7 +38,7 @@ const PhotoContainer = styled.div`
   position: relative;
   overflow: hidden;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     max-width: 350px;
     height: 300px;
   }
@@ -65,18 +67,23 @@ const ProfileInfo = styled.div`
 `;
 
 const Name = styled.h1`
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: ${(props) => props.theme.text}
+  -webkit-background-clip: text;
+
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
   color: ${(props) => props.theme.text};
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 2.2rem;
     margin-bottom: 0.4rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 0.5rem;
   }
 `;
@@ -87,7 +94,7 @@ const Title = styled.h2`
   margin-bottom: 1rem;
   font-weight: 500;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 1.3rem;
     margin-bottom: 1.2rem;
   }
@@ -105,7 +112,7 @@ const Bio = styled.p`
   font-size: 0.9rem;
   text-align: center;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 1rem;
     line-height: 1.7;
   }
@@ -124,7 +131,7 @@ const SkillTags = styled.div`
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     gap: 0.6rem;
   }
 
@@ -143,7 +150,7 @@ const SkillTag = styled.span`
   font-weight: 500;
   transition: all 0.3s ease;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
   }
@@ -163,7 +170,7 @@ const SocialLinks = styled.div`
   display: flex;
   gap: 1rem;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     gap: 1.2rem;
   }
 
@@ -177,7 +184,7 @@ const SocialIcon = styled.a`
   color: ${(props) => props.theme.secondaryText};
   transition: all 0.3s ease;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 1.6rem;
   }
 

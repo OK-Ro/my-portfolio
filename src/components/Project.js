@@ -37,6 +37,20 @@ const ProjectItem = styled.div`
   }
 `;
 
+const ProjectImage = styled.img`
+  width: 100%;
+  max-width: 300px; /* Limits the image size */
+  height: auto;
+  display: block;
+  margin-right: 15px; /* Space between image and text */
+  border-radius: 8px;
+`;
+
+const ProjectContent = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
+
 const ProjectTitle = styled.h3`
   margin: 0 0 5px 0;
   color: ${(props) => props.theme.text};
@@ -56,17 +70,22 @@ const ProjectLink = styled.a`
   }
 `;
 
-function Project({ title, description, technologies, link }) {
+function Project({ title, description, technologies, link, image }) {
   return (
     <ProjectItem>
-      <ProjectTitle>{title}</ProjectTitle>
-      <ProjectTech>{technologies.join(", ")}</ProjectTech>
-      <p>{description}</p>
-      {link && (
-        <ProjectLink href={link} target="_blank" rel="noopener noreferrer">
-          View Project
-        </ProjectLink>
-      )}
+      <ProjectContent>
+        {image && <ProjectImage src={image} alt={title} />}
+        <div>
+          <ProjectTitle>{title}</ProjectTitle>
+          <ProjectTech>{technologies.join(", ")}</ProjectTech>
+          <p>{description}</p>
+          {link && (
+            <ProjectLink href={link} target="_blank" rel="noopener noreferrer">
+              View Project
+            </ProjectLink>
+          )}
+        </div>
+      </ProjectContent>
     </ProjectItem>
   );
 }
