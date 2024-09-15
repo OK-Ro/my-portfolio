@@ -112,7 +112,7 @@ const ProjectsCard = styled(BaseCard)`
   height: 55rem;
   overflow-y: auto;
   backdrop-filter: blur(10px);
-  border: 20px solid ${(props) => props.theme.inputb};
+  border: 20px solid ${(props) => props.theme.cardBackground};
 
   &::-webkit-scrollbar {
     display: none;
