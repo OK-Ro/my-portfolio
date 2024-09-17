@@ -19,10 +19,10 @@ const CardContainer = styled.div`
   margin-top: 10rem;
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    padding: 3px;
-    margin-top: 12rem;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0;
+    margin-top: 5rem;
     width: 100%;
   }
 `;
@@ -36,7 +36,7 @@ const BaseCard = styled.div`
   transition: background-color 0.3s ease, color 0.3s ease;
 
   @media (max-width: 768px) {
-    padding: 5px;
+    padding: 10px;
   }
 `;
 
@@ -49,17 +49,16 @@ const ProfileCard = styled(BaseCard)`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  backdrop-filter: blur(380px); /* For supported browsers */
+  backdrop-filter: blur(380px);
   -webkit-backdrop-filter: blur(80px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    height: 55rem;
-    width: 20rem;
-    box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
-    background-image: url("https://wallpapers.com/images/hd/white-solid-background-k03v99q4obz7fu6p.jpg");
-    background-size: cover;
-    background-position: center;
+    grid-column: 1;
+    grid-row: 1;
+    height: auto;
+    width: 100%;
+    min-height: 40rem;
   }
 `;
 
@@ -72,8 +71,9 @@ const WorkExperienceCard = styled(BaseCard)`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    grid-column: 2;
-    grid-row: 1;
+    grid-column: 1;
+    grid-row: 2;
+    height: 30rem;
   }
 
   &::-webkit-scrollbar {
@@ -98,8 +98,10 @@ const SkillsCard = styled(BaseCard)`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    grid-column: 2;
-    grid-row: 2;
+    grid-column: 1;
+    grid-row: 3;
+    height: auto;
+    min-height: 24rem;
   }
 `;
 
@@ -121,10 +123,10 @@ const ProjectsCard = styled(BaseCard)`
     `${props.theme.scrollbarThumb} ${props.theme.scrollbarTrack}`};
 
   @media (max-width: 768px) {
-    grid-column: 1 / span 2;
-    grid-row: 3;
-    width: 20rem;
+    grid-column: 1;
+    grid-row: 4;
     height: auto;
+    min-height: 40rem;
     border: 2px solid ${(props) => props.theme.inputb};
   }
 
@@ -149,11 +151,12 @@ const ServicesCard = styled(BaseCard)`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    grid-column: 1 / span 2;
-    grid-row: 4;
-    width: 20rem;
+    grid-column: 1;
+    grid-row: 5;
+    width: 100%;
   }
 `;
+
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -185,11 +188,12 @@ const ContactCard = styled(BaseCard)`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    grid-column: 1 / span 2;
-    grid-row: 5;
-    padding: 4px;
-    width: 20rem;
-    height: 20rem;
+    grid-column: 1;
+    grid-row: 6;
+    width: 100%;
+    height: auto;
+    min-height: 20rem;
+    padding: 1rem;
   }
 
   &:hover {
@@ -231,8 +235,7 @@ const LetsTalkContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 100%;
-    padding: 5px;
+    padding: 2rem;
   }
 `;
 
@@ -243,6 +246,10 @@ const LetsTalkTop = styled.div`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
   animation: ${float} 3s ease-in-out infinite;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const LetsTalkMiddle = styled.div`
@@ -256,7 +263,7 @@ const LetsTalkMiddle = styled.div`
   -webkit-text-fill-color: transparent;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 `;
 
@@ -301,6 +308,11 @@ const LetsTalkLink = styled(Link)`
     background-color: #ff6b6b;
     color: #fff;
   }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
 `;
 
 const BulletIcon = styled.svg`
@@ -311,6 +323,7 @@ const BulletIcon = styled.svg`
   animation: ${({ isAnimating }) => (isAnimating ? pulse : "none")} 0.5s
     ease-in-out;
 `;
+
 const PageContainer = styled.div`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};

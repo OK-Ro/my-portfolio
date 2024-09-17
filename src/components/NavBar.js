@@ -11,50 +11,62 @@ import {
   FaUser,
   FaCog,
   FaFolder,
+  FaTimes,
 } from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 
 const NavContainer = styled.div`
   position: fixed;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
+  padding: 1rem;
 
   @media (min-width: 768px) {
-    top: 4rem;
-    left: 5rem;
-    right: 5rem;
+    top: 2rem;
+    left: 2rem;
+    right: 2rem;
   }
 `;
 
 const Nav = styled.nav`
-  background-color: ${(props) =>
-    props.scrolled
-      ? props.theme.navBackgroundScrolled
-      : props.theme.navBackground};
-  backdrop-filter: blur(10px);
+  background-color: ${(props) => props.theme.navBackgroundSolid};
   color: ${(props) => props.theme.navText};
   padding: 1rem;
   border-radius: 1rem;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
   border: 1px solid ${(props) => props.theme.navBorder};
   transition: all 0.3s ease-in-out;
+`;
+
+const MobileMenu = styled.div`
+  position: fixed;
+  top: 0;
+  right: ${(props) => (props.isOpen ? "0" : "-100%")};
+  width: 100%;
+  height: 100vh;
+  background-color: ${(props) => props.theme.navBackgroundSolid};
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-shadow: -5px 0 15px ${(props) => props.theme.boxShadow};
+  overflow-y: auto;
+  z-index: 1001;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    padding: 2rem;
+    display: none;
   }
 `;
 const Logo = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 900;
   letter-spacing: 1px;
   color: ${(props) => props.theme.logoText};
@@ -84,26 +96,40 @@ const LogoSubtext = styled.span`
   margin-left: 5px;
 `;
 
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  color: ${(props) => props.theme.text};
+  font-size: 1.5rem;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 2rem;
+`;
+
 const NavList = styled.ul`
   list-style-type: none;
-  padding: 0;
+  padding: 1rem;
   margin: 0;
-  display: ${(props) => (props.isOpen ? "flex" : "none")};
-  flex-direction: column;
-  width: 100%;
+  display: none;
 
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
-    width: auto;
   }
+`;
+
+const MobileNavList = styled(NavList)`
+  display: flex;
+  flex-direction: column;
 `;
 
 const NavItem = styled.li`
   margin: 0.5rem 0;
+  margin-right: 4rem;
 
-  @media (min-width: 768px) {
-    margin: 0 0.5rem;
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+    margin-right: 0;
   }
 `;
 
@@ -117,7 +143,6 @@ const NavLink = styled(Link)`
   transition: all 0.3s ease;
   font-weight: 900;
   overflow: hidden;
-  margin-right: 2rem;
 
   &:before {
     content: "";
@@ -137,7 +162,7 @@ const NavLink = styled(Link)`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px ${(props) => props.theme.boxShadow};
   }
 
   &.active {
@@ -162,7 +187,7 @@ const NavLink = styled(Link)`
   span {
     position: relative;
     z-index: 1;
-    color: ${(props) => props.theme.navText};
+    color: ${(props) => props.theme.text};
   }
 
   &.active span {
@@ -171,16 +196,19 @@ const NavLink = styled(Link)`
 `;
 
 const RightSection = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: none;
 
   @media (min-width: 768px) {
-    margin-top: 0;
-    justify-content: flex-end;
+    display: flex;
+    align-items: center;
   }
+`;
+
+const MobileRightSection = styled(RightSection)`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 2rem;
 `;
 
 const SwitchButton = styled.div`
@@ -188,25 +216,34 @@ const SwitchButton = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
-  height: 55px;
+  height: 40px;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
 `;
 
 const SwitchOuter = styled.label`
   height: 100%;
-  background: ${(props) => (props.isDarkMode ? "#252532" : "#e0e0e0")};
-  width: 115px;
-  border-radius: 165px;
-  box-shadow: ${(props) =>
-    props.isDarkMode
-      ? "inset 0px 5px 10px 0px #16151c, 0px 3px 6px -2px #403f4e"
-      : "inset 0px 5px 10px 0px #c1c1c1, 0px 3px 6px -2px #ffffff"};
-  border: 1px solid ${(props) => (props.isDarkMode ? "#32303e" : "#d0d0d0")};
-  padding: 6px;
+  background: ${(props) =>
+    props.isDarkMode ? props.theme.cardBackground : props.theme.body};
+  width: 90px;
+  border-radius: 40px;
+  box-shadow: inset 0px 5px 10px 0px ${(props) => props.theme.boxShadow};
+  border: 1px solid ${(props) => props.theme.cardBorder};
+  padding: 4px;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
   position: relative;
   transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 35px;
+  }
 `;
 
 const CheckboxInput = styled.input`
@@ -215,34 +252,41 @@ const CheckboxInput = styled.input`
 `;
 
 const ButtonToggle = styled.div`
-  height: 42px;
-  width: 42px;
+  height: 32px;
+  width: 32px;
   background: ${(props) =>
     props.isDarkMode
-      ? "linear-gradient(#3b3a4e, #272733)"
-      : "linear-gradient(#f5f5f5, #e0e0e0)"};
-  border-radius: 100%;
-  box-shadow: ${(props) =>
-    props.isDarkMode
-      ? "inset 0px 5px 4px 0px #424151, 0px 4px 15px 0px #0f0e17"
-      : "inset 0px 5px 4px 0px #ffffff, 0px 4px 15px 0px #a1a1a1"};
+      ? props.theme.cardBackground
+      : props.theme.buttonBackground};
+  border-radius: 50%;
+  box-shadow: 0px 4px 15px 0px ${(props) => props.theme.boxShadow};
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease-in;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => (props.isDarkMode ? "#ffffff" : "#ffd700")};
-  font-size: 1.2rem;
+  color: ${(props) => (props.isDarkMode ? props.theme.text : "#ffd700")};
+  font-size: 1rem;
 
   ${CheckboxInput}:checked + & {
-    transform: translateX(58px);
+    transform: translateX(50px);
+  }
+
+  @media (max-width: 768px) {
+    height: 27px;
+    width: 27px;
+    font-size: 0.9rem;
+
+    ${CheckboxInput}:checked + & {
+      transform: translateX(45px);
+    }
   }
 `;
 
 const ButtonIndicator = styled.div`
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -251,20 +295,34 @@ const ButtonIndicator = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
 
   &.sun {
-    right: 10px;
-    border: 3px solid #ffd700;
+    right: 8px;
+    border: 2px solid #ffd700;
     color: #ffd700;
     background-color: rgba(255, 215, 0, 0.2);
   }
 
   &.moon {
-    left: 10px;
-    border: 3px solid #c0c0c0;
-    color: #c0c0c0;
-    background-color: rgba(192, 192, 192, 0.2);
+    left: 8px;
+    border: 2px solid ${(props) => props.theme.text};
+    color: ${(props) => props.theme.text};
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    height: 18px;
+    width: 18px;
+    font-size: 0.7rem;
+
+    &.sun {
+      right: 6px;
+    }
+
+    &.moon {
+      left: 6px;
+    }
   }
 `;
 
@@ -277,13 +335,13 @@ const LetsTalkButton = styled(Link)`
   font-size: 1rem;
   font-weight: 900;
   text-decoration: none;
-  color: #ffffff;
-  background: linear-gradient(to bottom right, #667eea, #764ba2);
+  color: ${(props) => props.theme.buttonText};
+  background: ${(props) => props.theme.letsTalkGradient};
   border: none;
   border-radius: 50px;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px ${(props) => props.theme.boxShadow};
 
   &:before {
     content: "";
@@ -303,7 +361,7 @@ const LetsTalkButton = styled(Link)`
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px ${(props) => props.theme.boxShadow};
 
     &:before {
       left: 100%;
@@ -312,7 +370,7 @@ const LetsTalkButton = styled(Link)`
 
   &:active {
     transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px ${(props) => props.theme.boxShadow};
   }
 
   svg {
@@ -329,30 +387,44 @@ const LetsTalkButton = styled(Link)`
 const ResumeLink = styled(Link)`
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.navText};
+  justify-content: center;
+  color: ${(props) => props.theme.text};
   text-decoration: none;
   margin-right: 1rem;
   padding: 0.8rem 1.5rem;
-  border: 4px solid ${(props) => props.theme.navText};
+  border: 4px solid ${(props) => props.theme.text};
   border-radius: 5px;
   transition: all 0.3s ease;
   font-weight: 900;
 
   &:hover {
-    background-color: ${(props) => props.theme.navText};
-    color: ${(props) => props.theme.navBackground};
+    background-color: ${(props) => props.theme.text};
+    color: ${(props) => props.theme.body};
   }
 
   svg {
     margin-right: 0.5rem;
   }
-`;
 
+  @media (max-width: 768px) {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    border-width: 3px;
+    width: 8rem;
+    margin-left: 5.5rem;
+    margin-bottom: 1.5rem;
+
+    svg {
+      margin-right: 0.3rem;
+      font-size: 0.9rem;
+    }
+  }
+`;
 const MenuToggle = styled.button`
   display: block;
   background: none;
   border: none;
-  color: ${(props) => props.theme.navText};
+  color: ${(props) => props.theme.text};
   font-size: 1.5rem;
   cursor: pointer;
 
@@ -401,7 +473,7 @@ function NavBar() {
         <MenuToggle onClick={toggleMenu}>
           <FaBars />
         </MenuToggle>
-        <NavList isOpen={isOpen}>
+        <NavList>
           {navItems.map((item) => (
             <NavItem key={item.path}>
               <NavLink
@@ -444,6 +516,54 @@ function NavBar() {
           </LetsTalkButton>
         </RightSection>
       </Nav>
+      <MobileMenu isOpen={isOpen}>
+        <CloseButton onClick={toggleMenu}>
+          <FaTimes />
+        </CloseButton>
+        <MobileNavList>
+          {navItems.map((item) => (
+            <NavItem key={item.path}>
+              <NavLink
+                to={item.path}
+                className={location.pathname === item.path ? "active" : ""}
+                color={item.color}
+                onClick={toggleMenu}
+              >
+                <item.icon />
+                <span>{item.text}</span>
+              </NavLink>
+            </NavItem>
+          ))}
+        </MobileNavList>
+        <MobileRightSection>
+          <ResumeLink to="/resume" onClick={toggleMenu}>
+            <FaFileAlt />
+            Resume
+          </ResumeLink>
+          <SwitchButton>
+            <SwitchOuter isDarkMode={isDarkMode}>
+              <CheckboxInput
+                type="checkbox"
+                checked={isDarkMode}
+                onChange={toggleTheme}
+              />
+              <ButtonToggle isDarkMode={isDarkMode}>
+                {isDarkMode ? <FaMoon /> : <FaSun />}
+              </ButtonToggle>
+              <ButtonIndicator className="sun">
+                <FaSun />
+              </ButtonIndicator>
+              <ButtonIndicator className="moon">
+                <FaMoon />
+              </ButtonIndicator>
+            </SwitchOuter>
+          </SwitchButton>
+          <LetsTalkButton to="/contact" onClick={toggleMenu}>
+            <FaComments />
+            Let's Talk
+          </LetsTalkButton>
+        </MobileRightSection>
+      </MobileMenu>
     </NavContainer>
   );
 }

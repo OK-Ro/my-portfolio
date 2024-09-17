@@ -9,6 +9,10 @@ const ExperienceWrapper = styled.div`
   padding: 2rem;
   border-radius: 20px;
   background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const ExperienceContainer = styled.div`
@@ -23,6 +27,10 @@ const ExperienceContainer = styled.div`
   scrollbar-color: transparent
     ${(props) => props.theme.backgroundColor || "#ffffff"};
   backdrop-filter: blur(8px);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -45,11 +53,21 @@ const Title = styled.h2`
   background: linear-gradient(45deg, #ff6f61, #ffcc00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const Timeline = styled.div`
   position: relative;
   padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -59,6 +77,11 @@ const Timeline = styled.div`
     width: 2px;
     background-color: ${(props) => props.theme.accent || "#ff6f61"};
     transform: translateX(-50%);
+
+    @media (max-width: 768px) {
+      left: 0;
+      transform: none;
+    }
   }
 `;
 
@@ -69,6 +92,11 @@ const TimelineItem = styled.div`
   padding-bottom: 2rem;
   position: relative;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
 `;
 
 const TimelineContent = styled.div`
@@ -87,9 +115,20 @@ const TimelineContent = styled.div`
   margin-left: ${(props) => (props.position === "left" ? "0" : "auto")};
   margin-right: ${(props) => (props.position === "right" ? "0" : "auto")};
 
+  @media (max-width: 768px) {
+    width: 100%;
+    transform: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 20px ${(props) => props.theme.boxShadow || "#888888"};
+
+    @media (max-width: 768px) {
+      transform: translateY(-5px);
+    }
   }
 
   &::before {
@@ -101,6 +140,10 @@ const TimelineContent = styled.div`
     background-color: ${(props) => props.theme.accent || "#ff6f61"};
     border-radius: 50%;
     ${(props) => (props.position === "left" ? "right: -10px;" : "left: -10px;")}
+
+    @media (max-width: 768px) {
+      left: -30px;
+    }
   }
 `;
 
@@ -110,24 +153,40 @@ const JobTitle = styled.h3`
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Company = styled.h4`
   font-size: 1.1rem;
   color: ${(props) => props.theme.text || "#333333"};
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const Period = styled.p`
   font-size: 0.9rem;
   color: ${(props) => props.theme.secondaryText || "#666666"};
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Description = styled.p`
   font-size: 1rem;
   color: ${(props) => props.theme.text || "#333333"};
   line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Icon = styled(FaBriefcase)`

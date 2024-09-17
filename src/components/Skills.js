@@ -46,6 +46,7 @@ const HexGrid = styled.div`
 
 const HexItem = styled.div`
   width: 100px;
+
   position: relative;
   transition: all 0.3s ease;
 

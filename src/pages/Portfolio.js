@@ -428,7 +428,8 @@ const Portfolio = () => {
     {
       id: 1,
       title: "E-commerce Platform",
-      image: "https://picsum.photos/800/600",
+      image:
+        "https://cdn.dribbble.com/userupload/8957039/file/original-369cfc1847437d7b4d1beab9e1c652e3.png?resize=1504x1128&vertical=center",
       github: "https://github.com/yourusername/ecommerce-project",
       live: "https://example.com/ecommerce",
       category: "web",
@@ -436,7 +437,8 @@ const Portfolio = () => {
     {
       id: 2,
       title: "Task Management App",
-      image: "https://picsum.photos/801/600",
+      image:
+        "https://cdn.dribbble.com/userupload/12866230/file/original-114c2c9a57b77724ee84f94f4a3bbb33.png?resize=1200x901&vertical=center",
       github: "https://github.com/yourusername/task-management-app",
       live: "https://example.com/task-app",
       category: "mobile",
@@ -445,14 +447,16 @@ const Portfolio = () => {
       id: 3,
       title: "Weather Dashboard",
       image: "https://picsum.photos/802/600",
-      github: "https://github.com/yourusername/weather-dashboard",
+      github:
+        "https://cdn.buymeacoffee.com/uploads/project_updates/2021/10/16f5d0a9193ad3b7bff99c4ee1d279df.png",
       live: "https://example.com/weather",
       category: "web",
     },
     {
       id: 4,
       title: "Social Media Analytics",
-      image: "https://picsum.photos/803/600",
+      image:
+        "https://cdn.dribbble.com/users/2125046/screenshots/17503425/media/3e59422d9fabe0d80594737bcbfb7d3f.png?resize=1000x750&vertical=center",
       github: "https://github.com/yourusername/social-media-analytics",
       live: "https://example.com/analytics",
       category: "data",
@@ -460,15 +464,18 @@ const Portfolio = () => {
     {
       id: 5,
       title: "Fitness Tracker",
-      image: "https://picsum.photos/804/600",
-      github: "https://github.com/yourusername/fitness-tracker",
+      image:
+        "https://cdn.dribbble.com/userupload/11663757/file/original-626702a4d7db49ff2a3eb5022cf1211c.png?resize=1200x900",
+      github:
+        "https://cdn.dribbble.com/userupload/11663757/file/original-626702a4d7db49ff2a3eb5022cf1211c.png?resize=1200x900",
       live: "https://example.com/fitness",
       category: "mobile",
     },
     {
       id: 6,
       title: "Recipe Finder",
-      image: "https://picsum.photos/805/600",
+      image:
+        "https://i.pinimg.com/564x/1a/29/04/1a29046bb1bea902f9f3b4cd2dc2e727.jpg",
       github: "https://github.com/yourusername/recipe-finder",
       live: "https://example.com/recipes",
       category: "web",
@@ -476,32 +483,38 @@ const Portfolio = () => {
     {
       id: 7,
       title: "Travel Planner",
-      image: "https://picsum.photos/806/600",
+      image:
+        "https://cdn.dribbble.com/userupload/12253662/file/original-a7a2415c635fbb6c56d84542352eac4c.png?resize=1504x1128",
       github: "https://github.com/yourusername/travel-planner",
       live: "https://example.com/travel",
       category: "mobile",
     },
     {
       id: 8,
-      title: "Cryptocurrency Dashboard",
-      image: "https://picsum.photos/807/600",
-      github: "https://github.com/yourusername/crypto-dashboard",
+      title: "Cryptocurrency Portfolio Tracker",
+      image:
+        "https://cdn.dribbble.com/userupload/7016069/file/original-45346f13929d4efb3c0c54e4e1139c57.png?resize=1200x900",
+      github:
+        "https://cdn.dribbble.com/userupload/7016069/file/original-45346f13929d4efb3c0c54e4e1139c57.png?resize=1200x900",
       live: "https://example.com/crypto",
       category: "data",
     },
     {
       id: 9,
       title: "Online Learning Platform",
-      image: "https://picsum.photos/808/600",
+      image:
+        "https://cdn.dribbble.com/userupload/2745586/file/original-7f0fa031e809b3802ff3a65736b38259.png?resize=1504x1128&vertical=center",
       github: "https://github.com/yourusername/online-learning-platform",
       live: "https://example.com/learning",
       category: "web",
     },
     {
       id: 10,
-      title: "Smart Home Control",
-      image: "https://picsum.photos/809/600",
-      github: "https://github.com/yourusername/smart-home-control",
+      title: "Smart Home Control System",
+      image:
+        "https://cdn.dribbble.com/userupload/9008964/file/original-17abfae69faaeaac8a8b42059d3118a5.png?resize=1200x1200&vertical=center",
+      github:
+        "https://cdn.dribbble.com/userupload/9008964/file/original-17abfae69faaeaac8a8b42059d3118a5.png?resize=1200x1200&vertical=center",
       live: "https://example.com/smart-home",
       category: "iot",
     },
