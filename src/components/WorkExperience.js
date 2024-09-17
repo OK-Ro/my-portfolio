@@ -144,39 +144,30 @@ const colors = [
   "#a0c4ff", // light blue
   "#b9fbc0", // light mint
 ];
-
 const experiences = [
   {
     id: 1,
-    title: "UI Designer",
-    company: "Apple",
-    period: "2021 - Present",
+    title: "Full Stack Developer",
+    company: "Hack Your Future",
+    period: "May 2023 - Present",
     description:
-      "Leading UI design for cutting-edge products, collaborating with cross-functional teams to deliver intuitive and visually stunning interfaces.",
+      "Completed multiple web development projects using HTML, CSS, JavaScript, React.js, and Node.js. Gained hands-on experience in both front-end and back-end technologies, database management, and version control.",
   },
   {
     id: 2,
-    title: "Front-end Developer",
-    company: "Google",
-    period: "2015 - 2020",
+    title: "Digital Onboarding Specialist",
+    company: "Dfcu Bank Uganda",
+    period: "2016 - 2017",
     description:
-      "Developed and maintained large-scale web applications using modern front-end technologies, focusing on performance optimization and accessibility.",
+      "Led the digital TV upgrade project, managing a team of technicians and ensuring smooth installations. Conducted technical assessments and provided solutions for any challenges.",
   },
   {
     id: 3,
-    title: "UI/UX Designer",
-    company: "Intel",
-    period: "2010 - 2015",
+    title: "Digital Media Infrastructure Manager",
+    company: "Dstv Uganda",
+    period: "2017 - 2019",
     description:
-      "Created user-centered designs for various digital products, conducted user research, and implemented design systems to ensure consistency across platforms.",
-  },
-  {
-    id: 4,
-    title: "UI Designer",
-    company: "Intel",
-    period: "2009 - 2010",
-    description:
-      "Started career as a UI designer, working on internal tools and contributing to the company's design language.",
+      "Guided customers through account setup, resolved inquiries, and contributed to improving account opening processes. Provided technical support and coordinated digital media projects.",
   },
 ];
 

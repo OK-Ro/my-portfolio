@@ -21,25 +21,25 @@ ChartJS.register(
 );
 
 const AdmissionStats = () => {
-  // Retrieve total admissions from local storage, or initialize to 0
-  const [totalAdmissions, setTotalAdmissions] = useState(
-    parseInt(localStorage.getItem("totalAdmissions")) || 0
+  // Retrieve total visits from local storage, or initialize to 0
+  const [totalVisits, setTotalVisits] = useState(
+    parseInt(localStorage.getItem("totalVisits")) || 0
   );
 
-  const [activeAdmissions, setActiveAdmissions] = useState(1); // Initially one active user (current user)
+  const [activeVisitors, setActiveVisitors] = useState(1); // Initially one active visitor (current user)
   const [liveCount, setLiveCount] = useState(1); // Initialize live count
   const [isBlinking, setIsBlinking] = useState(false);
 
   useEffect(() => {
-    // Increment total admissions and save to local storage
-    setTotalAdmissions((prevTotal) => {
+    // Increment total visits and save to local storage
+    setTotalVisits((prevTotal) => {
       const newTotal = prevTotal + 1;
-      localStorage.setItem("totalAdmissions", newTotal);
+      localStorage.setItem("totalVisits", newTotal);
       return newTotal;
     });
 
-    // Update active admissions when the component is mounted
-    setActiveAdmissions((prevCount) => prevCount + 1);
+    // Update active visitors when the component is mounted
+    setActiveVisitors((prevCount) => prevCount + 1);
 
     // Simulating real-time visits
     const simulateVisit = () => {
@@ -53,11 +53,10 @@ const AdmissionStats = () => {
 
     const intervalId = setInterval(simulateVisit, 5000);
 
-    // Clean up on unmount
     return () => {
       clearInterval(intervalId);
-      // Decrement active admissions when the user leaves
-      setActiveAdmissions((prevCount) => Math.max(prevCount - 1, 0));
+
+      setActiveVisitors((prevCount) => Math.max(prevCount - 1, 0));
     };
   }, [liveCount]);
 
@@ -84,21 +83,21 @@ const AdmissionStats = () => {
   return (
     <div style={styles.container}>
       <div style={styles.statsContainer}>
+        <StatCard icon={FaUsers} title="Total Visits" value={totalVisits} />
         <StatCard
-          icon={FaUsers}
-          title="Total Visitors"
-          value={totalAdmissions}
+          icon={FaUserClock}
+          title="Active Visitors"
+          value={activeVisitors}
         />
-        <StatCard icon={FaUserClock} title="Active" value={activeAdmissions} />
         <LiveCounter count={liveCount} isBlinking={isBlinking} />
       </div>
       <div style={styles.chartsContainer}>
         <ChartCard
-          title="Admission Trend"
+          title="Visit Trend"
           chart={<Bar data={barData} options={barOptions} />}
         />
         <ChartCard
-          title="Admission Status"
+          title="Visit Status"
           chart={<Pie data={pieData} options={pieOptions} />}
         />
       </div>
@@ -219,7 +218,7 @@ const styles = {
     marginBottom: "10px",
   },
   liveDot: {
-    width: "12px", // Slightly larger for better visibility
+    width: "12px",
     height: "12px",
     borderRadius: "50%",
     backgroundColor: "white",
@@ -228,14 +227,14 @@ const styles = {
   liveText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: "16px", // Slightly larger font size for emphasis
+    fontSize: "16px",
   },
   liveCount: {
-    fontSize: "40px", // Increased size for better visibility
+    fontSize: "40px",
     fontWeight: "bold",
-    color: "#00BFFF", // Bright blue color
-    textShadow: "0 0 20px rgba(255, 255, 255, 0.9)", // Enhanced glow effect
-    fontFamily: "'Roboto', sans-serif", // Updated font for consistency
+    color: "#00BFFF",
+    textShadow: "0 0 20px rgba(255, 255, 255, 0.9)",
+    fontFamily: "'Roboto', sans-serif",
   },
   chartCard: {
     backgroundColor: "white",
@@ -248,7 +247,7 @@ const styles = {
     fontWeight: "bold",
     color: "#4a5568",
     marginBottom: "10px",
-    fontFamily: "'Roboto', sans-serif", // Updated font for consistency
+    fontFamily: "'Roboto', sans-serif",
   },
   chartContainer: {
     height: "200px",

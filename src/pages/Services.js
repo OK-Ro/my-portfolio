@@ -97,8 +97,7 @@ const BackToHome = styled(Link)`
   align-items: center;
   justify-content: center;
   background-color: white;
-  width: 100%;
-  max-width: 192px;
+  width: 192px;
   height: 56px;
   border-radius: 16px;
   position: relative;
@@ -107,13 +106,17 @@ const BackToHome = styled(Link)`
   font-weight: 600;
   text-decoration: none;
   overflow: hidden;
-  margin-bottom: 2rem;
-  border: 4px solid #4ade80;
+
+  border: 4px solid transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #6dd5ed, #2193b0);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &::before {
     content: "";
-    background-color: #4ade80;
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
     border-radius: 12px;
     height: 45px;
     width: 60px;
@@ -122,11 +125,10 @@ const BackToHome = styled(Link)`
     top: 2px;
     z-index: 1;
     transition: width 0.5s;
-    border: 1px solid #fffff;
   }
 
   &:hover::before {
-    width: calc(100% - 8px);
+    width: 178px;
   }
 
   svg {
@@ -152,6 +154,7 @@ const BackToHome = styled(Link)`
     color: white;
   }
 `;
+
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -465,6 +468,7 @@ const EducationDescription = styled.p`
   color: ${(props) => (props.theme.dark ? "#d0d0d0" : "#444")};
   line-height: 1.6;
 `;
+
 const CTASection = styled.div`
   perspective: 1000px;
   margin-top: 2rem;
@@ -683,7 +687,7 @@ const Services = () => {
           <RightColumn>
             <VisitorSection />
             <TotalVisitorSection>
-              <h2 className="text-xl font-bold mb-4">Admission Statistics</h2>
+              <h2 className="text-xl font-bold mb-4">Live Visitor Metrics</h2>
               <AdmissionStats />
             </TotalVisitorSection>
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import NavBar from "../components/NavBar";
@@ -31,14 +31,17 @@ const BackToHome = styled(Link)`
   font-weight: 600;
   text-decoration: none;
   overflow: hidden;
-  margin-bottom: 2rem;
   margin-top: 10rem;
-  border: 4px solid #4ade80;
+  border: 4px solid transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #6dd5ed, #2193b0);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &::before {
     content: "";
-    background-color: #4ade80;
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
     border-radius: 12px;
     height: 45px;
     width: 60px;
@@ -47,7 +50,6 @@ const BackToHome = styled(Link)`
     top: 2px;
     z-index: 1;
     transition: width 0.5s;
-    border: 1px solid #fffff;
   }
 
   &:hover::before {
@@ -77,23 +79,111 @@ const BackToHome = styled(Link)`
     color: white;
   }
 `;
+const gradientAnimation = keyframes`
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+`;
+
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
 
 const Header = styled.h1`
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7aa, #6a2c70);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: ${gradientAnimation} 10s ease infinite, ${fadeIn} 1s ease-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 50px;
+    height: 4px;
+    background: #4ecdc4;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
 
   @media (min-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 4rem;
   }
 `;
 
 const Subheader = styled.p`
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
+  text-align: center;
   color: ${(props) => props.theme.secondaryText};
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  animation: ${fadeIn} 1s ease-out 0.5s both;
+  position: relative;
+  padding: 0 20px;
+
+  &::before,
+  &::after {
+    content: '"';
+    font-size: 3rem;
+    color: #4ecdc4;
+    position: absolute;
+    opacity: 0.3;
+  }
+
+  &::before {
+    top: -20px;
+    left: 0;
+  }
+
+  &::after {
+    bottom: -40px;
+    right: 0;
+  }
 
   @media (min-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+`;
+
+const IntroText = styled.p`
+  font-size: 1.2rem;
+  text-align: center;
+  color: ${(props) => props.theme.text};
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+  animation: ${fadeIn} 1s ease-out 1s both;
+  padding: 0 20px;
+
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.4rem;
   }
 `;
 
@@ -133,9 +223,10 @@ const ProjectCard = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   aspect-ratio: 1 / 1;
+  border: 5px solid ${(props) => props.theme.cardBackground};
 
   &:hover {
     transform: translateY(-5px);
@@ -217,30 +308,116 @@ const ProjectLink = styled.a`
     background-color: rgba(255, 255, 255, 0.3);
   }
 `;
-
 const CTASection = styled.div`
-  text-align: center;
+  perspective: 1000px;
   margin-top: 3rem;
   padding: 2rem;
-  background-color: ${(props) => props.theme.cardBackground};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    margin-top: 3rem;
+  }
+`;
+
+const CTACard = styled.div`
+  background: linear-gradient(45deg, #00c9ff, #92fe9d);
   border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 5rem;
+  width: 100%;
+  max-width: 80rem;
+  text-align: center;
+  color: #1a1a1a;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+  }
+
+  @media (min-width: 768px) {
+    padding: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 3rem;
+  }
+`;
+
+const CTAContent = styled.div`
+  transform: translateZ(60px);
+  transition: transform 0.6s;
+
+  ${CTACard}:hover & {
+    transform: translateZ(80px);
+  }
+`;
+
+const CTATitle = styled.h2`
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+`;
+
+const CTAText = styled.p`
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #333;
 `;
 
 const CTAButton = styled(Link)`
-  background-color: ${(props) => props.theme.accent};
-  color: ${(props) => props.theme.buttonText};
+  display: inline-block;
+  background-color: #ff6b6b;
+  color: white;
   padding: 0.75rem 1.5rem;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 30px;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-  margin-top: 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: all 0.6s;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
 
   &:hover {
-    background-color: ${(props) => props.theme.accentHover};
-    transform: translateY(-2px);
+    background-color: #ff8787;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (min-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -344,12 +521,11 @@ const Portfolio = () => {
         </BackToHome>
         <Header>My Portfolio</Header>
         <Subheader>Check Out My Latest Projects</Subheader>
-        <p>
+        <IntroText>
           I'm here to help if you're searching for a web developer to bring your
           idea to life or a development partner to help take your business to
           the next level.
-        </p>
-
+        </IntroText>
         <FilterContainer>
           <FilterButton
             active={filter === "all"}
@@ -411,9 +587,16 @@ const Portfolio = () => {
         </ProjectGrid>
 
         <CTASection>
-          <h2>Interested in working together?</h2>
-          <p>Let's discuss how I can help bring your ideas to life.</p>
-          <CTAButton to="/contact">Get In Touch</CTAButton>
+          <CTACard>
+            <CTAContent>
+              <CTATitle>Let's Work Together</CTATitle>
+              <CTAText>
+                Ready to start your next project? Get in touch and let's create
+                something amazing together.
+              </CTAText>
+              <CTAButton to="/contact">Get In Touch</CTAButton>
+            </CTAContent>
+          </CTACard>
         </CTASection>
       </ContentWrapper>
     </PortfolioContainer>

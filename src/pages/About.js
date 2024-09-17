@@ -16,6 +16,7 @@ import {} from "react-icons/fa";
 import NavBar from "../components/NavBar";
 import ColoredText from "./ColoredText";
 import FeedbackPopup from "./FeedbackPopup";
+
 const AboutContainer = styled.div`
   padding: 3rem;
   background-color: ${(props) => props.theme.body};
@@ -342,27 +343,111 @@ const FooterText = styled.p`
     font-size: 0.9rem;
   }
 `;
+const CTASection = styled.div`
+  perspective: 1000px;
+  margin-top: 2rem;
+  width: 58rem;
+
+  @media (min-width: 768px) {
+    margin-top: 3rem;
+  }
+`;
+
+const CTACard = styled.div`
+  background: linear-gradient(45deg, #00c9ff, #92fe9d);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 5rem;
+  text-align: center;
+  height: 22rem;
+  color: #1a1a1a;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+  }
+
+  @media (min-width: 768px) {
+    padding: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 3rem;
+  }
+`;
+
+const CTAContent = styled.div`
+  transform: translateZ(60px);
+  transition: transform 0.6s;
+
+  ${CTACard}:hover & {
+    transform: translateZ(80px);
+  }
+`;
+
+const CTATitle = styled.h2`
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+`;
+
+const CTAText = styled.p`
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #333;
+`;
 
 const CTAButton = styled(Link)`
   display: inline-block;
-  background-color: ${(props) => props.theme.accent};
+  background-color: #ff6b6b;
   color: white;
   padding: 0.75rem 1.5rem;
   text-decoration: none;
-  border-radius: 20px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  align-self: flex-start;
-  margin-top: auto;
+  border-radius: 30px;
+  font-weight: bold;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
 
-  &:hover {
-    background-color: ${(props) => props.theme.accentHover};
-    transform: translateY(-2px);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: all 0.6s;
   }
 
-  @media (max-width: 768px) {
-    padding: 0.5rem 1rem;
+  &:hover::before {
+    left: 100%;
+  }
+
+  &:hover {
+    background-color: #ff8787;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (min-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -653,26 +738,36 @@ const About = () => {
       </ThreeColumnSection>
 
       <FooterSection>
-        <FooterCard>
-          <FooterHeader>Let's Work Together</FooterHeader>
-          <FooterText>
-            Ready to start your next project? Get in touch and let's create
-            something amazing together.
-          </FooterText>
-          <CTAButton to="/contact">Get In Touch</CTAButton>
-        </FooterCard>
+        <CTASection>
+          <CTACard>
+            <CTAContent>
+              <CTATitle>Let's Work Together</CTATitle>
+              <CTAText>
+                Ready to start your next project? Get in touch and let's create
+                something amazing together.
+              </CTAText>
+              <CTAButton to="/contact">Get In Touch</CTAButton>
+            </CTAContent>
+          </CTACard>
+        </CTASection>
         <FooterCard>
           <FooterHeader>Education</FooterHeader>
           <div>
             <FooterText>
-              Master Degree in Designing
+              Bachelor of Information Technology
               <br />
-              University of California | 2019 - 2021
+              St. Peters University | 2015 - 2016
             </FooterText>
             <FooterText>
-              Bachelor Degree in Psychology
+              Full Stack Web Development Course
               <br />
-              University of California | 2015 - 2019
+              Hack Your Future | 05/2023 - 11/2023
+            </FooterText>
+            <FooterText>
+              Front-End Web Development using JavaScript and React.js
+              <br />
+              DevTown | 01/2023 - 03/2023
+              <br />
             </FooterText>
           </div>
         </FooterCard>

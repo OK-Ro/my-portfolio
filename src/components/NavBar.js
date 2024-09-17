@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { FaSun, FaMoon, FaFileAlt, FaBars, FaRocket } from "react-icons/fa";
+import {
+  FaFileAlt,
+  FaBars,
+  FaComments,
+  FaSun,
+  FaMoon,
+  FaHome,
+  FaUser,
+  FaCog,
+  FaFolder,
+} from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 
-// Container for the navigation bar
 const NavContainer = styled.div`
   position: fixed;
   top: 1rem;
@@ -19,7 +28,6 @@ const NavContainer = styled.div`
   }
 `;
 
-// Style for the navigation bar itself
 const Nav = styled.nav`
   background-color: ${(props) =>
     props.scrolled
@@ -42,50 +50,18 @@ const Nav = styled.nav`
     padding: 2rem;
   }
 `;
-
-// Logo with new design and icon
 const Logo = styled(Link)`
   display: flex;
   align-items: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: transparent;
-  background: linear-gradient(45deg, #ff5c5c, #ffb36b, #7b92ff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-decoration: none;
-  position: relative;
-  padding: 0.5rem 1rem;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: ${(props) => props.theme.logoText};
   transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(1.1);
-    text-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background: linear-gradient(
-      45deg,
-      rgba(255, 92, 92, 0.6),
-      rgba(255, 179, 107, 0.6),
-      rgba(123, 146, 255, 0.6)
-    );
-    border-radius: 10px;
-    z-index: -1;
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
-
-  &:hover:before {
-    opacity: 1;
-    filter: blur(8px);
+    transform: scale(1.05);
   }
 
   @media (min-width: 768px) {
@@ -93,14 +69,21 @@ const Logo = styled(Link)`
   }
 `;
 
-// Icon inside the logo
-const LogoIcon = styled(FaRocket)`
-  font-size: 2rem;
-  margin-right: 0.5rem;
-  color: ${(props) => props.theme.navText};
+const LogoText = styled.span`
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-// Navigation items
+const LogoSubtext = styled.span`
+  font-size: 0.8em;
+  font-weight: 400;
+  color: ${(props) => props.theme.logoSubtext};
+  margin-left: 5px;
+`;
+
 const NavList = styled.ul`
   list-style-type: none;
   padding: 0;
@@ -120,28 +103,70 @@ const NavItem = styled.li`
   margin: 0.5rem 0;
 
   @media (min-width: 768px) {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
   }
 `;
 
 const NavLink = styled(Link)`
-  color: ${(props) => props.theme.navText};
   text-decoration: none;
   position: relative;
   display: flex;
   align-items: center;
-  &:after {
+  padding: 0.8rem 1.5rem;
+  border-radius: 1.5rem;
+  transition: all 0.3s ease;
+  font-weight: 900;
+  overflow: hidden;
+  margin-right: 2rem;
+
+  &:before {
     content: "";
     position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
+    top: 0;
     left: 0;
-    background-color: ${(props) => props.theme.navText};
-    transition: width 0.3s ease;
-  }
-  &:hover:after {
     width: 100%;
+    height: 100%;
+    background-color: ${(props) => props.color};
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover:before {
+    opacity: 0.4;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    background-color: ${(props) => props.color};
+    color: white;
+  }
+
+  &.active:before {
+    opacity: 0;
+  }
+
+  svg {
+    margin-right: 0.5rem;
+    font-size: 1.2em;
+    color: ${(props) => props.color};
+  }
+
+  &.active svg {
+    color: white;
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    color: ${(props) => props.theme.navText};
+  }
+
+  &.active span {
+    color: white;
   }
 `;
 
@@ -158,28 +183,146 @@ const RightSection = styled.div`
   }
 `;
 
-const ThemeToggle = styled.button`
-  background: none;
-  border: none;
-  color: ${(props) => props.theme.navText};
-  font-size: 1.2rem;
-  cursor: pointer;
+const SwitchButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 1rem;
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: rotate(30deg);
+  height: 55px;
+`;
+
+const SwitchOuter = styled.label`
+  height: 100%;
+  background: ${(props) => (props.isDarkMode ? "#252532" : "#e0e0e0")};
+  width: 115px;
+  border-radius: 165px;
+  box-shadow: ${(props) =>
+    props.isDarkMode
+      ? "inset 0px 5px 10px 0px #16151c, 0px 3px 6px -2px #403f4e"
+      : "inset 0px 5px 10px 0px #c1c1c1, 0px 3px 6px -2px #ffffff"};
+  border: 1px solid ${(props) => (props.isDarkMode ? "#32303e" : "#d0d0d0")};
+  padding: 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  transition: all 0.3s ease;
+`;
+
+const CheckboxInput = styled.input`
+  opacity: 0;
+  position: absolute;
+`;
+
+const ButtonToggle = styled.div`
+  height: 42px;
+  width: 42px;
+  background: ${(props) =>
+    props.isDarkMode
+      ? "linear-gradient(#3b3a4e, #272733)"
+      : "linear-gradient(#f5f5f5, #e0e0e0)"};
+  border-radius: 100%;
+  box-shadow: ${(props) =>
+    props.isDarkMode
+      ? "inset 0px 5px 4px 0px #424151, 0px 4px 15px 0px #0f0e17"
+      : "inset 0px 5px 4px 0px #ffffff, 0px 4px 15px 0px #a1a1a1"};
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => (props.isDarkMode ? "#ffffff" : "#ffd700")};
+  font-size: 1.2rem;
+
+  ${CheckboxInput}:checked + & {
+    transform: translateX(58px);
+  }
+`;
+
+const ButtonIndicator = styled.div`
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+
+  &.sun {
+    right: 10px;
+    border: 3px solid #ffd700;
+    color: #ffd700;
+    background-color: rgba(255, 215, 0, 0.2);
+  }
+
+  &.moon {
+    left: 10px;
+    border: 3px solid #c0c0c0;
+    color: #c0c0c0;
+    background-color: rgba(192, 192, 192, 0.2);
   }
 `;
 
 const LetsTalkButton = styled(Link)`
-  background-color: ${(props) => props.theme.buttonBackground};
-  color: ${(props) => props.theme.buttonText};
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 900;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  color: #ffffff;
+  background: linear-gradient(to bottom right, #667eea, #764ba2);
+  border: none;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: all 0.4s;
+  }
+
   &:hover {
-    background-color: ${(props) => props.theme.buttonHoverBackground};
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+    &:before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  svg {
+    margin-right: 8px;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
   }
 `;
 
@@ -189,10 +332,11 @@ const ResumeLink = styled(Link)`
   color: ${(props) => props.theme.navText};
   text-decoration: none;
   margin-right: 1rem;
-  padding: 0.5rem 1rem;
-  border: 2px solid ${(props) => props.theme.navText};
+  padding: 0.8rem 1.5rem;
+  border: 4px solid ${(props) => props.theme.navText};
   border-radius: 5px;
   transition: all 0.3s ease;
+  font-weight: 900;
 
   &:hover {
     background-color: ${(props) => props.theme.navText};
@@ -217,7 +361,6 @@ const MenuToggle = styled.button`
   }
 `;
 
-// Navigation bar component
 function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -240,60 +383,65 @@ function NavBar() {
   }, [scrolled]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  const navItems = [
+    { path: "/", icon: FaHome, text: "Home", color: "#FF6B6B" },
+    { path: "/about", icon: FaUser, text: "About", color: "#4ECDC4" },
+    { path: "/services", icon: FaCog, text: "Services", color: "#45B7D1" },
+    { path: "/portfolio", icon: FaFolder, text: "Portfolio", color: "#FFA07A" },
+  ];
 
   return (
     <NavContainer>
       <Nav scrolled={scrolled}>
         <Logo to="/">
-          <LogoIcon />
-          ROBFOLIO
+          <LogoText>
+            ROB<LogoSubtext>FOLIO</LogoSubtext>
+          </LogoText>
         </Logo>
         <MenuToggle onClick={toggleMenu}>
           <FaBars />
         </MenuToggle>
         <NavList isOpen={isOpen}>
-          <NavItem>
-            <NavLink
-              to="/"
-              className={location.pathname === "/" ? "active" : ""}
-            >
-              Home
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              to="/about"
-              className={location.pathname === "/about" ? "active" : ""}
-            >
-              About
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              to="/services"
-              className={location.pathname === "/services" ? "active" : ""}
-            >
-              Services
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              to="/portfolio"
-              className={location.pathname === "/portfolio" ? "active" : ""}
-            >
-              Portfolio
-            </NavLink>
-          </NavItem>
+          {navItems.map((item) => (
+            <NavItem key={item.path}>
+              <NavLink
+                to={item.path}
+                className={location.pathname === item.path ? "active" : ""}
+                color={item.color}
+              >
+                <item.icon />
+                <span>{item.text}</span>
+              </NavLink>
+            </NavItem>
+          ))}
         </NavList>
         <RightSection>
           <ResumeLink to="/resume">
             <FaFileAlt />
             Resume
           </ResumeLink>
-          <ThemeToggle onClick={toggleTheme}>
-            {isDarkMode ? <FaSun /> : <FaMoon />}
-          </ThemeToggle>
-          <LetsTalkButton to="/contact">Let's Talk</LetsTalkButton>
+          <SwitchButton>
+            <SwitchOuter isDarkMode={isDarkMode}>
+              <CheckboxInput
+                type="checkbox"
+                checked={isDarkMode}
+                onChange={toggleTheme}
+              />
+              <ButtonToggle isDarkMode={isDarkMode}>
+                {isDarkMode ? <FaMoon /> : <FaSun />}
+              </ButtonToggle>
+              <ButtonIndicator className="sun">
+                <FaSun />
+              </ButtonIndicator>
+              <ButtonIndicator className="moon">
+                <FaMoon />
+              </ButtonIndicator>
+            </SwitchOuter>
+          </SwitchButton>
+          <LetsTalkButton to="/contact">
+            <FaComments />
+            Let's Talk
+          </LetsTalkButton>
         </RightSection>
       </Nav>
     </NavContainer>

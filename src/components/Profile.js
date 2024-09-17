@@ -172,12 +172,13 @@ const Profile = () => {
         <Name>Robert Okuni</Name>
         <Title>Full Stack Web Developer</Title>
         <Bio>
-          As a skilled Product designer, illustrator, and visual development
-          expert, my diverse background has allowed me to apply my talents
-          across different fields and industries, demonstrating adaptability and
-          versatility. With over 7 years of experience, I've completed 125
-          projects and earned 9 recognitions in the field.
+          I am a passionate web developer with experience in both front-end and
+          back-end technologies. Skilled in React.js, Node.js, and database
+          management, I enjoy building user-friendly products that solve
+          real-world problems. My work spans across industries, and I thrive on
+          teamwork and collaboration.
         </Bio>
+
         <SkillTags>
           <SkillTag>UI/UX Design</SkillTag>
           <SkillTag>Branding</SkillTag>

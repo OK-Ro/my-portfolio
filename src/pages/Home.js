@@ -45,24 +45,21 @@ const ProfileCard = styled(BaseCard)`
   grid-row: 1 / span 2;
   height: 56rem;
   width: 60rem;
-  background: rgba(255, 255, 255, 0.2);
-  background: linear-gradient(
-    -45deg,
-    rgba(255, 107, 107, 0.5),
-    rgba(254, 202, 87, 0.5),
-    rgba(72, 219, 251, 0.5),
-    rgba(255, 159, 243, 0.5)
-  );
-  background-size: 300% 300%;
-
+  background-image: url("https://wallpapers.com/images/hd/white-solid-background-k03v99q4obz7fu6p.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   backdrop-filter: blur(380px); /* For supported browsers */
   -webkit-backdrop-filter: blur(80px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
     height: 55rem;
     width: 20rem;
     box-shadow: 0 4px 30px ${(props) => props.theme.boxShadow};
-    background: ${(props) => props.theme.cardBackground};
+    background-image: url("https://wallpapers.com/images/hd/white-solid-background-k03v99q4obz7fu6p.jpg");
+    background-size: cover;
+    background-position: center;
   }
 `;
 

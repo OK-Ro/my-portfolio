@@ -49,7 +49,7 @@ const lightTheme = {
   buttonBackground: "rgba(0, 122, 255, 0.8)",
   buttonText: "#FFFFFF",
   buttonHoverBackground: "rgba(90, 200, 250, 0.8)",
-  // New properties for contact form
+
   formBackground:
     "linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%)",
   formBorder: "rgb(255, 255, 255)",
@@ -63,6 +63,25 @@ const lightTheme = {
     "linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%)",
   buttonBoxShadow: "rgba(133, 189, 215, 0.8784313725)",
   iconColor: "rgb(16, 137, 211)",
+  // resume colors
+  resumeBackground:
+    "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+  resumeText: "#ffffff",
+  resumeCardBackground: "rgba(255, 255, 255, 0.9)",
+  resumeCardText: "#333333",
+  resumeAccent: "#23a6d5",
+  resumeButtonBackground: "white",
+  resumeButtonText: "black",
+  resumeButtonHoverBackground: "linear-gradient(to right, #6dd5ed, #2193b0)",
+  resumeButtonHoverText: "white",
+  resumeSectionBackground: "#ffffff",
+  resumeSectionTitle: "#23a6d5",
+  resumeWorkItemBackground: "#f8f9fa",
+  resumeWorkTitle: "#e73c7e",
+  resumeWorkCompany: "#333333",
+  resumeWorkDate: "#666666",
+  resumeSocialLinkBackground: "#23a6d5",
+  resumeSocialLinkHoverBackground: "#1c8ab9",
 };
 
 const darkTheme = {
@@ -111,6 +130,24 @@ const darkTheme = {
     "linear-gradient(45deg, rgb(64, 156, 255) 0%, rgb(100, 210, 255) 100%)",
   buttonBoxShadow: "rgba(0, 0, 0, 0.2)",
   iconColor: "rgb(64, 156, 255)",
+  // resumecolors
+  resumeBackground: "#1a1a1a",
+  resumeText: "#e0e0e0",
+  resumeCardBackground: "rgba(40, 40, 40, 0.9)",
+  resumeCardText: "#e0e0e0",
+  resumeAccent: "#64b5f6",
+  resumeButtonBackground: "#444",
+  resumeButtonText: "white",
+  resumeButtonHoverBackground: "linear-gradient(to right, #6dd5ed, #2193b0)",
+  resumeButtonHoverText: "white",
+  resumeSectionBackground: "#2c2c2c",
+  resumeSectionTitle: "#64b5f6",
+  resumeWorkItemBackground: "#3c3c3c",
+  resumeWorkTitle: "#ff8a65",
+  resumeWorkCompany: "#e0e0e0",
+  resumeWorkDate: "#bdbdbd",
+  resumeSocialLinkBackground: "#64b5f6",
+  resumeSocialLinkHoverBackground: "#4a90e2",
 };
 
 function AppContent() {

@@ -1,6 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   FaUser,
   FaBriefcase,
@@ -9,6 +10,7 @@ import {
   FaLanguage,
   FaLinkedin,
   FaGithub,
+  FaArrowLeft,
 } from "react-icons/fa";
 import SkillMeter from "../components/SkillMeter";
 import DownloadResumeButton from "../components/DownloadResumeButton";
@@ -18,15 +20,21 @@ import Project from "../components/Project";
 import TabInterface from "../components/TabInterface";
 import NavBar from "../components/NavBar";
 
+const gradientAnimation = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
+
 const PageWrapper = styled.div`
-  background-color: ${(props) => props.theme.body};
-  color: ${(props) => props.theme.text};
+  background: ${({ theme }) => theme.resumeBackground};
+  background-size: 400% 400%;
+  animation: ${gradientAnimation} 15s ease infinite;
+  color: ${({ theme }) => theme.resumeText};
   display: flex;
   flex-direction: column;
-  height: 100vh;
-
-  color: #1c1c1e;
   padding: 5rem;
+  min-height: 100vh;
 
   @media (max-width: 768px) {
     padding: 4rem 0.5rem;
@@ -35,16 +43,82 @@ const PageWrapper = styled.div`
 
 const ResumeContainer = styled(motion.div)`
   width: 100%;
-  height: 100%;
-  margin-top: 10rem;
+  max-width: 1000px;
+  margin: 10rem auto 0;
   padding: 2rem;
-  background-color: ${(props) => props.theme.body};
-  color: ${(props) => props.theme.text};
+  background-color: ${({ theme }) => theme.resumeCardBackground};
+  color: ${({ theme }) => theme.resumeCardText};
   border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
     padding: 1rem;
+  }
+`;
+
+const BackToHome = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.resumeButtonBackground};
+  width: 192px;
+  height: 56px;
+  border-radius: 16px;
+  position: relative;
+  color: ${({ theme }) => theme.resumeButtonText};
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  overflow: hidden;
+  margin-top: 10rem;
+  border: 4px solid transparent;
+  background-image: linear-gradient(
+      ${({ theme }) => theme.resumeButtonBackground},
+      ${({ theme }) => theme.resumeButtonBackground}
+    ),
+    ${({ theme }) => theme.resumeButtonHoverBackground};
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &::before {
+    content: "";
+    background: ${({ theme }) => theme.resumeButtonHoverBackground};
+    border-radius: 12px;
+    height: 45px;
+    width: 60px;
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    z-index: 1;
+    transition: width 0.5s;
+  }
+
+  &:hover::before {
+    width: 178px;
+  }
+
+  svg {
+    position: absolute;
+    left: 16px;
+    z-index: 2;
+    height: 20px;
+    width: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(-3px);
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+  }
+
+  &:hover span {
+    color: ${({ theme }) => theme.resumeButtonHoverText};
   }
 `;
 
@@ -54,10 +128,18 @@ const ResumeHeader = styled.div`
 `;
 
 const ResumeTitle = styled.h1`
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.resumeCardText};
   margin-bottom: 1rem;
   font-size: 2.5rem;
   font-weight: 700;
+  background: ${({ theme }) =>
+    theme.mode === "light"
+      ? "linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)"
+      : "linear-gradient(45deg, #64b5f6, #81c784, #ffd54f, #ff8a65)"};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -67,9 +149,15 @@ const ResumeTitle = styled.h1`
 const ResumeSection = styled(motion.section)`
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background-color: ${(props) => props.theme.body};
+  background-color: ${({ theme }) => theme.resumeSectionBackground};
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -77,8 +165,8 @@ const ResumeSection = styled(motion.section)`
 `;
 
 const SectionTitle = styled.h2`
-  color: ${(props) => props.theme.text};
-  border-bottom: 2px solid #007aff;
+  color: ${({ theme }) => theme.resumeSectionTitle};
+  border-bottom: 2px solid ${({ theme }) => theme.resumeSectionTitle};
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
   display: flex;
@@ -101,6 +189,9 @@ const ProfileInfo = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
+  background-color: ${({ theme }) => theme.resumeWorkItemBackground};
+  padding: 1rem;
+  border-radius: 10px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -116,37 +207,63 @@ const SocialLinks = styled.div`
 `;
 
 const SocialLink = styled.a`
-  color: ${(props) => props.theme.text};
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  background-color: ${({ theme }) => theme.resumeSocialLinkBackground};
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
 
   svg {
     margin-right: 0.5rem;
   }
 
   &:hover {
-    color: #0056b3;
+    background-color: ${({ theme }) => theme.resumeSocialLinkHoverBackground};
+    transform: translateY(-2px);
   }
 `;
 
 const WorkTimeline = styled.ul`
   list-style-type: none;
   padding: 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: ${({ theme }) => theme.resumeSectionTitle};
+  }
 `;
 
 const WorkItem = styled(motion.li)`
   margin-bottom: 1.5rem;
-  padding: 1rem;
-  background-color: ${(props) => props.theme.body};
+  padding: 1rem 1rem 1rem 2rem;
+  background-color: ${({ theme }) => theme.resumeWorkItemBackground};
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.resumeSectionTitle};
+  }
 `;
 
 const WorkTitle = styled.h3`
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.resumeWorkTitle};
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 
@@ -158,14 +275,14 @@ const WorkTitle = styled.h3`
 const WorkCompany = styled.p`
   font-weight: 600;
   margin-bottom: 0.25rem;
+  color: ${({ theme }) => theme.resumeWorkCompany};
 `;
 
 const WorkDate = styled.p`
-  color: #8e8e93;
+  color: ${({ theme }) => theme.resumeWorkDate};
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 `;
-
 function Resume() {
   const profile = {
     name: "Robert Okuni",
@@ -408,13 +525,12 @@ function Resume() {
               description={project.description}
               technologies={project.technologies}
               link={project.link}
-              image={project.image} // Add this line to pass the image to the component
+              image={project.image}
             />
           ))}
         </ResumeSection>
       ),
     },
-
     {
       title: "Skills & Languages",
       icon: <FaLanguage />,
@@ -448,6 +564,10 @@ function Resume() {
   return (
     <PageWrapper>
       <NavBar />
+      <BackToHome to="/">
+        <FaArrowLeft />
+        <span>Back To Home</span>
+      </BackToHome>
       <ResumeContainer
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

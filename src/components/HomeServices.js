@@ -1,14 +1,8 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import {
-  FaCode,
-  FaPalette,
-  FaMobileAlt,
-  FaServer,
-  FaRocket,
-  FaLock,
-} from "react-icons/fa";
+import { FaCode, FaServer, FaRocket, FaLock, FaMobile } from "react-icons/fa";
 
+// Keyframes
 const float = keyframes`
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -27,6 +21,7 @@ const shine = keyframes`
   100% { filter: brightness(100%); }
 `;
 
+// Styled components
 const ServicesContainer = styled.div`
   padding: 20px;
   background: ${(props) => props.theme.background};
@@ -66,8 +61,12 @@ const ServiceCard = styled.div`
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  border: 2px solid ${(props) => props.borderColor};
 
   &:hover {
+    background: ${(props) => props.bgColor};
+    color: ${(props) => props.color};
+    border-color: ${(props) => props.color};
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
@@ -141,58 +140,63 @@ const ServiceDescription = styled.p`
   }
 `;
 
+// Services data
 const services = [
   {
-    name: "Web Development",
+    name: "Front-End Development",
     icon: FaCode,
-    description: "Creating responsive and dynamic websites",
+    description:
+      "Crafting responsive and interactive user interfaces with modern technologies like React, Vue, and Angular.",
     color: "#FF6B6B",
     bgColor: "#FFE66D",
   },
   {
-    name: "UI/UX Design",
-    icon: FaPalette,
-    description: "Crafting intuitive and beautiful user interfaces",
+    name: "Back-End Development",
+    icon: FaServer,
+    description:
+      "Developing robust server-side applications and APIs using technologies like Node.js, Python, or Ruby on Rails.",
     color: "#4ECDC4",
     bgColor: "#45B7AA",
   },
   {
-    name: "Mobile Development",
-    icon: FaMobileAlt,
-    description: "Building native and cross-platform mobile apps",
+    name: "Full-Stack Development",
+    icon: FaMobile,
+    description:
+      "Providing comprehensive web solutions including database design and integration of front-end and back-end technologies.",
     color: "#6A2C70",
     bgColor: "#B83B5E",
   },
   {
-    name: "Backend Development",
-    icon: FaServer,
-    description: "Developing robust server-side applications",
+    name: "Web Performance Optimization",
+    icon: FaRocket,
+    description:
+      "Improving website speed and efficiency through code optimization and best practices.",
     color: "#3BCEAC",
     bgColor: "#0EAD69",
   },
   {
-    name: "Performance Optimization",
-    icon: FaRocket,
-    description: "Enhancing speed and efficiency of applications",
-    color: "#FF9A8B",
-    bgColor: "#FF6A88",
-  },
-  {
     name: "Security Implementation",
     icon: FaLock,
-    description: "Implementing strong security measures",
+    description:
+      "Ensuring robust security measures to protect applications and data.",
     color: "#845EC2",
     bgColor: "#D65DB1",
   },
 ];
 
+// HomeServices component
 function HomeServices() {
   return (
     <ServicesContainer>
       <ServicesTitle>Services I Offer</ServicesTitle>
       <ServiceGrid>
         {services.map((service, index) => (
-          <ServiceCard key={index}>
+          <ServiceCard
+            key={index}
+            color={service.color}
+            bgColor={service.bgColor}
+            borderColor={service.color}
+          >
             <ServiceIcon
               as={service.icon}
               color={service.color}
