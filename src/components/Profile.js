@@ -181,10 +181,9 @@ const Profile = () => {
 
         <SkillTags>
           <SkillTag>UI/UX Design</SkillTag>
-          <SkillTag>Branding</SkillTag>
           <SkillTag>Illustration</SkillTag>
           <SkillTag>Front-end Dev</SkillTag>
-          <SkillTag>Typography</SkillTag>
+          <SkillTag>Back-end-Dev</SkillTag>
         </SkillTags>
         <SocialLinks>
           <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
