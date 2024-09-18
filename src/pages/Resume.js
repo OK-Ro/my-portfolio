@@ -290,7 +290,7 @@ function Resume() {
     phone: "+31 687693145",
     email: "o.robert1994@hotmail.com",
     address: "Fossa italica 17",
-    authorizedToWork: "Authorized to work in the United States",
+    authorizedToWork: "Authorized to work in the Netherlands",
     summary:
       "I am a passionate and self-driven professional with a strong sense of responsibility and dedication to my work. I enjoy creating products that are both innovative and functional, solving real-world problems while offering engaging features. Collaboration is key for me, and I thrive in team environments where we work towards shared goals. My previous experiences have sharpened my communication, problem-solving, and results-oriented skills, making me a reliable and effective team player.",
     linkedin: "https://www.linkedin.com/in/johndoe",
@@ -453,7 +453,7 @@ function Resume() {
                 <strong>Address:</strong> {profile.address}
               </p>
               <p>
-                <strong>Work Authorization:</strong> {profile.authorizedToWork}
+                <strong>Authorization:</strong> {profile.authorizedToWork}
               </p>
             </div>
           </ProfileInfo>
