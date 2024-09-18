@@ -11,7 +11,8 @@ const ExperienceWrapper = styled.div`
   background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
 
   @media (max-width: 768px) {
-    padding: 0.2rem;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 `;
 
