@@ -36,7 +36,8 @@ const BaseCard = styled.div`
   transition: background-color 0.3s ease, color 0.3s ease;
 
   @media (max-width: 768px) {
-    padding: 10px;
+    padding: 5px;
+    box-shadow: 0 4px 1px ${(props) => props.theme.boxShadow};
   }
 `;
 
@@ -56,9 +57,9 @@ const ProfileCard = styled(BaseCard)`
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 1;
-    height: auto;
+    height: 47rem;
     width: 100%;
-    min-height: 40rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.09);
   }
 `;
 
@@ -68,6 +69,8 @@ const WorkExperienceCard = styled(BaseCard)`
   height: 29rem;
   width: 100%;
   overflow-y: auto;
+  backdrop-filter: blur(380px);
+  -webkit-backdrop-filter: blur(80px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
@@ -77,11 +80,11 @@ const WorkExperienceCard = styled(BaseCard)`
   }
 
   &::-webkit-scrollbar {
-    width: 0.5em;
+    width: 0;
   }
   &::-webkit-scrollbar-thumb {
     background-color: ${(props) => props.theme.scrollbarThumb};
-    border-radius: 10px;
+    border-radius: 20px;
   }
   &::-webkit-scrollbar-thumb:hover {
     background-color: ${(props) => props.theme.scrollbarThumbHover};
@@ -94,7 +97,9 @@ const WorkExperienceCard = styled(BaseCard)`
 const SkillsCard = styled(BaseCard)`
   grid-column: 2;
   grid-row: 2;
-  height: 24rem;
+  height: 25rem;
+  backdrop-filter: blur(380px);
+  -webkit-backdrop-filter: blur(80px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
@@ -112,6 +117,9 @@ const ProjectsCard = styled(BaseCard)`
   overflow-y: auto;
   backdrop-filter: blur(10px);
   border: 20px solid ${(props) => props.theme.cardBackground};
+  backdrop-filter: blur(380px);
+  -webkit-backdrop-filter: blur(80px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   &::-webkit-scrollbar {
     display: none;
@@ -148,6 +156,8 @@ const ProjectsCard = styled(BaseCard)`
 const ServicesCard = styled(BaseCard)`
   grid-column: 1 / span 2;
   grid-row: 3;
+  backdrop-filter: blur(380px);
+  -webkit-backdrop-filter: blur(80px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {

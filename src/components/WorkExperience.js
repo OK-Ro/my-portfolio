@@ -11,7 +11,7 @@ const ExperienceWrapper = styled.div`
   background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
 
   @media (max-width: 768px) {
-    padding: 1rem;
+    padding: 0.2rem;
   }
 `;
 
@@ -30,6 +30,7 @@ const ExperienceContainer = styled.div`
 
   @media (max-width: 768px) {
     padding: 1rem;
+    height: 100%;
   }
 
   &::-webkit-scrollbar {
@@ -45,6 +46,15 @@ const ExperienceContainer = styled.div`
   }
 `;
 
+const TitleWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  background-color: ${(props) => props.theme.cardBackground || "#ffffff"};
+  z-index: 1;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+`;
+
 const Title = styled.h2`
   font-size: 2.5rem;
   color: ${(props) => props.theme.text || "#333333"};
@@ -55,7 +65,7 @@ const Title = styled.h2`
   -webkit-text-fill-color: transparent;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
 `;
@@ -116,7 +126,8 @@ const TimelineContent = styled.div`
   margin-right: ${(props) => (props.position === "right" ? "0" : "auto")};
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 90%;
+    height: auto;
     transform: none;
     margin-left: 0;
     margin-right: 0;
@@ -155,7 +166,7 @@ const JobTitle = styled.h3`
   align-items: center;
 
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -165,7 +176,7 @@ const Company = styled.h4`
   margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -236,7 +247,9 @@ const WorkExperience = () => {
   return (
     <ExperienceWrapper>
       <ExperienceContainer>
-        <Title>Work Experience</Title>
+        <TitleWrapper>
+          <Title>Work Experience</Title>
+        </TitleWrapper>
         <Timeline>
           {experiences.map((exp, index) => (
             <TimelineItem
