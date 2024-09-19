@@ -16,18 +16,21 @@ const Pre = styled.pre`
   overflow-y: auto;
   backdrop-filter: blur(10px);
 
-  @media (max-width: 768px) {
-    padding: 0.6rem;
-    width: 19.3rem;
-    margin-left: -1.6rem;
-  }
-
   &::-webkit-scrollbar {
     display: none;
   }
 
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 0.1rem;
+    height: 18rem;
+    width: calc(110% - 1.5rem);
+
+    margin-right: 0.5rem;
+  }
 `;
 
 const colorClasses = [

@@ -7,12 +7,21 @@ const VisitorSectionWrapper = styled.div`
   border-radius: 8px;
   padding: 20px;
   color: #d1d4dc;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
 `;
 
 const ChartTitle = styled.h2`
   font-size: 24px;
   margin-bottom: 20px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
 `;
 
 const ChartContainer = styled.div`
@@ -23,11 +32,22 @@ const ChartContainer = styled.div`
   padding: 20px;
   overflow: hidden;
   display: flex;
+
+  @media (max-width: 768px) {
+    height: auto;
+    flex-direction: column;
+    padding: 15px;
+  }
 `;
 
 const LineChartContainer = styled.div`
   flex: 1;
   position: relative;
+
+  @media (max-width: 768px) {
+    height: 250px;
+    margin-bottom: 20px;
+  }
 `;
 
 const BarChartContainer = styled.div`
@@ -36,41 +56,75 @@ const BarChartContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 `;
 
 const ChartLine = styled(motion.path)`
   fill: none;
   stroke-width: 3;
   filter: drop-shadow(0 0 5px ${(props) => props.stroke});
+
+  @media (max-width: 768px) {
+    stroke-width: 2;
+  }
 `;
 
 const GridLine = styled.line`
   stroke: #2a2e39;
   stroke-width: 1;
   stroke-dasharray: 5, 5;
+
+  @media (max-width: 768px) {
+    stroke-width: 0.5;
+    stroke-dasharray: 3, 3;
+  }
 `;
 
 const AxisLabel = styled.text`
   fill: #d1d4dc;
   font-size: 12px;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 const MonthLabel = styled.text`
   fill: #d1d4dc;
   font-size: 10px;
   text-anchor: middle;
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
 `;
 
 const Legend = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    margin-top: 15px;
+  }
 `;
 
 const LegendItem = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 15px;
+  margin: 5px 15px;
+
+  @media (max-width: 768px) {
+    margin: 5px 10px;
+    font-size: 12px;
+  }
 `;
 
 const LegendColor = styled.div`
@@ -79,6 +133,12 @@ const LegendColor = styled.div`
   margin-right: 8px;
   background-color: ${(props) => props.color};
   box-shadow: 0 0 10px ${(props) => props.color};
+
+  @media (max-width: 768px) {
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+  }
 `;
 
 const Tooltip = styled.div`
@@ -89,6 +149,11 @@ const Tooltip = styled.div`
   border-radius: 4px;
   font-size: 12px;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
 `;
 
 const PumpingBarsContainer = styled.div`
@@ -96,6 +161,10 @@ const PumpingBarsContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 200px;
+
+  @media (max-width: 768px) {
+    height: 100px;
+  }
 `;
 
 const PumpingBar = styled(motion.div)`
@@ -103,14 +172,22 @@ const PumpingBar = styled(motion.div)`
   position: absolute;
   bottom: 0;
   border-radius: 4px 4px 0 0;
+
+  @media (max-width: 768px) {
+    width: 30px;
+  }
 `;
 
 const BarLabel = styled.div`
   font-size: 10px;
   text-align: center;
   margin-top: 5px;
-`;
 
+  @media (max-width: 768px) {
+    font-size: 9px;
+    margin-top: 3px;
+  }
+`;
 const VisitorSection = () => {
   const [monthlyData, setMonthlyData] = useState([]);
   const [tooltip, setTooltip] = useState({

@@ -6,13 +6,13 @@ import NavBar from "../components/NavBar";
 import { FaArrowLeft } from "react-icons/fa";
 
 const PortfolioContainer = styled.div`
-  background-color: ${(props) => props.theme.body};
+  background: ${({ theme }) => theme.resumeBackground};
   color: ${(props) => props.theme.text};
   margin: 0 auto;
   padding: 5rem;
   width: 100%;
   @media (max-width: 768px) {
-    padding: 5rem;
+    padding: 14px;
   }
 `;
 
@@ -31,7 +31,6 @@ const BackToHome = styled(Link)`
   font-weight: 600;
   text-decoration: none;
   overflow: hidden;
-  margin-top: 10rem;
   border: 4px solid transparent;
   background-image: linear-gradient(white, white),
     linear-gradient(to right, #6dd5ed, #2193b0);
@@ -78,7 +77,24 @@ const BackToHome = styled(Link)`
   &:hover span {
     color: white;
   }
+
+  @media (max-width: 768px) {
+    width: 160px;
+    height: 48px;
+    font-size: 14px;
+    margin-top: 5rem;
+
+    &::before {
+      height: 38px;
+      width: 50px;
+    }
+
+    &:hover::before {
+      width: 148px;
+    }
+  }
 `;
+
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50% }
   50% { background-position: 100% 50% }
@@ -89,7 +105,6 @@ const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 `;
-
 const Header = styled.h1`
   font-size: 3rem;
   font-weight: 900;
@@ -317,8 +332,9 @@ const CTASection = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 768px) {
-    margin-top: 3rem;
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+    padding: 0.5rem;
   }
 `;
 

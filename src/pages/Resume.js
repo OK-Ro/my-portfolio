@@ -33,18 +33,18 @@ const PageWrapper = styled.div`
   color: ${({ theme }) => theme.resumeText};
   display: flex;
   flex-direction: column;
-  padding: 5rem;
+  padding: 12rem;
   min-height: 100vh;
 
   @media (max-width: 768px) {
-    padding: 4rem 0.5rem;
+    padding: 4rem 1rem;
   }
 `;
 
 const ResumeContainer = styled(motion.div)`
   width: 100%;
   max-width: 1000px;
-  margin: 10rem auto 0;
+  margin: 5rem auto 0;
   padding: 2rem;
   background-color: ${({ theme }) => theme.resumeCardBackground};
   color: ${({ theme }) => theme.resumeCardText};
@@ -53,6 +53,7 @@ const ResumeContainer = styled(motion.div)`
 
   @media (max-width: 768px) {
     padding: 1rem;
+    margin-top: 1.5rem;
   }
 `;
 
@@ -60,30 +61,27 @@ const BackToHome = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.resumeButtonBackground};
+  background-color: white;
+  margin-top: 5rem;
   width: 192px;
   height: 56px;
   border-radius: 16px;
   position: relative;
-  color: ${({ theme }) => theme.resumeButtonText};
+  color: black;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
   overflow: hidden;
-  margin-top: 10rem;
   border: 4px solid transparent;
-  background-image: linear-gradient(
-      ${({ theme }) => theme.resumeButtonBackground},
-      ${({ theme }) => theme.resumeButtonBackground}
-    ),
-    ${({ theme }) => theme.resumeButtonHoverBackground};
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #6dd5ed, #2193b0);
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &::before {
     content: "";
-    background: ${({ theme }) => theme.resumeButtonHoverBackground};
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
     border-radius: 12px;
     height: 45px;
     width: 60px;
@@ -118,7 +116,23 @@ const BackToHome = styled(Link)`
   }
 
   &:hover span {
-    color: ${({ theme }) => theme.resumeButtonHoverText};
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    width: 160px;
+    height: 48px;
+    font-size: 14px;
+    margin-top: 3rem;
+
+    &::before {
+      height: 38px;
+      width: 50px;
+    }
+
+    &:hover::before {
+      width: 148px;
+    }
   }
 `;
 
@@ -262,6 +276,12 @@ const WorkItem = styled(motion.li)`
   }
 `;
 
+const WorkDescription = styled.ul`
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 0.5rem;
+`;
+
 const WorkTitle = styled.h3`
   color: ${({ theme }) => theme.resumeWorkTitle};
   margin-bottom: 0.5rem;
@@ -293,8 +313,8 @@ function Resume() {
     authorizedToWork: "Authorized to work in the Netherlands",
     summary:
       "I am a passionate and self-driven professional with a strong sense of responsibility and dedication to my work. I enjoy creating products that are both innovative and functional, solving real-world problems while offering engaging features. Collaboration is key for me, and I thrive in team environments where we work towards shared goals. My previous experiences have sharpened my communication, problem-solving, and results-oriented skills, making me a reliable and effective team player.",
-    linkedin: "https://www.linkedin.com/in/johndoe",
-    github: "https://github.com/johndoe",
+    linkedin: "https://www.linkedin.com/in/robert-okuni-96425b269/",
+    github: "https://github.com/OK-Ro",
   };
 
   const experiences = [
@@ -418,7 +438,14 @@ function Resume() {
           <WorkTitle>{exp.title}</WorkTitle>
           <WorkCompany>{exp.company}</WorkCompany>
           <WorkDate>{exp.date}</WorkDate>
-          <p>{exp.description}</p>
+          <WorkDescription>
+            {exp.description
+              .split("•")
+              .filter((item) => item.trim())
+              .map((item, i) => (
+                <li key={i}>{item.trim()}</li>
+              ))}
+          </WorkDescription>
         </WorkItem>
       ))}
     </WorkTimeline>

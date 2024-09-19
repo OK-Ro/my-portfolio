@@ -8,9 +8,7 @@ import WorkExperience from "../components/WorkExperience";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import HomeServices from "../components/HomeServices";
-
 const CardContainer = styled.div`
-  background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -76,7 +74,7 @@ const WorkExperienceCard = styled(BaseCard)`
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 2;
-    height: 30rem;
+    height: 47rem;
   }
 
   &::-webkit-scrollbar {
@@ -133,8 +131,7 @@ const ProjectsCard = styled(BaseCard)`
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 4;
-    height: auto;
-    min-height: 40rem;
+    height: 47rem;
     border: 2px solid ${(props) => props.theme.inputb};
   }
 
@@ -166,7 +163,6 @@ const ServicesCard = styled(BaseCard)`
     width: 100%;
   }
 `;
-
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -190,7 +186,7 @@ const ContactCard = styled(BaseCard)`
   grid-column: 3;
   grid-row: 3;
   height: auto;
-  width: 51rem;
+  width: 60rem;
   padding: 2rem;
   position: relative;
   overflow: hidden;
@@ -231,7 +227,7 @@ const ContactCard = styled(BaseCard)`
 
 const LetsTalkContainer = styled.div`
   background: linear-gradient(-45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-  background-size: 400% 400%;
+  background-size: 500% 500%;
   animation: ${gradientAnimation} 15s ease infinite;
   border-radius: 20px;
   padding: 3rem;
@@ -335,7 +331,7 @@ const BulletIcon = styled.svg`
 `;
 
 const PageContainer = styled.div`
-  background-color: ${(props) => props.theme.body};
+  background: ${({ theme }) => theme.resumeBackground};
   color: ${(props) => props.theme.text};
   min-height: 100vh;
   padding: 20px;
@@ -344,7 +340,6 @@ const PageContainer = styled.div`
     padding: 15px;
   }
 `;
-
 function Home({ toggleTheme, isDarkTheme }) {
   const [isAnimating, setIsAnimating] = useState(false);
   const navigate = useNavigate();
@@ -354,7 +349,7 @@ function Home({ toggleTheme, isDarkTheme }) {
     setIsAnimating(true);
     setTimeout(() => {
       navigate("/contact");
-    }, 800); // Match this with the animation duration
+    }, 800);
   };
 
   return (

@@ -1,52 +1,33 @@
 import { createGlobalStyle } from "styled-components";
+import "normalize.css";
 
 const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
   * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
   }
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: 'Montserrat', sans-serif;
+  html {
+    font-size: 16px;
   }
 
   body {
-    position: fixed;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    color: ${(props) => props.theme.primaryText};
+    background-color: ${(props) => props.theme.backgroundColor};
   }
 
   #root {
-    min-height: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
   }
 
-  img, picture, video, canvas, svg {
-    display: block;
+  img {
     max-width: 100%;
-  }
-
-  input, button, textarea, select {
-    font: inherit;
-  }
-
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-  }
-
-  @keyframes brighten {
-    0%, 100% { filter: brightness(100%); }
-    50% { filter: brightness(150%); }
+    height: auto;
   }
 `;
 

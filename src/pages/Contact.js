@@ -4,15 +4,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import {
   FaFacebookF,
-  FaTwitter,
   FaDribbble,
-  FaInstagram,
-  FaBehance,
   FaPhone,
   FaEnvelope,
   FaMapMarkerAlt,
   FaPaperPlane,
   FaArrowLeft,
+  FaGithub,
+  FaLinkedinIn,
 } from "react-icons/fa";
 import NavBar from "../components/NavBar";
 
@@ -25,6 +24,30 @@ const gradientAnimation = keyframes`
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+`;
+
+const float = keyframes`
+  0% { transform: translateY(0px) rotateY(0deg); }
+  50% { transform: translateY(-10px) rotateY(180deg); }
+  100% { transform: translateY(0px) rotateY(360deg); }
+`;
+
+const glow = keyframes`
+  0% { box-shadow: 0 0 5px ${({ theme }) => theme.accent}; }
+  50% { box-shadow: 0 0 20px ${({ theme }) => theme.accent}, 0 0 30px ${({
+  theme,
+}) => theme.accent}; }
+  100% { box-shadow: 0 0 5px ${({ theme }) => theme.accent}; }
+`;
+
+const rotate = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const pulse = keyframes`
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 `;
 
 const Header = styled.h1`
@@ -53,11 +76,11 @@ const Header = styled.h1`
     border-radius: 2px;
   }
 
-  @media (min-width: 768px) {
-    font-size: 3.5rem;
+  @media (max-width: 768px) {
+    font-size: 3rem;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1024px) {
     font-size: 4rem;
   }
 `;
@@ -68,7 +91,6 @@ const Subheader = styled.p`
   font-weight: 900;
   color: ${(props) => props.theme.accent || "#FF416C"};
   max-width: 800px;
-
   line-height: 1.6;
   animation: ${fadeIn} 1s ease-out 0.5s both;
   position: relative;
@@ -91,12 +113,13 @@ const Subheader = styled.p`
     right: 0;
   }
 
-  @media (min-width: 768px) {
-    font-size: 1.8rem;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
   }
 
-  @media (min-width: 1024px) {
-    font-size: 2rem;
+  @media (min-width: 769px) and (max-width: 1024px) {
+    font-size: 1.8rem;
     margin-bottom: 3rem;
   }
 `;
@@ -106,8 +129,12 @@ const PageWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   padding: 5rem;
-  background: ${({ theme }) => theme.body};
+  background: ${({ theme }) => theme.resumeBackground};
   color: ${({ theme }) => theme.text};
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
 `;
 
 const ContactContainer = styled.div`
@@ -118,6 +145,10 @@ const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const BackToHome = styled(Link)`
@@ -182,6 +213,14 @@ const BackToHome = styled(Link)`
   &:hover span {
     color: white;
   }
+
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 48px;
+    font-size: 14px;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -192,6 +231,7 @@ const ContentWrapper = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 2rem;
   }
 `;
 
@@ -199,6 +239,11 @@ const LeftSection = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const RightSection = styled.div`
@@ -211,30 +256,30 @@ const RightSection = styled.div`
   padding: 40px;
   border: 5px solid ${({ theme }) => theme.formBorder};
   box-shadow: 0 30px 30px -20px ${({ theme }) => theme.formBoxShadow};
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    border-radius: 20px;
+  }
 `;
 
 const IntroText = styled.p`
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
   color: ${({ theme }) => theme.secondaryText};
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const ContactInfo = styled.div`
   margin-bottom: 3rem;
-`;
 
-const float = keyframes`
-  0% { transform: translateY(0px) rotateY(0deg); }
-  50% { transform: translateY(-10px) rotateY(180deg); }
-  100% { transform: translateY(0px) rotateY(360deg); }
-`;
-
-const glow = keyframes`
-  0% { box-shadow: 0 0 5px ${({ theme }) => theme.accent}; }
-  50% { box-shadow: 0 0 20px ${({ theme }) => theme.accent}, 0 0 30px ${({
-  theme,
-}) => theme.accent}; }
-  100% { box-shadow: 0 0 5px ${({ theme }) => theme.accent}; }
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 const Icon = styled.span`
@@ -278,6 +323,16 @@ const Icon = styled.span`
       transform: scale(1.2);
     }
   }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-right: 1rem;
+
+    &::before {
+      width: 50px;
+      height: 50px;
+    }
+  }
 `;
 
 const InfoItem = styled.div`
@@ -290,11 +345,21 @@ const InfoItem = styled.div`
   &:hover {
     transform: translateX(10px);
   }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 `;
+
 const Form = styled.form`
   display: grid;
   gap: 2rem;
   width: 100%;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 `;
 
 const InputRow = styled.div`
@@ -303,6 +368,7 @@ const InputRow = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 1rem;
   }
 `;
 
@@ -339,11 +405,20 @@ const Input = styled.input`
   &::placeholder {
     color: transparent;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 12px 15px;
+  }
 `;
 
 const TextArea = styled(Input).attrs({ as: "textarea" })`
   height: 150px;
   resize: vertical;
+
+  @media (max-width: 768px) {
+    height: 120px;
+  }
 `;
 
 const Label = styled.label`
@@ -354,6 +429,11 @@ const Label = styled.label`
   color: ${({ theme }) => theme.labelColor};
   pointer-events: none;
   transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    top: 12px;
+  }
 `;
 
 const Button = styled.button`
@@ -386,22 +466,83 @@ const Button = styled.button`
     transform: translateY(1px);
     box-shadow: 0 2px 5px ${({ theme }) => theme.buttonBoxShadow};
   }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 12px;
+  }
 `;
 
 const SocialLinks = styled.div`
   display: flex;
   gap: 2rem;
   margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+    margin-top: 2rem;
+  }
 `;
 
 const SocialIcon = styled.a`
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: ${({ theme }) => theme.iconColor};
-  transition: color 0.3s ease, transform 0.3s ease;
+  background: ${({ theme }) => theme.cardBackground};
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  transition: all 0.3s ease;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: ${({ color }) => color};
+    border-bottom-color: ${({ color }) => color};
+    animation: ${rotate} 3s linear infinite;
+  }
+
+  &::after {
+    animation: ${rotate} 1.5s linear reverse infinite;
+  }
+
+  svg {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
 
   &:hover {
-    color: ${({ theme }) => theme.accent};
-    transform: scale(1.1);
+    transform: translateY(-5px);
+    animation: ${pulse} 1s ease infinite;
+
+    &::before,
+    &::after {
+      border-top-color: ${({ theme }) => theme.accent};
+      border-bottom-color: ${({ theme }) => theme.accent};
+    }
+
+    svg {
+      color: ${({ color }) => color};
+      transform: scale(1.2);
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    width: 50px;
+    height: 50px;
   }
 `;
 
@@ -503,17 +644,27 @@ const Contact = () => {
               <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
                 <FaFacebookF />
               </SocialIcon>
-              <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-                <FaTwitter />
+              <SocialIcon
+                href="https://github.com/OK-Ro"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+              >
+                <FaGithub />
               </SocialIcon>
-              <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
+              <SocialIcon
+                href="https://dribbble.com/omuto2023"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaDribbble />
               </SocialIcon>
-              <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-                <FaInstagram />
-              </SocialIcon>
-              <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-                <FaBehance />
+              <SocialIcon
+                href="https://www.linkedin.com/in/robert-okuni-96425b269/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedinIn />
               </SocialIcon>
             </SocialLinks>
           </LeftSection>

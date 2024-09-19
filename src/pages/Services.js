@@ -49,35 +49,29 @@ const ServicesContainer = styled.div`
   padding: 2rem;
   animation: ${fadeIn} 0.5s ease-in;
 
-  @media (min-width: 768px) {
-    padding: 0.1rem;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 5rem;
+  @media (max-width: 768px) {
+    padding: 16px;
+    width: 100%;
   }
 `;
 
 const ContentWrapper = styled.div`
-  margin-top: 5rem;
+  margin-top: 10rem;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     margin-top: 7rem;
-  }
-
-  @media (min-width: 1024px) {
-    margin-top: 10rem;
+    width: 100%;
   }
 `;
 
 const PageLayout = styled.div`
+  flex-direction: row;
+  gap: 4rem;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
 
-  @media (min-width: 1024px) {
-    flex-direction: row;
-    gap: 4rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
   }
 `;
 
@@ -85,18 +79,28 @@ const LeftColumn = styled.div`
   flex: 1;
   min-width: 300px;
   animation: ${fadeIn} 0.9s ease-in;
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+    margin-bottom: 2rem;
+  }
 `;
 
 const RightColumn = styled.div`
   flex: 1;
   min-width: 300px;
-`;
+  margin-top: 12rem;
 
+  @media (max-width: 768px) {
+    min-width: 100%;
+  }
+`;
 const BackToHome = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background-color: white;
+  margin-top: 5rem;
   width: 192px;
   height: 56px;
   border-radius: 16px;
@@ -106,7 +110,6 @@ const BackToHome = styled(Link)`
   font-weight: 600;
   text-decoration: none;
   overflow: hidden;
-
   border: 4px solid transparent;
   background-image: linear-gradient(white, white),
     linear-gradient(to right, #6dd5ed, #2193b0);
@@ -153,6 +156,22 @@ const BackToHome = styled(Link)`
   &:hover span {
     color: white;
   }
+
+  @media (max-width: 768px) {
+    width: 160px;
+    height: 48px;
+    font-size: 14px;
+    margin-top: 0;
+
+    &::before {
+      height: 38px;
+      width: 50px;
+    }
+
+    &:hover::before {
+      width: 148px;
+    }
+  }
 `;
 
 const gradientAnimation = keyframes`
@@ -162,7 +181,7 @@ const gradientAnimation = keyframes`
 `;
 
 const Header = styled.h1`
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 900;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -188,18 +207,14 @@ const Header = styled.h1`
     border-radius: 2px;
   }
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 3.5rem;
   }
 `;
 
 const Subheader = styled.p`
-  font-size: 3rem;
-  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
   text-align: center;
   color: ${(props) => props.theme.secondaryText};
   max-width: 800px;
@@ -229,13 +244,8 @@ const Subheader = styled.p`
     right: 0;
   }
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 1.2rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 1.3rem;
-    margin-bottom: 3rem;
   }
 `;
 
@@ -359,21 +369,19 @@ const ServiceDescription = styled.p`
 `;
 
 const TotalVisitorSection = styled.div`
-  margin: 2rem 0;
-  padding: 1.5rem;
+  margin: 3rem 0;
+  padding: 2rem;
+
+  border-width: 20px;
   background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
   box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
   border: 10px solid ${(props) => props.theme.cardBorderline};
 
-  @media (min-width: 768px) {
-    margin: 3rem 0;
-    padding: 2rem;
-    border-width: 15px;
-  }
-
-  @media (min-width: 1024px) {
-    border-width: 20px;
+  @media (max-width: 768px) {
+    margin: 2rem 0;
+    padding: 0.1rem;
+    border-width: 2px;
   }
 `;
 

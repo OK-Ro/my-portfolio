@@ -41,10 +41,10 @@ const FeedbackCard = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 330px;
+    height: 340px;
     padding: 1rem;
-    width: 20rem;
-    margin-left: -2rem;
+    width: calc(110% - 1.5rem);
+    margin: 0 0.1rem;
   }
 `;
 
@@ -105,7 +105,7 @@ const ProfileIcon = styled.div`
 `;
 const MessageContent = styled.div`
   width: 100%;
-  border: 3px solid white;
+
   border-radius: 20px;
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.1);

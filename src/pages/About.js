@@ -17,9 +17,29 @@ import NavBar from "../components/NavBar";
 import ColoredText from "./ColoredText";
 import FeedbackPopup from "./FeedbackPopup";
 
+const gradientAnimation = keyframes`
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+`;
+
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 const AboutContainer = styled.div`
   padding: 3rem;
-  background-color: ${(props) => props.theme.body};
+  background: ${({ theme }) => theme.resumeBackground};
   color: ${(props) => props.theme.text};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
@@ -37,8 +57,8 @@ const ProfileSection = styled.section`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    margin-top: 12rem;
-    gap: 2rem;
+    margin-top: 8rem;
+    gap: 1rem;
   }
 `;
 
@@ -85,7 +105,7 @@ const Card = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 1rem;
+    padding: 1.5rem;
     margin-top: 2rem;
   }
 `;
@@ -95,7 +115,7 @@ const ProfilePictureCard = styled(Card)`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   height: auto;
   background-color: ${(props) => props.theme.cardBackground};
-
+  animation: ${fadeIn} 1s ease-out;
   @media (max-width: 768px) {
     margin-top: 0;
   }
@@ -110,15 +130,6 @@ const ProfilePictureWrapper = styled.div`
   @media (max-width: 768px) {
     width: 200px;
     height: 200px;
-  }
-`;
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 `;
 
@@ -195,14 +206,14 @@ const ThreeColumnSection = styled.section`
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  height: 30rem;
+  height: auto;
   margin-top: 5rem;
-  background-color: ${(props) => props.theme.cardBackground};
 
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
     margin-top: 2rem;
+    gap: 0;
   }
 `;
 
@@ -221,7 +232,7 @@ const StatisticsSection = styled(Card)`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.2rem;
     padding: 1rem;
   }
 `;
@@ -265,7 +276,7 @@ const ExperienceItem = styled.div`
   }
 
   @media (max-width: 768px) {
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
   }
 `;
 
@@ -273,11 +284,11 @@ const FooterSection = styled.section`
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  margin-top: 5rem;
+  margin-top: 0.1rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     gap: 0.1rem;
   }
 `;
@@ -318,7 +329,7 @@ const FooterCard = styled(Card)`
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 `;
 
@@ -343,23 +354,29 @@ const FooterText = styled.p`
     font-size: 0.9rem;
   }
 `;
+
 const CTASection = styled.div`
   perspective: 1000px;
   margin-top: 2rem;
   width: 58rem;
 
-  @media (min-width: 768px) {
-    margin-top: 3rem;
+  @media (max-width: 768px) {
+    margin-top: 0;
+    width: 100%;
+    margin-bottom: 2rem;
   }
 `;
 
 const CTACard = styled.div`
   background: linear-gradient(45deg, #00c9ff, #92fe9d);
+  background-size: 200% 200%;
+  animation: ${gradientAnimation} 5s ease infinite;
   border-radius: 20px;
   padding: 2rem;
   margin-top: 5rem;
   text-align: center;
-  height: 22rem;
+  height: auto;
+  min-height: 22rem;
   color: #1a1a1a;
   transform-style: preserve-3d;
   transition: transform 0.6s;
@@ -367,14 +384,6 @@ const CTACard = styled.div`
 
   &:hover {
     transform: rotateY(10deg) rotateX(5deg);
-  }
-
-  @media (min-width: 768px) {
-    padding: 2.5rem;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 3rem;
   }
 `;
 
@@ -440,14 +449,9 @@ const CTAButton = styled(Link)`
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
-
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     padding: 1rem 2rem;
     font-size: 1.1rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 1.2rem;
   }
 `;
 

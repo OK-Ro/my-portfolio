@@ -464,10 +464,10 @@ function NavBar() {
 
   return (
     <NavContainer>
-      <Nav scrolled={scrolled}>
+      <Nav $scrolled={scrolled}>
         <Logo to="/">
           <LogoText>
-            ROB<LogoSubtext>FOLIO</LogoSubtext>
+            BOB<LogoSubtext>FOLIO</LogoSubtext>
           </LogoText>
         </Logo>
         <MenuToggle onClick={toggleMenu}>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FaGithub, FaLinkedinIn, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -27,8 +27,7 @@ const ProfileContainer = styled.div`
 
 const PhotoContainer = styled.div`
   width: 380px;
-  height: 400px;
-  margin-bottom: 1.5rem;
+  height: 450px;
   position: relative;
   overflow: hidden;
 
@@ -42,12 +41,8 @@ const Photo = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 23%;
   border-radius: 20px;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 `;
 
 const ProfileInfo = styled.div`
@@ -229,16 +224,23 @@ const SocialIcon = styled.a`
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
+
+  svg {
+    width: 1.4rem;
+    height: 1.4rem;
+
+    @media (max-width: 768px) {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
 `;
 
 const Profile = () => {
   return (
     <ProfileContainer>
       <PhotoContainer>
-        <Photo
-          src="https://www.bing.com/th?id=OIP.F8N47NFCKAaMf97INBReHQHaJz&w=150&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
-          alt="Gole Layla"
-        />
+        <Photo src="/IMG_2048.jpg" alt="Gole Layla" />
       </PhotoContainer>
       <ProfileInfo>
         <Name>Robert Okuni</Name>
@@ -253,21 +255,31 @@ const Profile = () => {
 
         <SkillTags>
           <SkillTag>UI/UX Design</SkillTag>
-          <SkillTag>Illustration</SkillTag>
           <SkillTag>Front-end Dev</SkillTag>
           <SkillTag>Back-end-Dev</SkillTag>
         </SkillTags>
         <SocialLinks>
-          <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
+          <SocialIcon
+            href="https://github.com/OK-Ro"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+          >
             <FaGithub />
           </SocialIcon>
-          <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
+          <SocialIcon
+            href="https://www.linkedin.com/in/robert-okuni-96425b269/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedinIn />
           </SocialIcon>
-          <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-            <FaTwitter />
-          </SocialIcon>
-          <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
+
+          <SocialIcon
+            href="mailto:o.robert1994@hotmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaEnvelope />
           </SocialIcon>
         </SocialLinks>
