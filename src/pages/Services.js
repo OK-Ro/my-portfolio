@@ -86,7 +86,7 @@ const RightColumn = styled.div`
 
   @media (max-width: 768px) {
     min-width: 100%;
-    margin-top: 2rem;
+    margin-top: 0;
   }
 `;
 const BackToHome = styled(Link)`
