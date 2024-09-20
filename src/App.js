@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import {
@@ -13,9 +13,10 @@ import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
-import SmoothScroll from "./pages/SmoothScroll";
+
 import { Helmet } from "react-helmet";
 import GlobalStyles from "./GlobalStyles";
+import LoadingScreen from "./components/LoadingScreen";
 
 const lightTheme = {
   body: "rgba(255, 255, 255, 0.8)",
@@ -118,7 +119,6 @@ const darkTheme = {
   buttonBackground: "rgba(10, 132, 255, 0.8)",
   buttonText: "#FFFFFF",
   buttonHoverBackground: "rgba(100, 210, 255, 0.8)",
-  // New properties for contact form (dark mode)
   formBackground:
     "linear-gradient(0deg, rgb(30, 37, 46) 0%, rgb(34, 41, 51) 100%)",
   formBorder: "rgb(59, 68, 81)",
@@ -151,9 +151,16 @@ const darkTheme = {
   resumeSocialLinkBackground: "#64b5f6",
   resumeSocialLinkHoverBackground: "#4a90e2",
 };
-
 function AppContent() {
   const { isDarkMode } = useTheme();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 8000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <StyledThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
@@ -164,19 +171,23 @@ function AppContent() {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </Helmet>
-      <Router>
-        <SmoothScroll>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/resume" element={<Resume />} />
-          </Routes>
-        </SmoothScroll>
-      </Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        {isLoading ? (
+          <LoadingScreen isLoading={isLoading} />
+        ) : (
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/resume" element={<Resume />} />
+            </Routes>
+          </Router>
+        )}
+      </Suspense>
     </StyledThemeProvider>
   );
 }

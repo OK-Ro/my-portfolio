@@ -8,7 +8,7 @@ const ExperienceWrapper = styled.div`
   position: relative;
   padding: 2rem;
   border-radius: 20px;
-  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  background-color: ${(props) => props.theme.cardBackground};
 
   @media (max-width: 768px) {
     padding: 0;
@@ -20,14 +20,11 @@ const ExperienceContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: ${(props) => props.theme.cardBackground || "#ffffff"};
+
   border-radius: 20px;
-  box-shadow: 0 10px 30px ${(props) => props.theme.boxShadow || "#cccccc"};
+
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: transparent
-    ${(props) => props.theme.backgroundColor || "#ffffff"};
-  backdrop-filter: blur(8px);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -41,10 +38,6 @@ const ExperienceContainer = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: transparent;
   }
-
-  &::-webkit-scrollbar-track {
-    background-color: ${(props) => props.theme.backgroundColor || "#ffffff"};
-  }
 `;
 
 const TitleWrapper = styled.div`
@@ -52,8 +45,7 @@ const TitleWrapper = styled.div`
   top: 0;
   background-color: ${(props) => props.theme.cardBackground || "#ffffff"};
   z-index: 1;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  border-radius: 20px;
 `;
 
 const Title = styled.h2`

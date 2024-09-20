@@ -14,6 +14,8 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import NavBar from "../components/NavBar";
+import SmoothScroll from "./SmoothScroll";
+import Footer from "../components/Footer";
 
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50% }
@@ -610,137 +612,140 @@ const Contact = () => {
   return (
     <PageWrapper>
       <NavBar />
-      <ContactContainer>
-        <BackToHome to="/">
-          <FaArrowLeft />
-          <span>Back To Home</span>
-        </BackToHome>
-        <ContentWrapper>
-          <LeftSection>
-            <Header>Contact Info</Header>
-            <Subheader>Get In Touch</Subheader>
-            <IntroText>Don't be afraid man! Just say hello</IntroText>
-            <ContactInfo>
-              <InfoItem>
-                <Icon>
-                  <FaPhone />
-                </Icon>
-                +31 687693145
-              </InfoItem>
-              <InfoItem>
-                <Icon>
-                  <FaEnvelope />
-                </Icon>
-                o.robert1994@hotmail.com
-              </InfoItem>
-              <InfoItem>
-                <Icon>
-                  <FaMapMarkerAlt />
-                </Icon>
-                Fossa Italica 17
-              </InfoItem>
-            </ContactInfo>
-            <SocialLinks>
-              <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-                <FaFacebookF />
-              </SocialIcon>
-              <SocialIcon
-                href="https://github.com/OK-Ro"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub Profile"
-              >
-                <FaGithub />
-              </SocialIcon>
-              <SocialIcon
-                href="https://dribbble.com/omuto2023"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaDribbble />
-              </SocialIcon>
-              <SocialIcon
-                href="https://www.linkedin.com/in/robert-okuni-96425b269/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedinIn />
-              </SocialIcon>
-            </SocialLinks>
-          </LeftSection>
-          <RightSection>
-            <Form onSubmit={handleSubmit}>
-              <InputRow>
+      <SmoothScroll>
+        <ContactContainer>
+          <BackToHome to="/">
+            <FaArrowLeft />
+            <span>Back To Home</span>
+          </BackToHome>
+          <ContentWrapper>
+            <LeftSection>
+              <Header>Contact Info</Header>
+              <Subheader>Get In Touch</Subheader>
+              <IntroText>Don't be afraid man! Just say hello</IntroText>
+              <ContactInfo>
+                <InfoItem>
+                  <Icon>
+                    <FaPhone />
+                  </Icon>
+                  +31 687693145
+                </InfoItem>
+                <InfoItem>
+                  <Icon>
+                    <FaEnvelope />
+                  </Icon>
+                  o.robert1994@hotmail.com
+                </InfoItem>
+                <InfoItem>
+                  <Icon>
+                    <FaMapMarkerAlt />
+                  </Icon>
+                  Fossa Italica 17
+                </InfoItem>
+              </ContactInfo>
+              <SocialLinks>
+                <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
+                  <FaFacebookF />
+                </SocialIcon>
+                <SocialIcon
+                  href="https://github.com/OK-Ro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                >
+                  <FaGithub />
+                </SocialIcon>
+                <SocialIcon
+                  href="https://dribbble.com/omuto2023"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaDribbble />
+                </SocialIcon>
+                <SocialIcon
+                  href="https://www.linkedin.com/in/robert-okuni-96425b269/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedinIn />
+                </SocialIcon>
+              </SocialLinks>
+            </LeftSection>
+            <RightSection>
+              <Form onSubmit={handleSubmit}>
+                <InputRow>
+                  <InputGroup>
+                    <Input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder=" "
+                      required
+                    />
+                    <Label htmlFor="name">Your name</Label>
+                  </InputGroup>
+                  <InputGroup>
+                    <Input
+                      type="email"
+                      id="email"
+                      name="_replyto"
+                      placeholder=" "
+                      required
+                    />
+                    <Label htmlFor="email">Your email</Label>
+                  </InputGroup>
+                </InputRow>
+                <InputRow>
+                  <InputGroup>
+                    <Input type="tel" id="phone" name="phone" placeholder=" " />
+                    <Label htmlFor="phone">Your phone (Optional)</Label>
+                  </InputGroup>
+                  <InputGroup>
+                    <Input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      placeholder=" "
+                      required
+                    />
+                    <Label htmlFor="subject">Your subject</Label>
+                  </InputGroup>
+                </InputRow>
                 <InputGroup>
-                  <Input
-                    type="text"
-                    id="name"
-                    name="name"
+                  <TextArea
+                    id="message"
+                    name="message"
                     placeholder=" "
                     required
                   />
-                  <Label htmlFor="name">Your name</Label>
+                  <Label htmlFor="message">Type your message</Label>
                 </InputGroup>
-                <InputGroup>
-                  <Input
-                    type="email"
-                    id="email"
-                    name="_replyto"
-                    placeholder=" "
-                    required
-                  />
-                  <Label htmlFor="email">Your email</Label>
-                </InputGroup>
-              </InputRow>
-              <InputRow>
-                <InputGroup>
-                  <Input type="tel" id="phone" name="phone" placeholder=" " />
-                  <Label htmlFor="phone">Your phone (Optional)</Label>
-                </InputGroup>
-                <InputGroup>
-                  <Input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    placeholder=" "
-                    required
-                  />
-                  <Label htmlFor="subject">Your subject</Label>
-                </InputGroup>
-              </InputRow>
-              <InputGroup>
-                <TextArea
-                  id="message"
-                  name="message"
-                  placeholder=" "
-                  required
+                <Input
+                  type="hidden"
+                  name="_subject"
+                  value="New submission from Robfolio"
                 />
-                <Label htmlFor="message">Type your message</Label>
-              </InputGroup>
-              <Input
-                type="hidden"
-                name="_subject"
-                value="New submission from Robfolio"
-              />
-              <Input type="hidden" name="_format" value="plain" />
-              <Input type="hidden" name="_template" value="table" />
-              <Button type="submit">
-                <FaPaperPlane /> Submit Now
-              </Button>
-              {submitStatus === "success" && (
-                <StatusMessage success>
-                  Thank you for your message!
-                </StatusMessage>
-              )}
-              {submitStatus === "error" && (
-                <StatusMessage>
-                  {errorMessage || "There was an error. Please try again."}
-                </StatusMessage>
-              )}
-            </Form>
-          </RightSection>
-        </ContentWrapper>
-      </ContactContainer>
+                <Input type="hidden" name="_format" value="plain" />
+                <Input type="hidden" name="_template" value="table" />
+                <Button type="submit">
+                  <FaPaperPlane /> Submit Now
+                </Button>
+                {submitStatus === "success" && (
+                  <StatusMessage success>
+                    Thank you for your message!
+                  </StatusMessage>
+                )}
+                {submitStatus === "error" && (
+                  <StatusMessage>
+                    {errorMessage || "There was an error. Please try again."}
+                  </StatusMessage>
+                )}
+              </Form>
+            </RightSection>
+          </ContentWrapper>
+        </ContactContainer>
+      </SmoothScroll>
+      <Footer />
     </PageWrapper>
   );
 };

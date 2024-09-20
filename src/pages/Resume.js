@@ -19,6 +19,8 @@ import Education from "../components/Education";
 import Project from "../components/Project";
 import TabInterface from "../components/TabInterface";
 import NavBar from "../components/NavBar";
+import SmoothScroll from "./SmoothScroll";
+import Footer from "../components/Footer";
 
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50%; }
@@ -591,23 +593,26 @@ function Resume() {
   return (
     <PageWrapper>
       <NavBar />
-      <BackToHome to="/">
-        <FaArrowLeft />
-        <span>Back To Home</span>
-      </BackToHome>
-      <ResumeContainer
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <ResumeHeader>
-          <ResumeTitle>{profile.name}'s Resume</ResumeTitle>
-          <DownloadResumeButton
-            pdfUrl={`${process.env.PUBLIC_URL}/RobertOkuniResume.pdf`}
-          />
-        </ResumeHeader>
-        <TabInterface tabs={tabsData} />
-      </ResumeContainer>
+      <SmoothScroll>
+        <BackToHome to="/">
+          <FaArrowLeft />
+          <span>Back To Home</span>
+        </BackToHome>
+        <ResumeContainer
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <ResumeHeader>
+            <ResumeTitle>{profile.name}'s Resume</ResumeTitle>
+            <DownloadResumeButton
+              pdfUrl={`${process.env.PUBLIC_URL}/RobertOkuniResume.pdf`}
+            />
+          </ResumeHeader>
+          <TabInterface tabs={tabsData} />
+        </ResumeContainer>
+      </SmoothScroll>
+      <Footer />
     </PageWrapper>
   );
 }

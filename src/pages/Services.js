@@ -2,16 +2,7 @@ import React from "react";
 import { FaArrowLeft, FaGraduationCap } from "react-icons/fa";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaGithub,
-  FaCode,
-  FaServer,
-  FaMobile,
-  FaRocket,
-} from "react-icons/fa";
+import { FaCode, FaServer, FaMobile, FaRocket } from "react-icons/fa";
 
 import {
   Chart as ChartJS,
@@ -26,6 +17,8 @@ import {
 import NavBar from "../components/NavBar";
 import AdmissionStats from "./AdmissionStats";
 import VisitorSection from "./VisitorSection";
+import SmoothScroll from "./SmoothScroll";
+import Footer from "../components/Footer";
 
 ChartJS.register(
   CategoryScale,
@@ -43,10 +36,10 @@ const fadeIn = keyframes`
 `;
 
 const ServicesContainer = styled.div`
-  background-color: ${(props) => props.theme.body};
+  background: ${({ theme }) => theme.resumeBackground};
   color: ${(props) => props.theme.text};
   margin: 0 auto;
-  padding: 2rem;
+  padding: 5rem;
   animation: ${fadeIn} 0.5s ease-in;
 
   @media (max-width: 768px) {
@@ -375,48 +368,11 @@ const TotalVisitorSection = styled.div`
   border-width: 20px;
   background-color: ${(props) => props.theme.backgroundCala};
   border-radius: 15px;
-  box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
-  border: 10px solid ${(props) => props.theme.cardBorderline};
 
   @media (max-width: 768px) {
     margin: 2rem 0;
     padding: 0.1rem;
     border-width: 2px;
-  }
-`;
-
-const ProfilesSection = styled.div`
-  margin-bottom: 2rem;
-  text-align: center;
-
-  @media (min-width: 768px) {
-    margin-bottom: 3rem;
-  }
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-
-  @media (min-width: 768px) {
-    gap: 1.5rem;
-  }
-`;
-
-const SocialIcon = styled.a`
-  font-size: 1.5rem;
-  color: ${(props) => props.theme.text};
-  transition: color 0.3s ease, transform 0.3s ease;
-
-  &:hover {
-    color: ${(props) => props.theme.accent};
-    transform: translateY(-5px);
-  }
-
-  @media (min-width: 768px) {
-    font-size: 1.8rem;
   }
 `;
 
@@ -609,128 +565,113 @@ const Services = () => {
   return (
     <ServicesContainer>
       <NavBar />
-      <ContentWrapper>
-        <PageLayout>
-          <LeftColumn>
-            <BackToHome to="/">
-              <FaArrowLeft /> <span>Back To Home</span>
-            </BackToHome>
-            <Header>My Services</Header>
-            <Subheader>
-              Designing and developing engaging, responsive user interfaces with
-              modern frameworks such as React, Vue, and Angular. Transforming
-              ideas into high-quality, interactive experiences through
-              meticulous, efficient code.
-            </Subheader>
+      <SmoothScroll>
+        <ContentWrapper>
+          <PageLayout>
+            <LeftColumn>
+              <BackToHome to="/">
+                <FaArrowLeft /> <span>Back To Home</span>
+              </BackToHome>
+              <Header>My Services</Header>
+              <Subheader>
+                Designing and developing engaging, responsive user interfaces
+                with modern frameworks such as React, Vue, and Angular.
+                Transforming ideas into high-quality, interactive experiences
+                through meticulous, efficient code.
+              </Subheader>
 
-            <ServicesGrid>
-              <ServiceCard bgColor="#FF6B6B" borderColor="#FF8787">
-                <ServiceIcon iconColor="#FFD93D">
-                  <FaCode />
-                </ServiceIcon>
-                <ServiceTitle>Front-End Development</ServiceTitle>
-                <ServiceDescription>
-                  Crafting responsive and intuitive user interfaces using modern
-                  frameworks like React, Vue, or Angular. Bringing designs to
-                  life with clean, efficient code.
-                </ServiceDescription>
-              </ServiceCard>
+              <ServicesGrid>
+                <ServiceCard bgColor="#FF6B6B" borderColor="#FF8787">
+                  <ServiceIcon iconColor="#FFD93D">
+                    <FaCode />
+                  </ServiceIcon>
+                  <ServiceTitle>Front-End Development</ServiceTitle>
+                  <ServiceDescription>
+                    Crafting responsive and intuitive user interfaces using
+                    modern frameworks like React, Vue, or Angular. Bringing
+                    designs to life with clean, efficient code.
+                  </ServiceDescription>
+                </ServiceCard>
 
-              <ServiceCard bgColor="#4ECDC4" borderColor="#45B7AA">
-                <ServiceIcon iconColor="#FF6B6B">
-                  <FaServer />
-                </ServiceIcon>
-                <ServiceTitle>Back-End Development</ServiceTitle>
-                <ServiceDescription>
-                  Building robust server-side applications and APIs using
-                  technologies like Node.js, Python, or Ruby on Rails. Ensuring
-                  scalable and secure data management.
-                </ServiceDescription>
-              </ServiceCard>
+                <ServiceCard bgColor="#4ECDC4" borderColor="#45B7AA">
+                  <ServiceIcon iconColor="#FF6B6B">
+                    <FaServer />
+                  </ServiceIcon>
+                  <ServiceTitle>Back-End Development</ServiceTitle>
+                  <ServiceDescription>
+                    Building robust server-side applications and APIs using
+                    technologies like Node.js, Python, or Ruby on Rails.
+                    Ensuring scalable and secure data management.
+                  </ServiceDescription>
+                </ServiceCard>
 
-              <ServiceCard bgColor="#FFD93D" borderColor="#FFC300">
-                <ServiceIcon iconColor="#6A2C70">
-                  <FaMobile />
-                </ServiceIcon>
-                <ServiceTitle>Full-Stack Development</ServiceTitle>
-                <ServiceDescription>
-                  Delivering end-to-end web solutions, from database design to
-                  user interface. Seamlessly integrating front-end and back-end
-                  technologies for optimal performance.
-                </ServiceDescription>
-              </ServiceCard>
+                <ServiceCard bgColor="#FFD93D" borderColor="#FFC300">
+                  <ServiceIcon iconColor="#6A2C70">
+                    <FaMobile />
+                  </ServiceIcon>
+                  <ServiceTitle>Full-Stack Development</ServiceTitle>
+                  <ServiceDescription>
+                    Delivering end-to-end web solutions, from database design to
+                    user interface. Seamlessly integrating front-end and
+                    back-end technologies for optimal performance.
+                  </ServiceDescription>
+                </ServiceCard>
 
-              <ServiceCard bgColor="#6A2C70" borderColor="#9B4DCA">
-                <ServiceIcon iconColor="#FFD93D">
-                  <FaRocket />
-                </ServiceIcon>
-                <ServiceTitle>Web Performance Optimization</ServiceTitle>
-                <ServiceDescription>
-                  Enhancing website speed and efficiency through code
-                  optimization, caching strategies, and best practices.
-                  Improving user experience and search engine rankings.
-                </ServiceDescription>
-              </ServiceCard>
-            </ServicesGrid>
+                <ServiceCard bgColor="#6A2C70" borderColor="#9B4DCA">
+                  <ServiceIcon iconColor="#FFD93D">
+                    <FaRocket />
+                  </ServiceIcon>
+                  <ServiceTitle>Web Performance Optimization</ServiceTitle>
+                  <ServiceDescription>
+                    Enhancing website speed and efficiency through code
+                    optimization, caching strategies, and best practices.
+                    Improving user experience and search engine rankings.
+                  </ServiceDescription>
+                </ServiceCard>
+              </ServicesGrid>
 
-            <EducationSection>
-              <SectionTitle>
-                <FaGraduationCap /> Education
-              </SectionTitle>
-              <EducationGrid>
-                {education.map((edu, index) => (
-                  <EducationCard key={index}>
-                    <EducationTitle>{edu.degree}</EducationTitle>
-                    <EducationInstitute>{edu.institution}</EducationInstitute>
-                    <EducationDate>{edu.date}</EducationDate>
-                    <EducationDescription>
-                      {edu.description}
-                    </EducationDescription>
-                  </EducationCard>
-                ))}
-              </EducationGrid>
-            </EducationSection>
-          </LeftColumn>
+              <EducationSection>
+                <SectionTitle>
+                  <FaGraduationCap /> Education
+                </SectionTitle>
+                <EducationGrid>
+                  {education.map((edu, index) => (
+                    <EducationCard key={index}>
+                      <EducationTitle>{edu.degree}</EducationTitle>
+                      <EducationInstitute>{edu.institution}</EducationInstitute>
+                      <EducationDate>{edu.date}</EducationDate>
+                      <EducationDescription>
+                        {edu.description}
+                      </EducationDescription>
+                    </EducationCard>
+                  ))}
+                </EducationGrid>
+              </EducationSection>
+            </LeftColumn>
 
-          <RightColumn>
-            <VisitorSection />
-            <TotalVisitorSection>
-              <h2 className="text-xl font-bold mb-4">Live Visitor Metrics</h2>
-              <AdmissionStats />
-            </TotalVisitorSection>
+            <RightColumn>
+              <VisitorSection />
+              <TotalVisitorSection>
+                <h2 className="text-xl font-bold mb-4">Live Visitor Metrics</h2>
+                <AdmissionStats />
+              </TotalVisitorSection>
 
-            <CTASection>
-              <CTACard>
-                <CTAContent>
-                  <CTATitle>Ready to bring your ideas to life?</CTATitle>
-                  <CTAText>
-                    Let's collaborate and create something amazing together!
-                  </CTAText>
-                  <CTAButton to="/contact">Get In Touch</CTAButton>
-                </CTAContent>
-              </CTACard>
-            </CTASection>
-          </RightColumn>
-        </PageLayout>
-
-        <ProfilesSection>
-          <h2>Stay Connected</h2>
-          <SocialLinks>
-            <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-              <FaGithub />
-            </SocialIcon>
-            <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-              <FaLinkedinIn />
-            </SocialIcon>
-            <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-              <FaTwitter />
-            </SocialIcon>
-            <SocialIcon href="#" target="_blank" rel="noopener noreferrer">
-              <FaFacebookF />
-            </SocialIcon>
-          </SocialLinks>
-        </ProfilesSection>
-      </ContentWrapper>
+              <CTASection>
+                <CTACard>
+                  <CTAContent>
+                    <CTATitle>Ready to bring your ideas to life?</CTATitle>
+                    <CTAText>
+                      Let's collaborate and create something amazing together!
+                    </CTAText>
+                    <CTAButton to="/contact">Get In Touch</CTAButton>
+                  </CTAContent>
+                </CTACard>
+              </CTASection>
+            </RightColumn>
+          </PageLayout>
+        </ContentWrapper>
+      </SmoothScroll>
+      <Footer />
     </ServicesContainer>
   );
 };

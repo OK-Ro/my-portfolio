@@ -8,14 +8,17 @@ import {
   FaRocket,
   FaGitAlt,
   FaPaintBrush,
+  FaGraduationCap,
+  FaBriefcase,
 } from "react-icons/fa";
 
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import {} from "react-icons/fa";
 import NavBar from "../components/NavBar";
 import ColoredText from "./ColoredText";
 import FeedbackPopup from "./FeedbackPopup";
+import SmoothScroll from "./SmoothScroll";
+import Footer from "../components/Footer";
 
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50% }
@@ -38,7 +41,7 @@ const rotate = keyframes`
 `;
 
 const AboutContainer = styled.div`
-  padding: 3rem;
+  padding: 4rem;
   background: ${({ theme }) => theme.resumeBackground};
   color: ${(props) => props.theme.text};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -89,15 +92,14 @@ const RightColumn = styled.div`
 `;
 
 const Card = styled.div`
-  margin-top: 5rem;
   padding: 2rem;
   margin-bottom: 2rem;
+  height: auto;
   border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  background-color: ${(props) => props.theme.backgroundCala};
+  height: 35rem;
   color: ${(props) => props.theme.text};
   transition: background-color 0.3s ease, color 0.3s ease;
-  border: 20px solid ${(props) => props.theme.cardBorderline};
 
   &:hover {
     transform: translateY(-5px);
@@ -268,18 +270,6 @@ const StatNumber = styled.h2`
   }
 `;
 
-const ExperienceItem = styled.div`
-  margin-bottom: 1.5rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 768px) {
-    margin-bottom: 0.2rem;
-  }
-`;
-
 const FooterSection = styled.section`
   display: flex;
   flex-direction: row;
@@ -293,43 +283,16 @@ const FooterSection = styled.section`
   }
 `;
 
-const ColumnCard = styled.div`
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 1rem;
-  height: 35rem;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  background-color: ${(props) => props.theme.backgroundCala};
-  color: ${(props) => props.theme.text};
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border: 20px solid ${(props) => props.theme.cardBorderline};
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px ${(props) => props.theme.boxShadow};
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    height: auto;
-    padding: 1rem;
-  }
-`;
-
 const FooterCard = styled(Card)`
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 37rem;
 
   @media (max-width: 768px) {
-    margin-top: 0.5rem;
+    height: auto;
+    padding: 1rem;
   }
 `;
 
@@ -455,29 +418,9 @@ const CTAButton = styled(Link)`
   }
 `;
 
-const ExperienceTitle = styled.h3`
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  color: ${(props) => props.theme.text};
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
-`;
-
-const ExperienceDetails = styled.p`
-  font-size: 1rem;
-  color: ${(props) => props.theme.secondaryText};
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-  }
-`;
-
 const SkillsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
   padding: 1rem;
   background-color: ${(props) => props.theme.backgroundCala};
@@ -540,6 +483,109 @@ const SkillDescription = styled.p`
   @media (max-width: 768px) {
     font-size: 0.8rem;
   }
+`;
+
+const ExperienceCard = styled(Card)`
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.1) 10px,
+      rgba(255, 255, 255, 0.1) 20px
+    );
+    animation: ${gradientAnimation} 20s linear infinite;
+  }
+`;
+
+const EducationCard = styled(Card)`
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+  color: #333;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.2) 10px,
+      rgba(255, 255, 255, 0.2) 20px
+    );
+    animation: ${gradientAnimation} 20s linear infinite;
+  }
+`;
+
+const ExperienceItem = styled.div`
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  padding-left: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const EducationItem = styled(ExperienceItem)`
+  border-left: 3px solid rgba(0, 0, 0, 0.2);
+`;
+
+const ItemTitle = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+`;
+
+const ItemSubtitle = styled.h4`
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  opacity: 0.8;
+`;
+
+const ItemDate = styled.p`
+  font-size: 0.9rem;
+  font-style: italic;
+`;
+
+const ExperienceIcon = styled(FaBriefcase)`
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  font-size: 1.2rem;
+  background: white;
+  color: #667eea;
+  padding: 0.3rem;
+  border-radius: 50%;
+`;
+
+const EducationIcon = styled(FaGraduationCap)`
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  font-size: 1.2rem;
+  background: #333;
+  color: #ff9a9e;
+  padding: 0.3rem;
+  border-radius: 50%;
 `;
 
 const skills = [
@@ -633,149 +679,162 @@ const About = () => {
   return (
     <AboutContainer>
       <NavBar />
-      <ProfileSection>
-        <LeftColumn>
-          <ProfilePictureCard>
-            <ProfilePictureWrapper>
-              <CircularText>
-                {characters.map((char, i) => (
-                  <CircularTextSpan
-                    key={i}
-                    style={{
-                      transform: `rotate(${i * 7.5}deg)`,
-                    }}
-                  >
-                    {char}
-                  </CircularTextSpan>
-                ))}
-              </CircularText>
-              <ProfilePicture src="/IMG_2048.jpg" alt="Gole Layla" />
-            </ProfilePictureWrapper>
-          </ProfilePictureCard>
-        </LeftColumn>
+      <SmoothScroll>
+        <ProfileSection>
+          <LeftColumn>
+            <ProfilePictureCard>
+              <ProfilePictureWrapper>
+                <CircularText>
+                  {characters.map((char, i) => (
+                    <CircularTextSpan
+                      key={i}
+                      style={{
+                        transform: `rotate(${i * 7.5}deg)`,
+                      }}
+                    >
+                      {char}
+                    </CircularTextSpan>
+                  ))}
+                </CircularText>
+                <ProfilePicture src="/IMG_2048.jpg" alt="Gole Layla" />
+              </ProfilePictureWrapper>
+            </ProfilePictureCard>
+          </LeftColumn>
 
-        <RightColumn>
-          <IntroCard>
-            <Header>Hello, I'm Robert Okuni</Header>
-            <Subheader>A Full Stack Web Developer</Subheader>
-            <FooterText>
-              <ColoredText>
-                As a passionate Full Stack Developer, I bring a robust skill set
-                to the table, honed through my experience with Hack Your Future
-                and continuous self-improvement. My expertise spans both
-                front-end and back-end technologies, allowing me to create
-                seamless, end-to-end web solutions. On the front-end, I excel in
-                crafting responsive and interactive user interfaces using React,
-                enhanced by the powerful features of NextJS. I leverage
-                Typescript to ensure type-safe, maintainable code, resulting in
-                more reliable and scalable applications. My proficiency in HTML,
-                CSS, and TailwindCSS enables me to create visually appealing and
-                performant designs that adapt flawlessly across devices. In
-                back-end development, I'm well-versed in NodeJS, using it to
-                build robust server-side applications and RESTful APIs. My
-                experience with both SQL and NoSQL databases, specifically MySql
-                and MongoDB, allows me to design efficient data storage
-                solutions tailored to each project's unique requirements.
-                Version control and collaboration are second nature to me, with
-                Github being an integral part of my development workflow. This
-                not only ensures code integrity but also facilitates seamless
-                teamwork and project management. My journey in web development
-                is driven by a constant thirst for knowledge and a commitment to
-                staying abreast of the latest industry trends. Whether it's
-                optimizing application performance, implementing secure
-                authentication systems, or integrating third-party APIs, I
-                approach each challenge with enthusiasm and a problem-solving
-                mindset. I'm excited about the opportunity to bring my technical
-                skills, creative thinking, and passion for clean, efficient code
-                to new projects, contributing to innovative web solutions that
-                make a real difference.
-              </ColoredText>
-            </FooterText>
-          </IntroCard>
-        </RightColumn>
-      </ProfileSection>
+          <RightColumn>
+            <IntroCard>
+              <Header>Hello, I'm Robert Okuni</Header>
+              <Subheader>A Full Stack Web Developer</Subheader>
+              <FooterText>
+                <ColoredText>
+                  As a passionate Full Stack Developer, I bring a robust skill
+                  set to the table, honed through my experience with Hack Your
+                  Future and continuous self-improvement. My expertise spans
+                  both front-end and back-end technologies, allowing me to
+                  create seamless, end-to-end web solutions. On the front-end, I
+                  excel in crafting responsive and interactive user interfaces
+                  using React, enhanced by the powerful features of NextJS. I
+                  leverage Typescript to ensure type-safe, maintainable code,
+                  resulting in more reliable and scalable applications. My
+                  proficiency in HTML, CSS, and TailwindCSS enables me to create
+                  visually appealing and performant designs that adapt
+                  flawlessly across devices. In back-end development, I'm
+                  well-versed in NodeJS, using it to build robust server-side
+                  applications and RESTful APIs. My experience with both SQL and
+                  NoSQL databases, specifically MySql and MongoDB, allows me to
+                  design efficient data storage solutions tailored to each
+                  project's unique requirements. Version control and
+                  collaboration are second nature to me, with Github being an
+                  integral part of my development workflow. This not only
+                  ensures code integrity but also facilitates seamless teamwork
+                  and project management. My journey in web development is
+                  driven by a constant thirst for knowledge and a commitment to
+                  staying abreast of the latest industry trends. Whether it's
+                  optimizing application performance, implementing secure
+                  authentication systems, or integrating third-party APIs, I
+                  approach each challenge with enthusiasm and a problem-solving
+                  mindset. I'm excited about the opportunity to bring my
+                  technical skills, creative thinking, and passion for clean,
+                  efficient code to new projects, contributing to innovative web
+                  solutions that make a real difference.
+                </ColoredText>
+              </FooterText>
+            </IntroCard>
+          </RightColumn>
+        </ProfileSection>
 
-      <ThreeColumnSection>
-        <Column>
-          <StatisticsSection>
-            <StatItem>
-              <StatNumber>2+</StatNumber>
-              <FooterText>YEARS EXPERIENCE</FooterText>
-            </StatItem>
-            <StatItem>
-              <StatNumber>5</StatNumber>
-              <FooterText>TOTAL PROJECTS</FooterText>
-            </StatItem>
-            <StatItem>
-              <StatNumber>9</StatNumber>
-              <FooterText>RECOGNITIONS</FooterText>
-            </StatItem>
-            <StatItem>
-              <StatNumber>0</StatNumber>
-              <FooterText>UNHAPPY CLIENTS</FooterText>
-            </StatItem>
-          </StatisticsSection>
-        </Column>
-        <Column>
-          <ColumnCard>
+        <ThreeColumnSection>
+          <Column>
+            <StatisticsSection>
+              <StatItem>
+                <StatNumber>2+</StatNumber>
+                <FooterText>YEARS EXPERIENCE</FooterText>
+              </StatItem>
+              <StatItem>
+                <StatNumber>5</StatNumber>
+                <FooterText>TOTAL PROJECTS</FooterText>
+              </StatItem>
+              <StatItem>
+                <StatNumber>9</StatNumber>
+                <FooterText>RECOGNITIONS</FooterText>
+              </StatItem>
+              <StatItem>
+                <StatNumber>0</StatNumber>
+                <FooterText>UNHAPPY CLIENTS</FooterText>
+              </StatItem>
+            </StatisticsSection>
+          </Column>
+          <Column>
+            <ExperienceCard>
+              <FooterHeader
+                style={{ color: "white", position: "relative", zIndex: 1 }}
+              >
+                My Experience
+              </FooterHeader>
+              {experiences.map((experience, index) => (
+                <ExperienceItem key={index}>
+                  <ExperienceIcon />
+                  <ItemTitle>{experience.title}</ItemTitle>
+                  <ItemSubtitle>{experience.company}</ItemSubtitle>
+                  <ItemDate>
+                    {experience.date} | {experience.location}
+                  </ItemDate>
+                </ExperienceItem>
+              ))}
+            </ExperienceCard>
+          </Column>
+          <Column>
+            <EducationCard>
+              <FooterHeader
+                style={{ color: "#333", position: "relative", zIndex: 1 }}
+              >
+                Education
+              </FooterHeader>
+              <EducationItem>
+                <EducationIcon />
+                <ItemTitle>Full Stack Web Development Course</ItemTitle>
+                <ItemSubtitle>Hack Your Future</ItemSubtitle>
+                <ItemDate>05/2023 - 11/2023</ItemDate>
+              </EducationItem>
+              <EducationItem>
+                <EducationIcon />
+                <ItemTitle>Front-End Web Development</ItemTitle>
+                <ItemSubtitle>DevTown</ItemSubtitle>
+                <ItemDate>01/2023 - 03/2023</ItemDate>
+              </EducationItem>
+              <EducationItem>
+                <EducationIcon />
+                <ItemTitle>Bachelor of Information Technology</ItemTitle>
+                <ItemSubtitle>St. Peters University</ItemSubtitle>
+                <ItemDate>2015 - 2016</ItemDate>
+              </EducationItem>
+            </EducationCard>
+          </Column>
+        </ThreeColumnSection>
+
+        <FooterSection>
+          <CTASection>
+            <CTACard>
+              <CTAContent>
+                <CTATitle>Let's Work Together</CTATitle>
+                <CTAText>
+                  Ready to start your next project? Get in touch and let's
+                  create something amazing together.
+                </CTAText>
+                <CTAButton to="/contact">Get In Touch</CTAButton>
+              </CTAContent>
+            </CTACard>
+          </CTASection>
+          <FooterCard>
             <FooterHeader>What I Do</FooterHeader>
             <SkillsSection />
-          </ColumnCard>
-        </Column>
-        <Column>
-          <Card>
-            <FooterHeader>My Experience</FooterHeader>
-            {experiences.map((experience, index) => (
-              <ExperienceItem key={index}>
-                <ExperienceTitle>{experience.title}</ExperienceTitle>
-                <ExperienceDetails>
-                  {experience.company} | {experience.date} |{" "}
-                  {experience.location}
-                </ExperienceDetails>
-              </ExperienceItem>
-            ))}
-          </Card>
-        </Column>
-      </ThreeColumnSection>
-
-      <FooterSection>
-        <CTASection>
-          <CTACard>
-            <CTAContent>
-              <CTATitle>Let's Work Together</CTATitle>
-              <CTAText>
-                Ready to start your next project? Get in touch and let's create
-                something amazing together.
-              </CTAText>
-              <CTAButton to="/contact">Get In Touch</CTAButton>
-            </CTAContent>
-          </CTACard>
-        </CTASection>
-        <FooterCard>
-          <FooterHeader>Education</FooterHeader>
-          <div>
-            <FooterText>
-              Bachelor of Information Technology
-              <br />
-              St. Peters University | 2015 - 2016
-            </FooterText>
-            <FooterText>
-              Full Stack Web Development Course
-              <br />
-              Hack Your Future | 05/2023 - 11/2023
-            </FooterText>
-            <FooterText>
-              Front-End Web Development using JavaScript and React.js
-              <br />
-              DevTown | 01/2023 - 03/2023
-              <br />
-            </FooterText>
-          </div>
-        </FooterCard>
-        <FooterCard>
-          <FeedbackPopup />
-        </FooterCard>
-      </FooterSection>
+          </FooterCard>
+          <FooterCard>
+            <FeedbackPopup />
+          </FooterCard>
+        </FooterSection>
+      </SmoothScroll>
+      <Footer />
     </AboutContainer>
   );
 };

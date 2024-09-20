@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import NavBar from "../components/NavBar";
 import { FaArrowLeft } from "react-icons/fa";
+import SmoothScroll from "./SmoothScroll";
+import Footer from "../components/Footer";
 
 const PortfolioContainer = styled.div`
   background: ${({ theme }) => theme.resumeBackground};
@@ -29,6 +31,7 @@ const BackToHome = styled(Link)`
   color: black;
   font-size: 16px;
   font-weight: 600;
+  margin-top: 10rem;
   text-decoration: none;
   overflow: hidden;
   border: 4px solid transparent;
@@ -210,21 +213,38 @@ const FilterContainer = styled.div`
 `;
 
 const FilterButton = styled.button`
+  border: 3px solid ${(props) => props.theme.cardBackground};
+
   background-color: ${(props) =>
     props.active ? props.theme.accent : props.theme.cardBackground};
   color: ${(props) =>
     props.active ? props.theme.buttonText : props.theme.text};
-  border: none;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
-  border-radius: 20px;
+
+  padding: ${(props) => (props.active ? "1rem 5rem" : "0.9rem 4rem")};
+  margin: 0.7rem;
+  border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: ${(props) => (props.active ? "1.3rem" : "1.2rem")};
+  font-weight: ${(props) => (props.active ? "700" : "500")};
+  box-shadow: ${(props) =>
+    props.active
+      ? "0 6px 15px rgba(0, 0, 0, 0.25)"
+      : "0 4px 10px rgba(0, 0, 0, 0.1)"};
+  transform: ${(props) => (props.active ? "translateY(-3px)" : "none")};
+  letter-spacing: 0.5px;
 
   &:hover {
     background-color: ${(props) => props.theme.accent};
     color: ${(props) => props.theme.buttonText};
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  @media (max-width: 768px) {
+    padding: ${(props) => (props.active ? "0.8rem 1.6rem" : "0.7rem 1.4rem")};
+    font-size: ${(props) => (props.active ? "1.1rem" : "1rem")};
+    margin: 0.5rem;
   }
 `;
 
@@ -545,89 +565,92 @@ const Portfolio = () => {
     <PortfolioContainer>
       <ContentWrapper>
         <NavBar />
-        <BackToHome to="/">
-          <FaArrowLeft /> Back To Home
-        </BackToHome>
-        <Header>My Portfolio</Header>
-        <Subheader>Check Out My Latest Projects</Subheader>
-        <IntroText>
-          I'm here to help if you're searching for a web developer to bring your
-          idea to life or a development partner to help take your business to
-          the next level.
-        </IntroText>
-        <FilterContainer>
-          <FilterButton
-            active={filter === "all"}
-            onClick={() => setFilter("all")}
-          >
-            All
-          </FilterButton>
-          <FilterButton
-            active={filter === "web"}
-            onClick={() => setFilter("web")}
-          >
-            Web
-          </FilterButton>
-          <FilterButton
-            active={filter === "mobile"}
-            onClick={() => setFilter("mobile")}
-          >
-            Mobile
-          </FilterButton>
-          <FilterButton
-            active={filter === "data"}
-            onClick={() => setFilter("data")}
-          >
-            Data
-          </FilterButton>
-          <FilterButton
-            active={filter === "iot"}
-            onClick={() => setFilter("iot")}
-          >
-            IoT
-          </FilterButton>
-        </FilterContainer>
+        <SmoothScroll>
+          <BackToHome to="/">
+            <FaArrowLeft /> Back To Home
+          </BackToHome>
+          <Header>My Portfolio</Header>
+          <Subheader>Check Out My Latest Projects</Subheader>
+          <IntroText>
+            I'm here to help if you're searching for a web developer to bring
+            your idea to life or a development partner to help take your
+            business to the next level.
+          </IntroText>
+          <FilterContainer>
+            <FilterButton
+              active={filter === "all"}
+              onClick={() => setFilter("all")}
+            >
+              All
+            </FilterButton>
+            <FilterButton
+              active={filter === "web"}
+              onClick={() => setFilter("web")}
+            >
+              Web
+            </FilterButton>
+            <FilterButton
+              active={filter === "mobile"}
+              onClick={() => setFilter("mobile")}
+            >
+              Mobile
+            </FilterButton>
+            <FilterButton
+              active={filter === "data"}
+              onClick={() => setFilter("data")}
+            >
+              Data
+            </FilterButton>
+            <FilterButton
+              active={filter === "iot"}
+              onClick={() => setFilter("iot")}
+            >
+              IoT
+            </FilterButton>
+          </FilterContainer>
 
-        <ProjectGrid>
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id}>
-              <ProjectImage src={project.image} alt={project.title} />
-              <ProjectOverlay>
-                <ProjectTitle>{project.title}</ProjectTitle>
-                <ProjectLinks>
-                  <ProjectLink
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub /> GitHub
-                  </ProjectLink>
-                  <ProjectLink
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaExternalLinkAlt /> Live Demo
-                  </ProjectLink>
-                </ProjectLinks>
-              </ProjectOverlay>
-            </ProjectCard>
-          ))}
-        </ProjectGrid>
+          <ProjectGrid>
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id}>
+                <ProjectImage src={project.image} alt={project.title} />
+                <ProjectOverlay>
+                  <ProjectTitle>{project.title}</ProjectTitle>
+                  <ProjectLinks>
+                    <ProjectLink
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaGithub /> GitHub
+                    </ProjectLink>
+                    <ProjectLink
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaExternalLinkAlt /> Live Demo
+                    </ProjectLink>
+                  </ProjectLinks>
+                </ProjectOverlay>
+              </ProjectCard>
+            ))}
+          </ProjectGrid>
 
-        <CTASection>
-          <CTACard>
-            <CTAContent>
-              <CTATitle>Let's Work Together</CTATitle>
-              <CTAText>
-                Ready to start your next project? Get in touch and let's create
-                something amazing together.
-              </CTAText>
-              <CTAButton to="/contact">Get In Touch</CTAButton>
-            </CTAContent>
-          </CTACard>
-        </CTASection>
+          <CTASection>
+            <CTACard>
+              <CTAContent>
+                <CTATitle>Let's Work Together</CTATitle>
+                <CTAText>
+                  Ready to start your next project? Get in touch and let's
+                  create something amazing together.
+                </CTAText>
+                <CTAButton to="/contact">Get In Touch</CTAButton>
+              </CTAContent>
+            </CTACard>
+          </CTASection>
+        </SmoothScroll>
       </ContentWrapper>
+      <Footer />
     </PortfolioContainer>
   );
 };

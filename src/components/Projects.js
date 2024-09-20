@@ -6,7 +6,7 @@ const ProjectsContainer = styled.div`
   height: 100%;
   margin: 0 auto;
   padding: 20px;
-  background-color: ${(props) => props.theme.backgroundCala};
+
   border-radius: 10px;
   box-shadow: 0 0 10px ${(props) => props.theme.boxShadow};
   height: 80vh;

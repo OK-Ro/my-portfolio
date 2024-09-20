@@ -1,33 +1,54 @@
 import { createGlobalStyle } from "styled-components";
-import "normalize.css";
 
 const GlobalStyles = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-
   html {
-    font-size: 16px;
+    scroll-behavior: smooth;
   }
 
   body {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.5;
-    color: ${(props) => props.theme.primaryText};
-    background-color: ${(props) => props.theme.backgroundColor};
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: ${(props) => props.theme.body};
+    color: ${(props) => props.theme.text};
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   }
 
-  #root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  /* Scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 10px;
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
+  ::-webkit-scrollbar-track {
+    background: ${(props) => props.theme.scrollbarTrack};
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.scrollbarThumb};
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${(props) => props.theme.scrollbarThumbHover};
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: ${(props) =>
+      `${props.theme.scrollbarThumb} ${props.theme.scrollbarTrack}`};
+  }
+
+  /* Other global styles */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 `;
 
