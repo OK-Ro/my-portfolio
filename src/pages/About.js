@@ -649,10 +649,7 @@ const About = () => {
                   </CircularTextSpan>
                 ))}
               </CircularText>
-              <ProfilePicture
-                src="https://www.bing.com/th?id=OIP.F8N47NFCKAaMf97INBReHQHaJz&w=150&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
-                alt="Gole Layla"
-              />
+              <ProfilePicture src="/IMG_2048.jpg" alt="Gole Layla" />
             </ProfilePictureWrapper>
           </ProfilePictureCard>
         </LeftColumn>
