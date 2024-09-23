@@ -115,7 +115,7 @@ const Projects = () => {
         "https://cdn.dribbble.com/userupload/8957039/file/original-369cfc1847437d7b4d1beab9e1c652e3.png?resize=1504x1128&vertical=center",
       likes: 45,
       rating: 4.5,
-      link: "https://github.com/yourusername/ecommerce-project",
+      link: "https://lumiaz.netlify.app/",
     },
     {
       id: 2,
