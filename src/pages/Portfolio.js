@@ -485,7 +485,7 @@ const Portfolio = () => {
       image: "https://picsum.photos/802/600",
       github:
         "https://cdn.buymeacoffee.com/uploads/project_updates/2021/10/16f5d0a9193ad3b7bff99c4ee1d279df.png",
-      live: "https://example.com/weather",
+      live: "https://weaza.netlify.app",
       category: "web",
     },
     {
