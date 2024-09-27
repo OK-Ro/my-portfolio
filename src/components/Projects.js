@@ -125,7 +125,7 @@ const Projects = () => {
         "https://cdn.buymeacoffee.com/uploads/project_updates/2021/10/16f5d0a9193ad3b7bff99c4ee1d279df.png",
       likes: 32,
       rating: 4.2,
-      link: "https://github.com/yourusername/weather-app",
+      link: "https://weaza.netlify.app",
     },
     {
       id: 3,
