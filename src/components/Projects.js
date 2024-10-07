@@ -127,17 +127,17 @@ const Projects = () => {
       rating: 4.2,
       link: "https://weaza.netlify.app",
     },
+  
     {
-      id: 3,
-      title: "Task Management Dashboard",
-      description:
-        "A Kanban-style task management app with drag-and-drop functionality",
-      image:
-        "https://cdn.dribbble.com/users/1615584/screenshots/15378686/media/cff7c84fa3b7113a8b6ba2a42ea86dd0.jpg?resize=1000x750&vertical=center",
-      likes: 58,
-      rating: 4.7,
-      link: "https://github.com/yourusername/task-management",
-    },
+  id: 3,
+  title: "Smart Homes Uganda",
+  description: "A platform showcasing smart home technologies and services in Uganda.",
+  image: "https://www.smarthomesug.com/images/homepage-snapshot.jpg",
+  likes: 58,
+  rating: 4.7,
+  link: "https://www.smarthomesug.com/",
+}
+,
     {
       id: 4,
       title: "Fitness Tracker",
@@ -193,6 +193,18 @@ const Projects = () => {
       likes: 37,
       rating: 4.2,
       link: "https://github.com/yourusername/smart-home",
+    },
+
+      {
+      id: 10,
+      title: "Task Management Dashboard",
+      description:
+        "A Kanban-style task management app with drag-and-drop functionality",
+      image:
+        "https://cdn.dribbble.com/users/1615584/screenshots/15378686/media/cff7c84fa3b7113a8b6ba2a42ea86dd0.jpg?resize=1000x750&vertical=center",
+      likes: 58,
+      rating: 4.7,
+      link: "https://github.com/yourusername/task-management",
     },
   ]);
 
