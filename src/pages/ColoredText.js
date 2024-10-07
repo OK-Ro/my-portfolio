@@ -28,7 +28,6 @@ const Pre = styled.pre`
     padding: 0.1rem;
     height: 18rem;
     width: calc(110% - 1.5rem);
-
     margin-right: 0.5rem;
   }
 `;

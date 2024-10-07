@@ -111,8 +111,7 @@ const Projects = () => {
       id: 1,
       title: "E-commerce Platform",
       description: "A full-stack e-commerce solution with React and Node.js",
-      image:
-        "https://cdn.dribbble.com/userupload/8957039/file/original-369cfc1847437d7b4d1beab9e1c652e3.png?resize=1504x1128&vertical=center",
+      image: "/lumiaz.jpeg",
       likes: 45,
       rating: 4.5,
       link: "https://lumiaz.netlify.app/",
@@ -121,23 +120,22 @@ const Projects = () => {
       id: 2,
       title: "Weather App",
       description: "Real-time weather application using OpenWeatherMap API",
-      image:
-        "https://cdn.buymeacoffee.com/uploads/project_updates/2021/10/16f5d0a9193ad3b7bff99c4ee1d279df.png",
+      image: "/weaza.jpeg",
       likes: 32,
       rating: 4.2,
       link: "https://weaza.netlify.app",
     },
-  
+
     {
-  id: 3,
-  title: "Smart Homes Uganda",
-  description: "A platform showcasing smart home technologies and services in Uganda.",
-  image: "https://www.smarthomesug.com/images/homepage-snapshot.jpg",
-  likes: 58,
-  rating: 4.7,
-  link: "https://www.smarthomesug.com/",
-}
-,
+      id: 3,
+      title: "Smart Homes Uganda",
+      description:
+        "A platform showcasing smart home technologies and services in Uganda.",
+      image: "/smarthomeug.jpeg",
+      likes: 58,
+      rating: 4.7,
+      link: "https://www.smarthomesug.com/",
+    },
     {
       id: 4,
       title: "Fitness Tracker",
@@ -195,7 +193,7 @@ const Projects = () => {
       link: "https://github.com/yourusername/smart-home",
     },
 
-      {
+    {
       id: 10,
       title: "Task Management Dashboard",
       description:
