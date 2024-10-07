@@ -488,15 +488,17 @@ const Portfolio = () => {
       live: "https://weaza.netlify.app",
       category: "web",
     },
+ 
+
     {
-      id: 4,
-      title: "Social Media Analytics",
-      image:
-        "https://cdn.dribbble.com/users/2125046/screenshots/17503425/media/3e59422d9fabe0d80594737bcbfb7d3f.png?resize=1000x750&vertical=center",
-      github: "https://github.com/yourusername/social-media-analytics",
-      live: "https://example.com/analytics",
-      category: "data",
-    },
+  id: 4,
+  title: "Smart Homes Uganda",
+  image: "https://www.smarthomesug.com/images/homepage-snapshot.jpg",
+  github: "https://www.smarthomesug.com/", 
+  live: "https://www.smarthomesug.com/",
+  category: "data",
+}
+,
     {
       id: 5,
       title: "Fitness Tracker",
@@ -553,6 +555,15 @@ const Portfolio = () => {
         "https://cdn.dribbble.com/userupload/9008964/file/original-17abfae69faaeaac8a8b42059d3118a5.png?resize=1200x1200&vertical=center",
       live: "https://example.com/smart-home",
       category: "iot",
+    },
+       {
+      id: 11,
+      title: "Social Media Analytics",
+      image:
+        "https://cdn.dribbble.com/users/2125046/screenshots/17503425/media/3e59422d9fabe0d80594737bcbfb7d3f.png?resize=1000x750&vertical=center",
+      github: "https://github.com/yourusername/social-media-analytics",
+      live: "https://example.com/analytics",
+      category: "data",
     },
   ];
 
