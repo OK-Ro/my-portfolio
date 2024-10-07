@@ -488,17 +488,15 @@ const Portfolio = () => {
       live: "https://weaza.netlify.app",
       category: "web",
     },
- 
 
     {
-  id: 4,
-  title: "Smart Homes Uganda",
-  image: "https://www.smarthomesug.com/images/homepage-snapshot.jpg",
-  github: "https://www.smarthomesug.com/", 
-  live: "https://www.smarthomesug.com/",
-  category: "data",
-}
-,
+      id: 4,
+      title: "Smart Homes Uganda",
+      image: "/smarthomeug.jpeg",
+      github: "https://www.smarthomesug.com/",
+      live: "https://www.smarthomesug.com/",
+      category: "data",
+    },
     {
       id: 5,
       title: "Fitness Tracker",
@@ -556,7 +554,7 @@ const Portfolio = () => {
       live: "https://example.com/smart-home",
       category: "iot",
     },
-       {
+    {
       id: 11,
       title: "Social Media Analytics",
       image:
