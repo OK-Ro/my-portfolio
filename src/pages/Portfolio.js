@@ -481,14 +481,12 @@ const Portfolio = () => {
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      image: "https://picsum.photos/802/600",
-      github:
-        "https://cdn.buymeacoffee.com/uploads/project_updates/2021/10/16f5d0a9193ad3b7bff99c4ee1d279df.png",
-      live: "https://weaza.netlify.app",
+      title: "Alice AI Assistant",
+      image: "/alice.jpeg",
+      github: "https://github.com/OK-Ro/chat-bot",
+      live: "https://allice.netlify.app",
       category: "web",
     },
-
     {
       id: 4,
       title: "Smart Homes Uganda",

@@ -138,14 +138,13 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "Fitness Tracker",
+      title: "Alice AI Assistant",
       description:
-        "Mobile app for tracking workouts and nutrition with data visualization",
-      image:
-        "https://cdn.dribbble.com/userupload/11663757/file/original-626702a4d7db49ff2a3eb5022cf1211c.png?resize=1200x900",
+        "Alice is an AI-powered virtual assistant that interacts through speech recognition and natural language processing. Users can ask questions, receive answers, and get personalized responses in real-time. Built with React and integrated with speech-to-text and text-to-speech technologies.",
+      image: "/alice.jpeg",
       likes: 27,
       rating: 4.0,
-      link: "https://github.com/yourusername/fitness-tracker",
+      link: "https://allice.netlify.app",
     },
     {
       id: 5,
