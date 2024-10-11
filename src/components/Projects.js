@@ -148,14 +148,14 @@ const Projects = () => {
     },
     {
       id: 5,
-      title: "Social Media Analytics Tool",
+
+      title: "Cryptocurrency Portfolio Tracker",
       description:
-        "Dashboard for analyzing social media engagement and growth metrics",
-      image:
-        "https://cdn.dribbble.com/userupload/4177061/file/original-adab4509b4cab6df18d2a802975e9d08.png?resize=1200x900",
-      likes: 39,
-      rating: 4.3,
-      link: "https://github.com/yourusername/social-analytics",
+        "Real-time tracking of cryptocurrency investments and market trends",
+      image: "/cripto.jpeg",
+      likes: 35,
+      rating: 4.1,
+      link: "https://criipto.netlify.app",
     },
     {
       id: 6,
@@ -170,13 +170,14 @@ const Projects = () => {
     },
     {
       id: 7,
-      title: "Cryptocurrency Portfolio Tracker",
+      title: "Social Media Analytics Tool",
       description:
-        "Real-time tracking of cryptocurrency investments and market trends",
-      image: "/cripto.jpeg",
-      likes: 35,
-      rating: 4.1,
-      link: "https://criipto.netlify.app",
+        "Dashboard for analyzing social media engagement and growth metrics",
+      image:
+        "https://cdn.dribbble.com/userupload/4177061/file/original-adab4509b4cab6df18d2a802975e9d08.png?resize=1200x900",
+      likes: 39,
+      rating: 4.3,
+      link: "https://github.com/yourusername/social-analytics",
     },
 
     {
