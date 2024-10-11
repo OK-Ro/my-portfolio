@@ -173,11 +173,10 @@ const Projects = () => {
       title: "Cryptocurrency Portfolio Tracker",
       description:
         "Real-time tracking of cryptocurrency investments and market trends",
-      image:
-        "https://cdn.dribbble.com/userupload/7016069/file/original-45346f13929d4efb3c0c54e4e1139c57.png?resize=1200x900",
+      image: "/cripto.jpeg",
       likes: 35,
       rating: 4.1,
-      link: "https://github.com/yourusername/crypto-tracker",
+      link: "https://criipto.netlify.app",
     },
 
     {

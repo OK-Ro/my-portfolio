@@ -526,11 +526,9 @@ const Portfolio = () => {
     {
       id: 8,
       title: "Cryptocurrency Portfolio Tracker",
-      image:
-        "https://cdn.dribbble.com/userupload/7016069/file/original-45346f13929d4efb3c0c54e4e1139c57.png?resize=1200x900",
-      github:
-        "https://cdn.dribbble.com/userupload/7016069/file/original-45346f13929d4efb3c0c54e4e1139c57.png?resize=1200x900",
-      live: "https://example.com/crypto",
+      image: "/cripto.jpeg",
+      github: "https://github.com/OK-Ro/cripto",
+      live: "https://criipto.netlify.app",
       category: "data",
     },
     {
