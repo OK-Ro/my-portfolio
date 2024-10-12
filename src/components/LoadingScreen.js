@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 // Animation for brackets
@@ -158,7 +158,16 @@ const ContentContainerListItem = styled.li`
   }
 `;
 
-const LoadingScreen = ({ isLoading }) => {
+const LoadingScreen = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 8000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <LoadingWrapper isLoading={isLoading}>
       <Container>

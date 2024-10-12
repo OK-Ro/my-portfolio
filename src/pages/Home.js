@@ -49,11 +49,12 @@ const ProfileCard = styled(BaseCard)`
   grid-row: 1 / span 2;
   height: 56rem;
   width: 60rem;
-  background-image: url("https://wallpapers.com/images/hd/white-solid-background-k03v99q4obz7fu6p.jpg");
+  background: ${({ theme }) => theme.profileCardBackground};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 4px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
@@ -71,6 +72,7 @@ const WorkExperienceCard = styled(BaseCard)`
   width: 100%;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 4px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
@@ -92,6 +94,7 @@ const SkillsCard = styled(BaseCard)`
   grid-row: 2;
   height: 25rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 4px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
@@ -107,12 +110,12 @@ const ProjectsCard = styled(BaseCard)`
   height: 55rem;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 4px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 4;
     height: 47rem;
-    border: 2px solid ${(props) => props.theme.inputb};
   }
 
   &::-webkit-scrollbar {
@@ -127,6 +130,7 @@ const ServicesCard = styled(BaseCard)`
   grid-column: 1 / span 2;
   grid-row: 3;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 4px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
@@ -137,6 +141,7 @@ const ServicesCard = styled(BaseCard)`
 
 const ContactCard = styled(BaseCard)`
   background: ${(props) => props.theme.contactCardGradient};
+  border: 4px solid ${(props) => props.theme.inputBackground};
   grid-column: 3;
   grid-row: 3;
   height: auto;
@@ -253,7 +258,7 @@ const BulletIcon = styled.svg`
 
 const PageContainer = styled.div`
   padding: 4rem;
-  background: ${({ theme }) => theme.resumeBackground};
+  background: ${({ theme }) => theme.body};
   color: ${(props) => props.theme.text};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;

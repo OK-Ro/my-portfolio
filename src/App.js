@@ -19,11 +19,13 @@ import GlobalStyles from "./GlobalStyles";
 import LoadingScreen from "./components/LoadingScreen";
 
 const lightTheme = {
-  body: "rgba(255, 255, 255, 0.8)",
+  body: "linear-gradient(135deg, #f0f2f5, #e0e7ff)",
   text: "#333333",
   secondaryText: "#666666",
   cardBackground: "rgba(255, 255, 255, 0.6)",
   backgroundCala: "rgba(248, 249, 250, 0.7)",
+  profileCardBackground:
+    "url('https://wallpapers.com/images/hd/white-solid-background-k03v99q4obz7fu6p.jpg')",
   cardBorder: "rgba(255, 255, 255, 0.2)",
   cardBorderline: "#FFFFFF",
   scrollbarThumb: "rgba(200, 200, 200, 0.5)",
@@ -87,11 +89,12 @@ const lightTheme = {
 };
 
 const darkTheme = {
-  body: "rgba(22, 28, 36, 0.95)",
+  body: "#1a1a1a",
   text: "#E4E6EB",
   secondaryText: "#B0B3B8",
   cardBackground: "rgba(30, 37, 46, 0.8)",
   backgroundCala: "rgba(34, 41, 51, 0.7)",
+  profileCardBackground: "#1a1a1a",
   cardBorder: "rgba(59, 68, 81, 0.5)",
   cardBorderline: "rgba(59, 68, 81, 0.3)",
   scrollbarThumb: "rgba(76, 86, 100, 0.8)",

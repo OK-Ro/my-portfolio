@@ -26,7 +26,7 @@ const ProfileContainer = styled.div`
 `;
 
 const PhotoContainer = styled.div`
-  width: 380px;
+  width: 480px;
   height: 450px;
   position: relative;
   overflow: hidden;
@@ -39,10 +39,12 @@ const PhotoContainer = styled.div`
 
 const Photo = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 23%;
-  border-radius: 20px;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 30px;
+  border: 6px solid ${(props) => props.theme.inputBackground};
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const ProfileInfo = styled.div`
@@ -240,7 +242,7 @@ const Profile = () => {
   return (
     <ProfileContainer>
       <PhotoContainer>
-        <Photo src="/IMG_2048.jpg" alt="Gole Layla" />
+        <Photo src="/profile.jpg" alt="Gole Layla" />
       </PhotoContainer>
       <ProfileInfo>
         <Name>Robert Okuni</Name>
