@@ -19,19 +19,20 @@ const PortfolioContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div``;
+
 const BackToHome = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background-color: white;
-  width: 192px;
-  height: 56px;
+  width: 96px;
+  height: 28px;
   border-radius: 16px;
   position: relative;
   color: black;
-  font-size: 16px;
+  font-size: 8px;
   font-weight: 600;
-  margin-top: 10rem;
+  margin-top: 5rem;
   text-decoration: none;
   overflow: hidden;
   border: 4px solid transparent;
@@ -39,14 +40,14 @@ const BackToHome = styled(Link)`
     linear-gradient(to right, #6dd5ed, #2193b0);
   background-origin: border-box;
   background-clip: content-box, border-box;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 
   &::before {
     content: "";
     background: linear-gradient(to right, #6dd5ed, #2193b0);
     border-radius: 12px;
-    height: 45px;
-    width: 60px;
+    height: 22.5px;
+    width: 30px;
     position: absolute;
     left: 4px;
     top: 2px;
@@ -55,20 +56,20 @@ const BackToHome = styled(Link)`
   }
 
   &:hover::before {
-    width: 178px;
+    width: 89px;
   }
 
   svg {
     position: absolute;
-    left: 16px;
+    left: 8px;
     z-index: 2;
-    height: 20px;
-    width: 20px;
+    height: 10px;
+    width: 10px;
     transition: transform 0.3s ease;
   }
 
   &:hover svg {
-    transform: translateX(-3px);
+    transform: translateX(-1.5px);
   }
 
   span {
@@ -108,8 +109,9 @@ const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 `;
+
 const Header = styled.h1`
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 900;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -136,16 +138,16 @@ const Header = styled.h1`
   }
 
   @media (min-width: 768px) {
-    font-size: 3.5rem;
+    font-size: 1.75rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 `;
 
 const Subheader = styled.p`
-  font-size: 1.5rem;
+  font-size: 0.75rem;
   margin-bottom: 2rem;
   text-align: center;
   color: ${(props) => props.theme.secondaryText};
@@ -160,7 +162,7 @@ const Subheader = styled.p`
   &::before,
   &::after {
     content: '"';
-    font-size: 3rem;
+    font-size: 1.5rem;
     color: #4ecdc4;
     position: absolute;
     opacity: 0.3;
@@ -177,17 +179,17 @@ const Subheader = styled.p`
   }
 
   @media (min-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 0.9rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 2rem;
+    font-size: 1rem;
     margin-bottom: 3rem;
   }
 `;
 
 const IntroText = styled.p`
-  font-size: 1.2rem;
+  font-size: 0.6rem;
   text-align: center;
   color: ${(props) => props.theme.text};
   max-width: 800px;
@@ -197,11 +199,11 @@ const IntroText = styled.p`
   padding: 0 20px;
 
   @media (min-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 0.65rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.4rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -214,18 +216,16 @@ const FilterContainer = styled.div`
 
 const FilterButton = styled.button`
   border: 3px solid ${(props) => props.theme.cardBackground};
-
   background-color: ${(props) =>
     props.active ? props.theme.accent : props.theme.cardBackground};
   color: ${(props) =>
     props.active ? props.theme.buttonText : props.theme.text};
-
   padding: ${(props) => (props.active ? "1rem 5rem" : "0.9rem 4rem")};
   margin: 0.7rem;
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: ${(props) => (props.active ? "1.3rem" : "1.2rem")};
+  font-size: ${(props) => (props.active ? "0.65rem" : "0.6rem")};
   font-weight: ${(props) => (props.active ? "700" : "500")};
   box-shadow: ${(props) =>
     props.active
@@ -261,7 +261,7 @@ const ProjectCard = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   aspect-ratio: 1 / 1;
-  border: 5px solid ${(props) => props.theme.cardBackground};
+  border: 3px solid ${(props) => props.theme.cardBackground};
 
   &:hover {
     transform: translateY(-5px);
@@ -318,7 +318,7 @@ const ProjectOverlay = styled.div`
 const ProjectTitle = styled.h3`
   color: white;
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 0.6rem;
   text-align: center;
 `;
 
@@ -336,18 +336,18 @@ const ProjectLink = styled.a`
   background-color: rgba(255, 255, 255, 0.2);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 0.45rem;
   transition: background-color 0.3s ease;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
   }
 `;
+
 const CTASection = styled.div`
   perspective: 1000px;
   margin-top: 3rem;
   padding: 2rem;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -394,14 +394,14 @@ const CTAContent = styled.div`
 `;
 
 const CTATitle = styled.h2`
-  font-size: 2rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
   color: #1a1a1a;
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
 `;
 
 const CTAText = styled.p`
-  font-size: 1.1rem;
+  font-size: 0.55rem;
   margin-bottom: 2rem;
   color: #333;
 `;
@@ -414,7 +414,7 @@ const CTAButton = styled(Link)`
   text-decoration: none;
   border-radius: 30px;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.5rem;
   transition: all 0.3s ease;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -449,11 +449,11 @@ const CTAButton = styled(Link)`
 
   @media (min-width: 768px) {
     padding: 1rem 2rem;
-    font-size: 1.1rem;
+    font-size: 0.55rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.2rem;
+    font-size: 0.6rem;
   }
 `;
 

@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaHeart, FaStar, FaLink } from "react-icons/fa";
+
 const ProjectsContainer = styled.div`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 20px;
 
   border-radius: 10px;
-  box-shadow: 0 0 10px ${(props) => props.theme.boxShadow};
+
   height: 80vh;
   overflow-y: auto;
   backdrop-filter: blur(10px);
 
   @media (max-width: 768px) {
-    padding: 0;
+    padding: 10px;
   }
 
   &::-webkit-scrollbar {
@@ -27,40 +27,48 @@ const ProjectsContainer = styled.div`
 
 const ProjectCard = styled.div`
   background-color: ${(props) => props.theme.cardBackground};
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px ${(props) => props.theme.boxShadow};
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s, box-shadow 0.2s;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
+
   @media (max-width: 768px) {
-    padding: 2px;
+    padding: 10px;
   }
 `;
 
 const ProjectTitle = styled.h3`
   margin: 0 0 10px 0;
-  color: ${(props) => props.theme.accent};
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ff6f61;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
 const ProjectDescription = styled.p`
   color: ${(props) => props.theme.secondaryText};
   margin-bottom: 15px;
+  font-size: 0.6rem;
+  font-weight: 500;
 `;
 
 const ProjectImage = styled.img`
   width: 100%;
-  height: 30rem;
+  height: 20rem;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 15px;
+  // border: 1px solid #ff6f61;
 
   @media (max-width: 768px) {
-    height: 18rem;
+    height: 15rem;
   }
 `;
 
@@ -68,39 +76,50 @@ const InteractionBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.9rem;
+  padding-top: 10px;
+  border-top: 1px solid ${(props) => props.theme.borderColor};
+  margin-top: 10px;
 `;
 
-const LikeButton = styled.button`
-  background: none;
-  border: none;
-  color: ${(props) =>
-    props.liked ? props.theme.accent : props.theme.secondaryText};
+const InteractionButton = styled.button`
+  background: ${(props) => (props.liked ? "#ff6f61" : "transparent")};
+  border: 2px solid #ff6f61;
+  border-radius: 5px;
+  color: ${(props) => (props.liked ? "#fff" : "#ff6f61")};
   cursor: pointer;
-  font-size: 16px;
   display: flex;
   align-items: center;
-  transition: color 0.2s;
+  padding: 5px 10px;
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+  font-size: 0.7rem;
 
   &:hover {
-    color: ${(props) => props.theme.accent};
+    background: #ff6f61;
+    color: #fff;
   }
 `;
 
 const RatingDisplay = styled.div`
   display: flex;
   align-items: center;
+  font-weight: 500;
+  font-size: 0.7rem;
   color: ${(props) => props.theme.warning};
 `;
 
 const ProjectLink = styled.a`
-  color: ${(props) => props.theme.accent};
+  color: #ff6f61;
   text-decoration: none;
   display: flex;
   align-items: center;
   transition: color 0.2s;
+  font-weight: 500;
+  font-size: 0.7rem;
 
   &:hover {
-    color: ${(props) => props.theme.accentHover};
+    color: #ffcc00;
     text-decoration: underline;
   }
 `;
@@ -125,7 +144,6 @@ const Projects = () => {
       rating: 4.2,
       link: "https://weaza.netlify.app",
     },
-
     {
       id: 3,
       title: "Smart Homes Uganda",
@@ -140,7 +158,7 @@ const Projects = () => {
       id: 4,
       title: "Alice AI Assistant",
       description:
-        "Alice is an AI-powered virtual assistant that interacts through speech recognition and natural language processing. Users can ask questions, receive answers, and get personalized responses in real-time. Built with React and integrated with speech-to-text and text-to-speech technologies.",
+        "Alice is an AI-powered virtual assistant that interacts through speech recognition and natural language processing.",
       image: "/alice.jpeg",
       likes: 27,
       rating: 4.0,
@@ -148,7 +166,6 @@ const Projects = () => {
     },
     {
       id: 5,
-
       title: "Cryptocurrency Portfolio Tracker",
       description:
         "Real-time tracking of cryptocurrency investments and market trends",
@@ -179,9 +196,8 @@ const Projects = () => {
       rating: 4.3,
       link: "https://github.com/yourusername/social-analytics",
     },
-
     {
-      id: 9,
+      id: 8,
       title: "Smart Home Control System",
       description:
         "IoT-based solution for controlling and monitoring home devices",
@@ -191,9 +207,8 @@ const Projects = () => {
       rating: 4.2,
       link: "https://github.com/yourusername/smart-home",
     },
-
     {
-      id: 10,
+      id: 9,
       title: "Task Management Dashboard",
       description:
         "A Kanban-style task management app with drag-and-drop functionality",
@@ -208,7 +223,6 @@ const Projects = () => {
   const [likedProjects, setLikedProjects] = useState({});
 
   useEffect(() => {
-    // Load liked projects from localStorage
     const savedLikes = JSON.parse(localStorage.getItem("likedProjects")) || {};
     setLikedProjects(savedLikes);
   }, []);
@@ -242,12 +256,12 @@ const Projects = () => {
           <ProjectImage src={project.image} alt={project.title} />
           <ProjectDescription>{project.description}</ProjectDescription>
           <InteractionBar>
-            <LikeButton
+            <InteractionButton
               onClick={() => handleLike(project.id)}
               liked={likedProjects[project.id]}
             >
               <FaHeart style={{ marginRight: "5px" }} /> {project.likes}
-            </LikeButton>
+            </InteractionButton>
             <RatingDisplay>
               <FaStar style={{ marginRight: "5px" }} />{" "}
               {project.rating.toFixed(1)}

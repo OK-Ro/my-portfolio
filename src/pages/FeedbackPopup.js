@@ -15,11 +15,11 @@ const shimmer = keyframes`
 const FeedbackCard = styled.div`
   background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 0.75rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 200px;
   overflow: hidden;
   position: relative;
 
@@ -51,98 +51,98 @@ const FeedbackCard = styled.div`
 const ChatHeader = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 `;
 
 const ChatTitle = styled.h3`
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 0.7rem;
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
 
   svg {
-    margin-right: 0.5rem;
+    margin-right: 0.25rem;
   }
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 0.6rem;
   }
 `;
 
 const MessageContainer = styled.div`
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   animation: ${popIn} 0.5s ease-out;
   position: relative;
   z-index: 1;
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 20rem;
+    height: 10rem;
   }
 `;
 
 const ProfileIcon = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   flex-shrink: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
   }
 `;
+
 const MessageContent = styled.div`
   width: 100%;
-
   border-radius: 20px;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.1);
 `;
 
 const MessageBubble = styled.div`
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 18px;
-  padding: 1rem 1.2rem;
+  padding: 0.5rem 0.6rem;
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
   &::before {
     content: "";
     position: absolute;
-    left: -10px;
-    top: 20px;
-    border-width: 10px 10px 10px 0;
+    left: -5px;
+    top: 10px;
+    border-width: 5px 5px 5px 0;
     border-style: solid;
     border-color: transparent rgba(255, 255, 255, 0.9) transparent transparent;
   }
 
   @media (max-width: 768px) {
-    padding: 0.8rem 1rem;
-    height: 5rem;
-    width: 13rem;
+    padding: 0.4rem 0.5rem;
+    height: 3rem;
+    width: 6.5rem;
   }
 `;
 
 const Message = styled.p`
-  font-size: 1rem;
+  font-size: 0.5rem;
   color: #333;
   margin: 0;
   line-height: 1.4;
 
   @media (max-width: 768px) {
-    font-size: 0.7rem;
+    font-size: 0.35rem;
     color: #333;
     margin: 0;
     line-height: 1.1;
@@ -152,13 +152,13 @@ const Message = styled.p`
 const ClientInfo = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  font-size: 0.45rem;
   color: #ffffff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 0.4rem;
   }
 `;
 
@@ -166,42 +166,42 @@ const MessageStatus = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  font-size: 0.8rem;
+  font-size: 0.4rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-top: 0.3rem;
+  margin-top: 0.15rem;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 `;
 
 const ReactionContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 `;
 
 const Reaction = styled.span`
   background-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  padding: 0.3rem 0.6rem;
+  padding: 0.15rem 0.3rem;
   border-radius: 12px;
-  font-size: 0.9rem;
+  font-size: 0.45rem;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.15rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.4rem;
+    font-size: 0.4rem;
+    padding: 0.1rem 0.2rem;
   }
 `;
 
 const StarRating = styled.div`
   display: flex;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   color: #ffd700;
 
   @media (max-width: 768px) {
-    margin-top: 0.3rem;
+    margin-top: 0.15rem;
   }
 `;
 
@@ -245,7 +245,7 @@ const FeedbackPopup = () => {
         feedbacks[Math.floor(Math.random() * feedbacks.length)]
       );
       setKey((prevKey) => prevKey + 1);
-    }, 8000); // Change feedback every 8 seconds
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
@@ -259,7 +259,7 @@ const FeedbackPopup = () => {
       </ChatHeader>
       <MessageContainer key={key}>
         <ProfileIcon>
-          <FaUser color="white" size={24} />
+          <FaUser color="white" size={12} />
         </ProfileIcon>
         <MessageContent>
           <MessageBubble>
@@ -274,7 +274,7 @@ const FeedbackPopup = () => {
             ))}
           </StarRating>
           <MessageStatus>
-            <FaCheck style={{ marginRight: "4px" }} /> Sent{" "}
+            <FaCheck style={{ marginRight: "2px" }} /> Sent{" "}
             {currentFeedback.time}
           </MessageStatus>
           <ReactionContainer>

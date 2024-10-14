@@ -25,7 +25,7 @@ const Container = styled.div`
   width: 100%;
   background-color: #f0f4f8;
   border-radius: 12px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
@@ -37,7 +37,7 @@ const Container = styled.div`
 const StatsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -49,7 +49,7 @@ const StatsContainer = styled.div`
 const ChartsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 10px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -60,11 +60,11 @@ const ChartsContainer = styled.div`
 const StatCardWrapper = styled.div`
   background-color: white;
   border-radius: 8px;
-  padding: 15px;
+  padding: 7.5px;
   display: flex;
   align-items: center;
   flex: 1;
-  margin: 0 10px;
+  margin: 0 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
@@ -77,20 +77,20 @@ const StatCardWrapper = styled.div`
 `;
 
 const StatIcon = styled.div`
-  font-size: 24px;
-  margin-right: 15px;
+  font-size: 12px;
+  margin-right: 7.5px;
   color: #4a5568;
 
   @media (max-width: 768px) {
-    font-size: 20px;
+    font-size: 10px;
     margin-right: 12px;
   }
 `;
 
 const StatTitle = styled.h3`
-  font-size: 16px;
+  font-size: 8px;
   color: #4a5568;
-  margin-bottom: 5px;
+  margin-bottom: 2.5px;
   font-family: "Roboto", sans-serif;
 
   @media (max-width: 768px) {
@@ -100,14 +100,14 @@ const StatTitle = styled.h3`
 `;
 
 const StatValue = styled.p`
-  font-size: 32px;
+  font-size: 16px;
   font-weight: bold;
   color: #2d3748;
   background: linear-gradient(45deg, #ff6f61, #ffccbc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-  padding: 5px;
+  padding: 2.5px;
   font-family: "Roboto", sans-serif;
 
   @media (max-width: 768px) {
@@ -119,9 +119,9 @@ const StatValue = styled.p`
 const LiveCounterWrapper = styled.div`
   background-color: #2d3748;
   border-radius: 8px;
-  padding: 15px;
+  padding: 7.5px;
   flex: 1;
-  margin: 0 10px;
+  margin: 0 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,10 +139,10 @@ const LiveCounterWrapper = styled.div`
 const LiveButton = styled.div`
   background-color: #e53e3e;
   border-radius: 20px;
-  padding: 5px 15px;
+  padding: 2.5px 7.5px;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 
   @media (max-width: 768px) {
     padding: 4px 12px;
@@ -151,11 +151,11 @@ const LiveButton = styled.div`
 `;
 
 const LiveDot = styled.div`
-  width: 12px;
-  height: 12px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: white;
-  margin-right: 8px;
+  margin-right: 4px;
 
   @media (max-width: 768px) {
     width: 10px;
@@ -167,7 +167,7 @@ const LiveDot = styled.div`
 const LiveText = styled.span`
   color: white;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 8px;
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -175,7 +175,7 @@ const LiveText = styled.span`
 `;
 
 const LiveCount = styled.p`
-  font-size: 40px;
+  font-size: 20px;
   font-weight: bold;
   color: #00bfff;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
@@ -189,7 +189,7 @@ const LiveCount = styled.p`
 const ChartCardWrapper = styled.div`
   background-color: white;
   border-radius: 8px;
-  padding: 15px;
+  padding: 7.5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
@@ -201,10 +201,10 @@ const ChartCardWrapper = styled.div`
 `;
 
 const ChartTitle = styled.h3`
-  font-size: 16px;
+  font-size: 8px;
   font-weight: bold;
   color: #4a5568;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-family: "Roboto", sans-serif;
 
   @media (max-width: 768px) {
@@ -215,7 +215,7 @@ const ChartTitle = styled.h3`
 
 const ChartContainer = styled.div`
   flex: 1;
-  min-height: 200px;
+  min-height: 100px;
   width: 100%;
 
   @media (max-width: 768px) {
@@ -352,7 +352,7 @@ const barOptions = {
       grid: { display: false },
       ticks: {
         font: {
-          size: 10,
+          size: 5,
         },
       },
     },
@@ -360,7 +360,7 @@ const barOptions = {
       grid: { display: false },
       ticks: {
         font: {
-          size: 10,
+          size: 5,
         },
       },
     },
@@ -374,10 +374,10 @@ const pieOptions = {
     legend: {
       position: "bottom",
       labels: {
-        boxWidth: 12,
+        boxWidth: 6,
         padding: 15,
         font: {
-          size: 10,
+          size: 5,
         },
       },
     },

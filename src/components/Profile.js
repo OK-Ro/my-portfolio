@@ -7,33 +7,31 @@ const ProfileContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 600px;
-  height: 54rem;
+  max-width: 300px;
+  height: 27rem;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 1.5rem;
   background-color: ${(props) => props.theme.cardBackground};
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 10;
 
   @media (max-width: 768px) {
-    padding: 0.4rem;
+    max-width: 350px;
     width: 100%;
-    z-index: auto;
-    height: 100%;
+    height: 28rem;
+    box-shadow: none;
   }
 `;
 
 const PhotoContainer = styled.div`
-  width: 480px;
-  height: 450px;
+  width: 240px;
+  height: 225px;
   position: relative;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    max-width: 300px;
-    height: 300px;
   }
 `;
 
@@ -41,10 +39,9 @@ const Photo = styled.img`
   width: 100%;
   height: auto;
   object-fit: contain;
-  object-position: center;
-  border-radius: 30px;
-  border: 6px solid ${(props) => props.theme.inputBackground};
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  border: 3px solid ${(props) => props.theme.inputBackground};
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 `;
 
 const ProfileInfo = styled.div`
@@ -52,87 +49,86 @@ const ProfileInfo = styled.div`
   width: 100%;
 
   @media (max-width: 768px) {
-    padding: 10px;
+    padding: 5px;
   }
 `;
 
 const Name = styled.h1`
   margin: 0;
-   font-size: 3rem;
-    margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
   font-weight: 900;
-  background: ${(props) => props.theme.text}
+  background: ${(props) => props.theme.text};
   -webkit-background-clip: text;
-
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-  letter-spacing: 2px;
+  text-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
   color: ${(props) => props.theme.text};
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
   }
-
-
 `;
 
 const Title = styled.h2`
-  font-size: 1.5rem;
+  font-size: 0.75rem;
   color: ${(props) => props.theme.accent};
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-weight: 900;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
 const Bio = styled.p`
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
+  font-size: 0.55rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
   color: ${(props) => props.theme.secondaryText};
-  text-align: center;
+  text-align: left;
 
   @media (max-width: 768px) {
     font-size: 0.8rem;
-    line-height: 1.5;
+    line-height: 1.4;
+    padding: 0.6rem;
   }
 `;
+
 const SkillTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  padding: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
   background: ${(props) => props.theme.cardBackground};
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    gap: 0.8rem;
-    padding: 0.8rem;
+    gap: 0.4rem;
+    padding: 0.3rem;
   }
 `;
 
 const SkillTag = styled.span`
   background: ${(props) => props.color || props.theme.accent};
   color: #ffffff;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.45rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.25px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.4rem;
   }
 
   &::before {
@@ -148,7 +144,7 @@ const SkillTag = styled.span`
   }
 
   &:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
     &::before {
@@ -159,44 +155,44 @@ const SkillTag = styled.span`
 
   &:active {
     transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 
   @media (max-width: 768px) {
-    gap: 1.5rem;
+    gap: 0.75rem;
     flex-wrap: wrap;
   }
 `;
 
 const SocialIcon = styled.a`
-  font-size: 1.4rem;
+  font-size: 0.7rem;
   color: ${(props) => props.color || props.theme.secondaryText};
   transition: all 0.3s ease;
-  padding: 0.5rem;
+  padding: 0.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   background-color: ${(props) => props.theme.cardBackground};
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    font-size: 1.8rem;
-    padding: 0.7rem;
-    width: 3rem;
-    height: 3rem;
+    font-size: 0.9rem;
+    padding: 0.35rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   &::before {
@@ -214,8 +210,8 @@ const SocialIcon = styled.a`
 
   &:hover {
     color: #ffffff;
-    transform: translateY(-3px) rotate(360deg);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px) rotate(360deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
     &::before {
       opacity: 1;
@@ -224,16 +220,16 @@ const SocialIcon = styled.a`
 
   &:active {
     transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
 
   svg {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 0.7rem;
+    height: 0.7rem;
 
     @media (max-width: 768px) {
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 0.9rem;
+      height: 0.9rem;
     }
   }
 `;
@@ -251,14 +247,13 @@ const Profile = () => {
           I am a passionate web developer with experience in both front-end and
           back-end technologies. Skilled in React.js, Node.js, and database
           management, I enjoy building user-friendly products that solve
-          real-world problems. My work spans across industries, and I thrive on
-          teamwork and collaboration.
+          real-world problems.
         </Bio>
 
         <SkillTags>
           <SkillTag>UI/UX Design</SkillTag>
           <SkillTag>Front-end Dev</SkillTag>
-          <SkillTag>Back-end-Dev</SkillTag>
+          <SkillTag>Back-end Dev</SkillTag>
         </SkillTags>
         <SocialLinks>
           <SocialIcon

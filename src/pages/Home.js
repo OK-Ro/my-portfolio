@@ -5,7 +5,6 @@ import NavBar from "../components/NavBar";
 import SmoothScroll from "./SmoothScroll";
 import Footer from "../components/Footer";
 
-// Lazy load components
 const MovingBanner = lazy(() => import("./MovingBanner"));
 const Profile = lazy(() => import("../components/Profile"));
 const WorkExperience = lazy(() => import("../components/WorkExperience"));
@@ -17,67 +16,67 @@ const CardContainer = styled.div`
   color: ${(props) => props.theme.text};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  padding: 50px;
-  margin-top: 10rem;
+  gap: 20px;
+  padding: 25px;
+  margin-top: 5rem;
   width: 100%;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0;
-    margin-top: 5rem;
-    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
   }
 `;
 
 const BaseCard = styled.div`
-  padding: 15px;
-  border-radius: 1rem;
-
+  padding: 7.5px;
+  border-radius: 0.5rem;
   color: ${(props) => props.theme.text};
   transition: background-color 0.3s ease, color 0.3s ease;
 
   @media (max-width: 768px) {
     padding: 5px;
-    box-shadow: 0 4px 1px ${(props) => props.theme.boxShadow};
+    box-shadow: 0 2px 0.5px ${(props) => props.theme.boxShadow};
   }
 `;
 
 const ProfileCard = styled(BaseCard)`
   grid-column: 1;
   grid-row: 1 / span 2;
-  height: 56rem;
-  width: 60rem;
+  height: 28rem;
+  width: 30rem;
   background: ${({ theme }) => theme.profileCardBackground};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 4px solid ${(props) => props.theme.inputBackground};
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 1;
-    height: 47rem;
+    height: 30rem;
     width: 100%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.09);
+    margin-bottom: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
   }
 `;
 
 const WorkExperienceCard = styled(BaseCard)`
   grid-column: 2;
   grid-row: 1;
-  height: 29rem;
+  height: 14.5rem;
   width: 100%;
   overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 4px solid ${(props) => props.theme.inputBackground};
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 2;
-    height: 47rem;
+    height: 25rem;
   }
 
   &::-webkit-scrollbar {
@@ -92,30 +91,30 @@ const WorkExperienceCard = styled(BaseCard)`
 const SkillsCard = styled(BaseCard)`
   grid-column: 2;
   grid-row: 2;
-  height: 25rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 4px solid ${(props) => props.theme.inputBackground};
+  height: 12.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 3;
     height: auto;
-    min-height: 24rem;
+    min-height: 15rem;
   }
 `;
 
 const ProjectsCard = styled(BaseCard)`
   grid-column: 3;
   grid-row: 1 / span 2;
-  height: 55rem;
+  height: 27.5rem;
   overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 4px solid ${(props) => props.theme.inputBackground};
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 4;
-    height: 47rem;
+    height: 50rem;
   }
 
   &::-webkit-scrollbar {
@@ -129,8 +128,8 @@ const ProjectsCard = styled(BaseCard)`
 const ServicesCard = styled(BaseCard)`
   grid-column: 1 / span 2;
   grid-row: 3;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 4px solid ${(props) => props.theme.inputBackground};
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid ${(props) => props.theme.inputBackground};
 
   @media (max-width: 768px) {
     grid-column: 1;
@@ -141,29 +140,29 @@ const ServicesCard = styled(BaseCard)`
 
 const ContactCard = styled(BaseCard)`
   background: ${(props) => props.theme.contactCardGradient};
-  border: 4px solid ${(props) => props.theme.inputBackground};
+  border: 2px solid ${(props) => props.theme.inputBackground};
   grid-column: 3;
   grid-row: 3;
   height: auto;
-  width: 60rem;
-  padding: 2rem;
+  width: 30rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 6;
     width: 100%;
     height: auto;
-    min-height: 20rem;
+    min-height: 12rem;
     padding: 1rem;
   }
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px ${(props) => props.theme.boxShadow};
+    transform: translateY(-2.5px);
+    box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow};
   }
 `;
 
@@ -171,19 +170,19 @@ const LetsTalkContainer = styled.div`
   background: linear-gradient(-45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
-  border-radius: 20px;
-  padding: 3rem;
+  border-radius: 10px;
+  padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2.5px);
+    box-shadow: 0 7.5px 20px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
-    padding: 2rem;
+    padding: 1rem;
   }
 
   @keyframes gradientAnimation {
@@ -200,26 +199,26 @@ const LetsTalkContainer = styled.div`
 `;
 
 const LetsTalkTop = styled.div`
-  font-size: 2.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 `;
 
 const LetsTalkMiddle = styled.div`
-  font-size: 3.5rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: #fff;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-  margin-bottom: 2rem;
+  text-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -228,36 +227,36 @@ const LetsTalkLink = styled(Link)`
   align-items: center;
   background-color: #fff;
   color: #ff6b6b;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   font-weight: bold;
   text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2.5px 7.5px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     background-color: #ff6b6b;
     color: #fff;
   }
 
   @media (max-width: 768px) {
-    font-size: 1rem;
-    padding: 0.8rem 1.5rem;
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
   }
 `;
 
 const BulletIcon = styled.svg`
-  width: 20px;
-  height: 20px;
-  margin-left: 10px;
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
   fill: currentColor;
 `;
 
 const PageContainer = styled.div`
-  padding: 4rem;
+  padding: 2rem;
   background: ${({ theme }) => theme.body};
   color: ${(props) => props.theme.text};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,

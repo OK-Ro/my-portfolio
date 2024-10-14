@@ -35,7 +35,7 @@ const PageWrapper = styled.div`
   color: ${({ theme }) => theme.resumeText};
   display: flex;
   flex-direction: column;
-  padding: 12rem;
+  padding: 6rem;
   min-height: 100vh;
 
   @media (max-width: 768px) {
@@ -46,16 +46,23 @@ const PageWrapper = styled.div`
 const ResumeContainer = styled(motion.div)`
   width: 100%;
   max-width: 1000px;
-  margin: 5rem auto 0;
+  margin: 2.5rem auto 0;
   padding: 2rem;
   background-color: ${({ theme }) => theme.resumeCardBackground};
   color: ${({ theme }) => theme.resumeCardText};
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  margin-bottom: 10rem;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 
   @media (max-width: 768px) {
     padding: 1rem;
     margin-top: 1.5rem;
+    margin-bottom: 5rem;
   }
 `;
 
@@ -64,13 +71,13 @@ const BackToHome = styled(Link)`
   align-items: center;
   justify-content: center;
   background-color: white;
-  margin-top: 5rem;
-  width: 192px;
-  height: 56px;
+  margin-top: 2.5rem;
+  width: 96px;
+  height: 28px;
   border-radius: 16px;
   position: relative;
   color: black;
-  font-size: 16px;
+  font-size: 8px;
   font-weight: 600;
   text-decoration: none;
   overflow: hidden;
@@ -85,8 +92,8 @@ const BackToHome = styled(Link)`
     content: "";
     background: linear-gradient(to right, #6dd5ed, #2193b0);
     border-radius: 12px;
-    height: 45px;
-    width: 60px;
+    height: 22.5px;
+    width: 30px;
     position: absolute;
     left: 4px;
     top: 2px;
@@ -95,20 +102,20 @@ const BackToHome = styled(Link)`
   }
 
   &:hover::before {
-    width: 178px;
+    width: 89px;
   }
 
   svg {
     position: absolute;
-    left: 16px;
+    left: 8px;
     z-index: 2;
-    height: 20px;
-    width: 20px;
+    height: 10px;
+    width: 10px;
     transition: transform 0.3s ease;
   }
 
   &:hover svg {
-    transform: translateX(-3px);
+    transform: translateX(-1.5px);
   }
 
   span {
@@ -187,7 +194,7 @@ const SectionTitle = styled.h2`
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
 
   svg {
@@ -305,6 +312,7 @@ const WorkDate = styled.p`
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 `;
+
 function Resume() {
   const profile = {
     name: "Robert Okuni",

@@ -4,15 +4,15 @@ import styled from "styled-components";
 const Pre = styled.pre`
   background-color: #1e1e1e;
   color: #d4d4d4;
-  padding: 2rem;
-  border-radius: 5px;
+  padding: 1rem; /* Reduced from 2rem */
+  border-radius: 2.5px; /* Reduced from 5px */
   overflow-x: auto;
   font-family: "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 18px;
+  font-size: 9px; /* Reduced from 18px */
   line-height: 1.5;
   white-space: pre-wrap;
   word-wrap: break-word;
-  height: 22rem;
+  height: 11rem; /* Reduced from 22rem */
   overflow-y: auto;
   backdrop-filter: blur(10px);
 
@@ -24,9 +24,9 @@ const Pre = styled.pre`
   scrollbar-width: none;
 
   @media (max-width: 768px) {
-    font-size: 12px;
-    padding: 0.1rem;
-    height: 18rem;
+    font-size: 6px; /* Reduced from 12px */
+    padding: 0.05rem; /* Reduced from 0.1rem */
+    height: 9rem; /* Reduced from 18rem */
     width: calc(110% - 1.5rem);
     margin-right: 0.5rem;
   }

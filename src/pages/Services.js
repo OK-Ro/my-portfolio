@@ -3,7 +3,6 @@ import { FaArrowLeft, FaGraduationCap } from "react-icons/fa";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { FaCode, FaServer, FaMobile, FaRocket } from "react-icons/fa";
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -39,7 +38,7 @@ const ServicesContainer = styled.div`
   background: ${({ theme }) => theme.resumeBackground};
   color: ${(props) => props.theme.text};
   margin: 0 auto;
-  padding: 5rem;
+  padding: 2.5rem;
   animation: ${fadeIn} 0.5s ease-in;
 
   @media (max-width: 768px) {
@@ -49,58 +48,61 @@ const ServicesContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  margin-top: 10rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
 
   @media (max-width: 768px) {
-    margin-top: 7rem;
+    margin-top: 3.5rem;
     width: 100%;
+    margin-bottom: 1rem;
   }
 `;
 
 const PageLayout = styled.div`
   flex-direction: row;
-  gap: 4rem;
+  gap: 2rem;
   display: flex;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
   }
 `;
 
 const LeftColumn = styled.div`
   flex: 1;
-  min-width: 300px;
+  min-width: 150px;
   animation: ${fadeIn} 0.9s ease-in;
 
   @media (max-width: 768px) {
     min-width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 `;
 
 const RightColumn = styled.div`
   flex: 1;
-  min-width: 300px;
-  margin-top: 12rem;
+  min-width: 150px;
+  margin-top: 6rem;
 
   @media (max-width: 768px) {
     min-width: 100%;
     margin-top: 0;
   }
 `;
+
 const BackToHome = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background-color: white;
-  margin-top: 5rem;
-  width: 192px;
-  height: 56px;
+  margin-top: 2.5rem;
+  width: 96px;
+  height: 28px;
   border-radius: 16px;
   position: relative;
   color: black;
-  font-size: 16px;
+  font-size: 8px;
   font-weight: 600;
   text-decoration: none;
   overflow: hidden;
@@ -115,8 +117,8 @@ const BackToHome = styled(Link)`
     content: "";
     background: linear-gradient(to right, #6dd5ed, #2193b0);
     border-radius: 12px;
-    height: 45px;
-    width: 60px;
+    height: 22.5px;
+    width: 30px;
     position: absolute;
     left: 4px;
     top: 2px;
@@ -125,20 +127,20 @@ const BackToHome = styled(Link)`
   }
 
   &:hover::before {
-    width: 178px;
+    width: 89px;
   }
 
   svg {
     position: absolute;
-    left: 16px;
+    left: 8px;
     z-index: 2;
-    height: 20px;
-    width: 20px;
+    height: 10px;
+    width: 10px;
     transition: transform 0.3s ease;
   }
 
   &:hover svg {
-    transform: translateX(-3px);
+    transform: translateX(-1.5px);
   }
 
   span {
@@ -152,18 +154,18 @@ const BackToHome = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    width: 160px;
-    height: 48px;
-    font-size: 14px;
+    width: 80px;
+    height: 24px;
+    font-size: 7px;
     margin-top: 0;
 
     &::before {
-      height: 38px;
-      width: 50px;
+      height: 19px;
+      width: 25px;
     }
 
     &:hover::before {
-      width: 148px;
+      width: 74px;
     }
   }
 `;
@@ -175,9 +177,9 @@ const gradientAnimation = keyframes`
 `;
 
 const Header = styled.h1`
-  font-size: 3.5rem;
+  font-size: 2rem;
   font-weight: 900;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   text-align: center;
   color: transparent;
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7aa, #6a2c70);
@@ -186,16 +188,16 @@ const Header = styled.h1`
   -webkit-background-clip: text;
   animation: ${gradientAnimation} 10s ease infinite, ${fadeIn} 1s ease-out;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   position: relative;
 
   &::after {
     content: "";
     position: absolute;
-    bottom: -10px;
+    bottom: -5px;
     left: 50%;
-    width: 50px;
-    height: 4px;
+    width: 25px;
+    height: 2px;
     background: #4ecdc4;
     transform: translateX(-50%);
     border-radius: 2px;
@@ -207,34 +209,34 @@ const Header = styled.h1`
 `;
 
 const Subheader = styled.p`
-  font-size: 1.3rem;
-  margin-bottom: 3rem;
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
   text-align: center;
   color: ${(props) => props.theme.secondaryText};
-  max-width: 800px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
   animation: ${fadeIn} 1s ease-out 0.5s both;
   position: relative;
-  padding: 0 20px;
+  padding: 0 10px;
 
   &::before,
   &::after {
     content: '"';
-    font-size: 3rem;
+    font-size: 1.5rem;
     color: #4ecdc4;
     position: absolute;
     opacity: 0.3;
   }
 
   &::before {
-    top: -20px;
+    top: -10px;
     left: 0;
   }
 
   &::after {
-    bottom: -40px;
+    bottom: -20px;
     right: 0;
   }
 
@@ -246,42 +248,42 @@ const Subheader = styled.p`
 const ServicesGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1rem;
   }
 
   @media (min-width: 1024px) {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
 const ServiceCard = styled.div`
   background-color: ${(props) => props.bgColor || props.theme.backgroundCala};
-  border-radius: 15px;
-  padding: 1.5rem;
+  border-radius: 7.5px;
+  padding: 0.75rem;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border: 3px solid
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border: 1.5px solid
     ${(props) => props.borderColor || props.theme.cardBorderline};
   position: relative;
   overflow: hidden;
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
 
   &::before {
     content: "";
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -25%;
+    left: -25%;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(
       circle,
       rgba(255, 255, 255, 0.2) 0%,
@@ -292,12 +294,12 @@ const ServiceCard = styled.div`
   }
 
   &:hover::before {
-    top: -75%;
-    left: -75%;
+    top: -37.5%;
+    left: -37.5%;
   }
 
   @media (min-width: 768px) {
-    padding: 2rem;
+    padding: 1rem;
 
     &:nth-child(1) {
       grid-column: span 2;
@@ -310,23 +312,23 @@ const ServiceCard = styled.div`
 `;
 
 const ServiceIcon = styled.div`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: ${(props) => props.iconColor || props.theme.accent};
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   transition: transform 0.3s ease;
 
   ${ServiceCard}:hover & {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   @media (min-width: 768px) {
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 `;
 
 const ServiceTitle = styled.h2`
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
   color: ${(props) => props.theme.text};
   position: relative;
   display: inline-block;
@@ -334,10 +336,10 @@ const ServiceTitle = styled.h2`
   &::after {
     content: "";
     position: absolute;
-    bottom: -5px;
+    bottom: -2.5px;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 1px;
     background-color: ${(props) => props.theme.accent};
     transition: width 0.3s ease;
   }
@@ -346,145 +348,178 @@ const ServiceTitle = styled.h2`
     width: 100%;
   }
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 1.5rem;
   }
 `;
 
 const ServiceDescription = styled.p`
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: ${(props) => props.theme.secondaryText};
-  font-size: 0.9rem;
+  font-size: 0.65rem;
   line-height: 1.6;
 
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 1rem;
   }
 `;
 
 const TotalVisitorSection = styled.div`
-  margin: 3rem 0;
-  padding: 2rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
 
-  border-width: 20px;
+  border-width: 10px;
   background-color: ${(props) => props.theme.backgroundCala};
-  border-radius: 15px;
-
+  border-radius: 7.5px;
+  font-size: 0.7rem;
   @media (max-width: 768px) {
-    margin: 2rem 0;
+    margin: 1rem 0;
     padding: 0.1rem;
-    border-width: 2px;
+    border-width: 1px;
   }
 `;
 
 const SectionTitle = styled.h2`
   color: ${(props) => (props.theme.dark ? "#e0e0e0" : "#333")};
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+
+    gap: 1rem;
+  }
 `;
 
 const EducationSection = styled.div`
-  margin: 4rem 0;
+  margin: 2rem 0;
+  @media (max-width: 768px) {
+    margin: 4rem 0;
+  }
 `;
 
 const EducationGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
 `;
 
 const EducationCard = styled.div`
   background: ${(props) => (props.theme.dark ? "#2a2a2a" : "#ffffff")};
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 7.5px;
+  padding: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border-top: 10px solid #4caf50;
+  border-top: 5px solid #4caf50;
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  @media (max-width: 768px) {
+    padding: 2rem;
   }
 `;
 
 const EducationTitle = styled.h3`
-  font-size: 1.4rem;
+  font-size: 0.7rem;
   color: #4caf50;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+
+    margin-bottom: 1rem;
+  }
 `;
 
 const EducationInstitute = styled.h4`
-  font-size: 1.1rem;
+  font-size: 0.55rem;
   color: ${(props) => (props.theme.dark ? "#e0e0e0" : "#333")};
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const EducationDate = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.45rem;
   color: ${(props) => (props.theme.dark ? "#b0b0b0" : "#666")};
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const EducationDescription = styled.p`
-  font-size: 1rem;
+  font-size: 0.5rem;
   color: ${(props) => (props.theme.dark ? "#d0d0d0" : "#444")};
   line-height: 1.6;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 `;
 
 const CTASection = styled.div`
   perspective: 1000px;
-  margin-top: 2rem;
+  margin-top: 1rem;
 
   @media (min-width: 768px) {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
 `;
 
 const CTACard = styled.div`
   background: linear-gradient(45deg, #00c9ff, #92fe9d);
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: 10px;
+  padding: 1rem;
   text-align: center;
   color: #1a1a1a;
   transform-style: preserve-3d;
   transition: transform 0.6s;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 
   &:hover {
-    transform: rotateY(10deg) rotateX(5deg);
+    transform: rotateY(5deg) rotateX(2.5deg);
   }
 
   @media (min-width: 768px) {
-    padding: 2.5rem;
+    padding: 1.25rem;
   }
 
   @media (min-width: 1024px) {
-    padding: 3rem;
+    padding: 1.5rem;
   }
 `;
 
 const CTAContent = styled.div`
-  transform: translateZ(60px);
+  transform: translateZ(30px);
   transition: transform 0.6s;
 
   ${CTACard}:hover & {
-    transform: translateZ(80px);
+    transform: translateZ(40px);
   }
 `;
 
 const CTATitle = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
   color: #1a1a1a;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
 `;
 
 const CTAText = styled.p`
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 0.5rem;
+  margin-bottom: 1rem;
   color: #333;
 `;
 
@@ -492,14 +527,14 @@ const CTAButton = styled(Link)`
   display: inline-block;
   background-color: #ff6b6b;
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 0.375rem 0.75rem;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 15px;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.5rem;
   transition: all 0.3s ease;
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 
@@ -507,7 +542,7 @@ const CTAButton = styled(Link)`
     content: "";
     position: absolute;
     top: 0;
-    left: -100%;
+    left: -50%;
     width: 100%;
     height: 100%;
     background: linear-gradient(
@@ -520,27 +555,26 @@ const CTAButton = styled(Link)`
   }
 
   &:hover::before {
-    left: 100%;
+    left: 50%;
   }
 
   &:hover {
     background-color: #ff8787;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
   @media (min-width: 768px) {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.55rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.2rem;
+    font-size: 0.6rem;
   }
 `;
 
 const Services = () => {
-  // Define education data array
   const education = [
     {
       degree: "Full Stack Web Development Course",

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const VisitorSectionWrapper = styled.div`
   background-color: #131722;
   border-radius: 8px;
-  padding: 20px;
+  padding: 10px;
   color: #d1d4dc;
 
   @media (max-width: 768px) {
@@ -14,22 +14,22 @@ const VisitorSectionWrapper = styled.div`
 `;
 
 const ChartTitle = styled.h2`
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 12px;
+  margin-bottom: 10px;
   text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 20px;
+    font-size: 10px;
     margin-bottom: 15px;
   }
 `;
 
 const ChartContainer = styled.div`
-  height: 300px;
+  height: 150px;
   position: relative;
   background: #1c2030;
   border-radius: 8px;
-  padding: 20px;
+  padding: 10px;
   overflow: hidden;
   display: flex;
 
@@ -45,13 +45,13 @@ const LineChartContainer = styled.div`
   position: relative;
 
   @media (max-width: 768px) {
-    height: 250px;
-    margin-bottom: 20px;
+    height: 125px;
+    margin-bottom: 10px;
   }
 `;
 
 const BarChartContainer = styled.div`
-  width: 150px;
+  width: 75px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -59,7 +59,7 @@ const BarChartContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 100px;
+    height: 50px;
     flex-direction: row;
     justify-content: space-around;
   }
@@ -67,48 +67,48 @@ const BarChartContainer = styled.div`
 
 const ChartLine = styled(motion.path)`
   fill: none;
-  stroke-width: 3;
+  stroke-width: 1.5;
   filter: drop-shadow(0 0 5px ${(props) => props.stroke});
 
   @media (max-width: 768px) {
-    stroke-width: 2;
+    stroke-width: 1;
   }
 `;
 
 const GridLine = styled.line`
   stroke: #2a2e39;
-  stroke-width: 1;
+  stroke-width: 0.5;
   stroke-dasharray: 5, 5;
 
   @media (max-width: 768px) {
-    stroke-width: 0.5;
+    stroke-width: 0.25;
     stroke-dasharray: 3, 3;
   }
 `;
 
 const AxisLabel = styled.text`
   fill: #d1d4dc;
-  font-size: 12px;
+  font-size: 6px;
 
   @media (max-width: 768px) {
-    font-size: 10px;
+    font-size: 5px;
   }
 `;
 
 const MonthLabel = styled.text`
   fill: #d1d4dc;
-  font-size: 10px;
+  font-size: 5px;
   text-anchor: middle;
 
   @media (max-width: 768px) {
-    font-size: 8px;
+    font-size: 4px;
   }
 `;
 
 const Legend = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
@@ -119,25 +119,25 @@ const Legend = styled.div`
 const LegendItem = styled.div`
   display: flex;
   align-items: center;
-  margin: 5px 15px;
+  margin: 2.5px 7.5px;
 
   @media (max-width: 768px) {
     margin: 5px 10px;
-    font-size: 12px;
+    font-size: 6px;
   }
 `;
 
 const LegendColor = styled.div`
-  width: 15px;
-  height: 15px;
-  margin-right: 8px;
+  width: 7.5px;
+  height: 7.5px;
+  margin-right: 4px;
   background-color: ${(props) => props.color};
   box-shadow: 0 0 10px ${(props) => props.color};
 
   @media (max-width: 768px) {
-    width: 12px;
-    height: 12px;
-    margin-right: 6px;
+    width: 6px;
+    height: 6px;
+    margin-right: 3px;
   }
 `;
 
@@ -145,14 +145,14 @@ const Tooltip = styled.div`
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
-  padding: 5px 10px;
+  padding: 2.5px 5px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 6px;
   pointer-events: none;
 
   @media (max-width: 768px) {
-    font-size: 10px;
-    padding: 4px 8px;
+    font-size: 5px;
+    padding: 2px 4px;
   }
 `;
 
@@ -160,34 +160,35 @@ const PumpingBarsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 200px;
+  height: 100px;
 
   @media (max-width: 768px) {
-    height: 100px;
+    height: 50px;
   }
 `;
 
 const PumpingBar = styled(motion.div)`
-  width: 40px;
+  width: 20px;
   position: absolute;
   bottom: 0;
   border-radius: 4px 4px 0 0;
 
   @media (max-width: 768px) {
-    width: 30px;
+    width: 15px;
   }
 `;
 
 const BarLabel = styled.div`
-  font-size: 10px;
+  font-size: 5px;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 2.5px;
 
   @media (max-width: 768px) {
-    font-size: 9px;
+    font-size: 4.5px;
     margin-top: 3px;
   }
 `;
+
 const VisitorSection = () => {
   const [monthlyData, setMonthlyData] = useState([]);
   const [tooltip, setTooltip] = useState({
@@ -198,12 +199,11 @@ const VisitorSection = () => {
   });
   const [pumpHeights, setPumpHeights] = useState([0, 0, 0]);
 
-  const width = 700;
-  const height = 300;
-  const padding = 40;
+  const width = 350;
+  const height = 150;
+  const padding = 20;
 
   useEffect(() => {
-    // Generate mock data for the past 12 months
     const mockData = Array.from({ length: 12 }, () => ({
       visits: Math.floor(Math.random() * 10000),
       newUsers: Math.floor(Math.random() * 1000),
@@ -295,7 +295,6 @@ const VisitorSection = () => {
           onMouseLeave={handleMouseLeave}
         >
           <svg width={width} height={height}>
-            {/* Grid lines and labels */}
             {[0, 2500, 5000, 7500, 10000].map((level) => (
               <React.Fragment key={level}>
                 <GridLine
@@ -309,15 +308,11 @@ const VisitorSection = () => {
                 </AxisLabel>
               </React.Fragment>
             ))}
-
-            {/* Month labels */}
             {monthlyData.map((_, index) => (
               <MonthLabel key={index} x={xScale(index)} y={height - 5}>
                 {getMonthName(index)}
               </MonthLabel>
             ))}
-
-            {/* Chart lines */}
             <ChartLine
               d={createLinePath(monthlyData, "visits")}
               stroke="#00ffff"
@@ -353,7 +348,7 @@ const VisitorSection = () => {
             {pumpHeights.map((height, index) => (
               <div
                 key={index}
-                style={{ position: "relative", height: "100%", width: "30px" }}
+                style={{ position: "relative", height: "100%", width: "15px" }}
               >
                 <PumpingBar
                   style={{

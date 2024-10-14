@@ -6,10 +6,10 @@ const ExperienceWrapper = styled.div`
   width: 100%;
   height: auto;
   position: relative;
-  padding: 2rem;
-  border-radius: 20px;
+  padding: 1rem;
+  border-radius: 10px;
   background-color: ${(props) => props.theme.cardBackground};
-
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   @media (max-width: 768px) {
     padding: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -18,8 +18,6 @@ const ExperienceWrapper = styled.div`
 
 const ExperienceContainer = styled.div`
   width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
 
   border-radius: 20px;
 
@@ -42,14 +40,14 @@ const ExperienceContainer = styled.div`
 
 const TitleWrapper = styled.div`
   position: sticky;
-  top: 0;
+
   background-color: ${(props) => props.theme.cardBackground || "#ffffff"};
   z-index: 1;
   border-radius: 20px;
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: ${(props) => props.theme.text || "#333333"};
   margin-bottom: 2rem;
   text-align: center;
@@ -103,8 +101,8 @@ const TimelineItem = styled.div`
 `;
 
 const TimelineContent = styled.div`
-  width: 45%;
-  padding: 1.5rem;
+  width: 60%;
+  padding: 1rem;
   background-color: ${(props) => props.color || "#ffffff"};
   border-radius: 12px;
   box-shadow: 0 5px 15px ${(props) => props.theme.boxShadow || "#aaaaaa"};
@@ -152,7 +150,7 @@ const TimelineContent = styled.div`
 `;
 
 const JobTitle = styled.h3`
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   color: ${(props) => props.theme.accent || "#ff6f61"};
   margin-bottom: 0.5rem;
   display: flex;
@@ -164,7 +162,7 @@ const JobTitle = styled.h3`
 `;
 
 const Company = styled.h4`
-  font-size: 1.1rem;
+  font-size: 0.6rem;
   color: ${(props) => props.theme.text || "#333333"};
   margin-bottom: 0.5rem;
 
@@ -174,7 +172,7 @@ const Company = styled.h4`
 `;
 
 const Period = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.5rem;
   color: ${(props) => props.theme.secondaryText || "#666666"};
   margin-bottom: 1rem;
 
@@ -226,7 +224,7 @@ const experiences = [
   },
   {
     id: 3,
-    title: "Digital Media Infrastructure Manager",
+    title: "Digital Sales Consultant",
     company: "Dstv Uganda",
     period: "2017 - 2019",
     description:

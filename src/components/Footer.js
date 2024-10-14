@@ -23,13 +23,13 @@ const gradientAnimation = keyframes`
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 `;
+
 const FooterWrapper = styled.div`
   width: 100%;
   height: auto;
   position: relative;
-  padding: 1rem;
-  border-radius: 2rem;
-  background-color: transparent;
+  padding: 0.5rem; /* Adjusted padding */
+  border-radius: 1rem; /* Adjusted border radius */
   background-color: ${(props) => props.theme.cardBackground};
 
   @media (max-width: 768px) {
@@ -47,20 +47,23 @@ const FooterContainer = styled.footer`
   background-size: 200% 200%;
   animation: ${gradientAnimation} 15s ease infinite;
   color: ${({ theme }) => theme.text};
-  padding: 1rem 0 2rem;
+  padding: 0.5rem 0 1rem; /* Adjusted padding */
   position: relative;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
-  margin-top: 1rem;
-  border-radius: 2rem;
+  margin-top: 0.5rem; /* Adjusted margin */
+  border-radius: 1rem; /* Adjusted border radius */
 `;
 
 const FooterContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 0 2rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(125px, 1fr)
+  ); /* Adjusted min width */
+  gap: 1rem; /* Adjusted gap */
+  padding: 0 1rem; /* Adjusted padding */
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -74,8 +77,8 @@ const FooterSection = styled.div`
 `;
 
 const FooterTitle = styled.h3`
-  font-size: 1.4rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.9rem; /* Adjusted font size */
+  margin-bottom: 1rem; /* Adjusted margin */
   color: ${({ theme }) => theme.primary};
   position: relative;
 
@@ -84,7 +87,7 @@ const FooterTitle = styled.h3`
     position: absolute;
     left: 0;
     bottom: -0.5rem;
-    width: 50px;
+    width: 25px; /* Adjusted width */
     height: 2px;
     background-color: ${({ theme }) => theme.accent};
   }
@@ -92,20 +95,27 @@ const FooterTitle = styled.h3`
   @media (max-width: 768px) {
     display: none;
   }
-  }
+`;
+
+const FooterText = styled.p`
+  font-size: 0.6rem; /* Adjusted font size for paragraphs */
+  margin-bottom: 0.5rem; /* Adjusted margin */
+  color: ${({ theme }) => theme.text}; /* Ensure text color matches theme */
 `;
 
 const FooterLink = styled(Link)`
   color: ${({ theme }) => theme.text};
   text-decoration: none;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem; /* Adjusted margin */
   transition: color 0.3s ease, transform 0.3s ease;
   display: inline-block;
+  font-size: 0.5rem;
 
   &:hover {
     color: ${({ theme }) => theme.accent};
-    transform: translateX(5px);
+    transform: translateX(3px); /* Adjusted transform */
   }
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -113,8 +123,9 @@ const FooterLink = styled(Link)`
 
 const SocialIcons = styled.div`
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.5rem; /* Adjusted gap */
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
 
   @media (max-width: 768px) {
     justify-content: center;
@@ -123,25 +134,25 @@ const SocialIcons = styled.div`
 
 const SocialIcon = styled.a`
   color: ${({ theme }) => theme.text};
-  font-size: 1.5rem;
+  font-size: 0.8rem; /* Adjusted font size */
   transition: color 0.3s ease, transform 0.3s ease;
 
   &:hover {
     color: ${({ theme }) => theme.accent};
-    transform: translateY(-3px);
+    transform: translateY(-2px); /* Adjusted transform */
   }
 `;
 
 const Copyright = styled.p`
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 1rem; /* Adjusted padding */
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.9rem;
+  font-size: 0.6rem; /* Adjusted font size */
 `;
 
 const DesignedBy = styled.p`
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.6rem; /* Adjusted font size */
   color: ${({ theme }) => theme.secondaryText};
 `;
 
@@ -149,20 +160,20 @@ const HeartIcon = styled(FaHeart)`
   color: red;
   animation: ${pulse} 1s infinite;
   display: inline-block;
-  margin: 0 0.2rem;
+  margin: 0 0.1rem; /* Adjusted margin */
 `;
 
 const ScrollToTop = styled.button`
   position: absolute;
-  right: 2rem;
-  font-size: 1.5rem;
-  bottom: 2rem;
+  right: 1rem; /* Adjusted position */
+  font-size: 1rem; /* Adjusted font size */
+  bottom: 1rem; /* Adjusted position */
   background-color: ${({ theme }) => theme.accent};
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  width: 50px; /* Adjusted width */
+  height: 50px; /* Adjusted height */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,31 +183,33 @@ const ScrollToTop = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.primary};
-    transform: translateY(-3px);
+    transform: translateY(-2px); /* Adjusted transform */
   }
 `;
 
 const ContactInfo = styled.div`
+  font-size: 0.6rem;
   display: flex;
   align-items: center;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem; /* Adjusted margin */
 
   svg {
-    margin-right: 0.5rem;
+    margin-right: 0.3rem; /* Adjusted margin */
     color: ${({ theme }) => theme.accent};
   }
 
   @media (max-width: 768px) {
-    margin-left: 5rem;
+    margin-left: 3rem; /* Adjusted margin */
   }
 `;
 
 const ProjectLink = styled(Link)`
+  font-size: 0.6rem;
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.text};
   text-decoration: none;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem; /* Adjusted margin */
   transition: color 0.3s ease;
 
   &:hover {
@@ -204,8 +217,9 @@ const ProjectLink = styled(Link)`
   }
 
   svg {
-    margin-right: 0.5rem;
+    margin-right: 0.3rem; /* Adjusted margin */
   }
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -225,8 +239,10 @@ const Footer = () => {
         <FooterContent>
           <FooterSection>
             <FooterTitle>Robert Okuni</FooterTitle>
-            <p>Full Stack Web Developer</p>
-            <p>Creating innovative web solutions</p>
+            <FooterText>Full Stack Web Developer</FooterText>{" "}
+            {/* Updated to use FooterText */}
+            <FooterText>Creating innovative web solutions</FooterText>{" "}
+            {/* Updated to use FooterText */}
             <SocialIcons>
               <SocialIcon
                 href="https://github.com/OK-Ro"
@@ -276,7 +292,7 @@ const Footer = () => {
               <FaMapMarkerAlt /> Amsterdam, Netherlands
             </ContactInfo>
             <ContactInfo>
-              <FaEnvelope /> robert@example.com
+              <FaEnvelope /> o.robert1994@hotmail.com
             </ContactInfo>
             <ContactInfo>
               <FaPhone /> +31 6 12345678

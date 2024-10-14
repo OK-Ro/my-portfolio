@@ -2,16 +2,15 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { FaCode, FaServer, FaRocket, FaLock, FaMobile } from "react-icons/fa";
 
-// Keyframes
 const float = keyframes`
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-5px); }
   100% { transform: translateY(0px); }
 `;
 
 const pulse = keyframes`
   0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 `;
 
@@ -21,15 +20,15 @@ const shine = keyframes`
   100% { filter: brightness(100%); }
 `;
 
-// Styled components
 const ServicesContainer = styled.div`
-  padding: 20px;
-  background: ${(props) => props.theme.background};
+  padding: 10px;
+  background-color: ${(props) => props.theme.cardBackground};
+  border-radius: 10px;
 `;
 
 const ServicesTitle = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-size: 1rem;
+  margin-bottom: 15px;
   color: ${(props) => props.theme.text};
   text-align: center;
   position: relative;
@@ -37,10 +36,10 @@ const ServicesTitle = styled.h2`
   &:after {
     content: "";
     position: absolute;
-    bottom: -10px;
+    bottom: -5px;
     left: 50%;
-    width: 50px;
-    height: 3px;
+    width: 25px;
+    height: 2px;
     background: ${(props) => props.theme.primary};
     transform: translateX(-50%);
   }
@@ -48,14 +47,14 @@ const ServicesTitle = styled.h2`
 
 const ServiceGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 10px;
 `;
 
 const ServiceCard = styled.div`
   background: ${(props) => props.theme.cardBackground};
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 10px;
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -67,8 +66,8 @@ const ServiceCard = styled.div`
     background: ${(props) => props.bgColor};
     color: ${(props) => props.color};
     border-color: ${(props) => props.color};
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
 
   &:before {
@@ -93,8 +92,8 @@ const ServiceCard = styled.div`
 `;
 
 const ServiceIcon = styled.div`
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
   animation: ${float} 3s ease-in-out infinite, ${pulse} 2s ease-in-out infinite,
     ${shine} 3s ease-in-out infinite;
   position: relative;
@@ -106,8 +105,8 @@ const ServiceIcon = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     background: ${(props) => props.bgColor};
     border-radius: 50%;
     z-index: -1;
@@ -115,19 +114,19 @@ const ServiceIcon = styled.div`
   }
 
   svg {
-    filter: drop-shadow(0 0 5px ${(props) => props.color});
+    filter: drop-shadow(0 0 3px ${(props) => props.color});
     color: ${(props) => props.color};
   }
 `;
 
 const ServiceName = styled.h3`
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   color: ${(props) => props.theme.text};
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 `;
 
 const ServiceDescription = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.6rem;
   color: ${(props) => props.theme.textSecondary};
   opacity: 0;
   max-height: 0;
@@ -140,7 +139,6 @@ const ServiceDescription = styled.p`
   }
 `;
 
-// Services data
 const services = [
   {
     name: "Front-End Development",
@@ -184,7 +182,6 @@ const services = [
   },
 ];
 
-// HomeServices component
 function HomeServices() {
   return (
     <ServicesContainer>

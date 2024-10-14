@@ -8,13 +8,15 @@ import {
   FaReact,
   FaServer,
 } from "react-icons/fa";
-import { SiMysql, SiMongodb, SiExpress } from "react-icons/si";
+import { SiMongodb, SiExpress } from "react-icons/si";
 
 const SkillsContainer = styled.div`
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
+  background-color: ${(props) => props.theme.cardBackground};
+  border-radius: 10px;
 `;
 
 const Header = styled.header`
@@ -26,7 +28,7 @@ const Header = styled.header`
 
   h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 900;
     background: linear-gradient(135deg, #ff6f61, #ffcc00);
     -webkit-background-clip: text;
@@ -40,12 +42,12 @@ const HexGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px;
-  margin: 20px 0;
+  gap: 10px;
+  margin: 10px 0;
 `;
 
 const HexItem = styled.div`
-  width: 100px;
+  width: 70px;
 
   position: relative;
   transition: all 0.3s ease;
@@ -56,8 +58,8 @@ const HexItem = styled.div`
 `;
 
 const HexInner = styled.div`
-  width: 96px;
-  height: 110px;
+  width: 56px;
+  height: 60px;
   background-color: ${(props) => props.color};
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   display: flex;
@@ -69,12 +71,12 @@ const HexInner = styled.div`
 `;
 
 const SkillIcon = styled.div`
-  font-size: 2rem;
+  font-size: 0.8rem;
   margin-bottom: 5px;
 `;
 
 const SkillName = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   text-align: center;
 `;
 
@@ -154,14 +156,7 @@ const skills = [
     description:
       "Skilled in building complex applications with React, including state management with Redux.",
   },
-  {
-    name: "MySQL",
-    icon: SiMysql,
-    color: "#00758F",
-    proficiency: 75,
-    description:
-      "Proficient in database design, complex queries, and optimization.",
-  },
+
   {
     name: "API",
     icon: FaServer,

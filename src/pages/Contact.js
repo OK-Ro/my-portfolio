@@ -53,7 +53,7 @@ const pulse = keyframes`
 `;
 
 const Header = styled.h1`
-  font-size: 6rem;
+  font-size: 3rem; /* Scaled down to 50% */
   font-weight: 900;
   margin-bottom: 1.5rem;
   color: transparent;
@@ -71,8 +71,8 @@ const Header = styled.h1`
     position: absolute;
     bottom: -10px;
     left: 50%;
-    width: 50px;
-    height: 4px;
+    width: 25px; /* Scaled down to 50% */
+    height: 2px; /* Scaled down to 50% */
     background: #00c9ff;
     transform: translateX(-50%);
     border-radius: 2px;
@@ -88,7 +88,7 @@ const Header = styled.h1`
 `;
 
 const Subheader = styled.p`
-  font-size: 1.5rem;
+  font-size: 0.75rem; /* Scaled down to 50% */
   margin-bottom: 4rem;
   font-weight: 900;
   color: ${(props) => props.theme.accent || "#FF416C"};
@@ -99,7 +99,7 @@ const Subheader = styled.p`
 
   &::before,
   &::after {
-    font-size: 3rem;
+    font-size: 1.5rem; /* Scaled down to 50% */
     color: #00c9ff;
     position: absolute;
     opacity: 0.3;
@@ -130,7 +130,7 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 5rem;
+  padding: 2.5rem; /* Scaled down to 50% */
   background: ${({ theme }) => theme.resumeBackground};
   color: ${({ theme }) => theme.text};
 
@@ -141,9 +141,9 @@ const PageWrapper = styled.div`
 
 const ContactContainer = styled.div`
   width: 100%;
-  max-width: 1400px;
+  max-width: 700px; /* Scaled down to 50% */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem; /* Scaled down to 50% */
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -158,17 +158,17 @@ const BackToHome = styled(Link)`
   align-items: center;
   justify-content: center;
   background-color: white;
-  width: 192px;
-  height: 56px;
+  width: 96px; /* Scaled down to 50% */
+  height: 28px; /* Scaled down to 50% */
   border-radius: 16px;
   position: relative;
   color: black;
-  font-size: 16px;
+  font-size: 8px; /* Scaled down to 50% */
   font-weight: 600;
   text-decoration: none;
   overflow: hidden;
   margin-bottom: 2rem;
-  margin-top: 10rem;
+  margin-top: 5rem; /* Scaled down to 50% */
   border: 4px solid transparent;
   background-image: linear-gradient(white, white),
     linear-gradient(to right, #6dd5ed, #2193b0);
@@ -180,8 +180,8 @@ const BackToHome = styled(Link)`
     content: "";
     background: linear-gradient(to right, #6dd5ed, #2193b0);
     border-radius: 12px;
-    height: 45px;
-    width: 60px;
+    height: 22.5px; /* Scaled down to 50% */
+    width: 30px; /* Scaled down to 50% */
     position: absolute;
     left: 4px;
     top: 2px;
@@ -190,15 +190,15 @@ const BackToHome = styled(Link)`
   }
 
   &:hover::before {
-    width: 178px;
+    width: 89px; /* Scaled down to 50% */
   }
 
   svg {
     position: absolute;
-    left: 16px;
+    left: 8px; /* Scaled down to 50% */
     z-index: 2;
-    height: 20px;
-    width: 20px;
+    height: 10px; /* Scaled down to 50% */
+    width: 10px; /* Scaled down to 50% */
     transition: transform 0.3s ease;
   }
 
@@ -227,7 +227,7 @@ const BackToHome = styled(Link)`
 
 const ContentWrapper = styled.div`
   display: flex;
-  gap: 4rem;
+  gap: 2rem; /* Scaled down to 50% */
   flex: 1;
   animation: ${fadeIn} 1s ease-out;
 
@@ -254,8 +254,8 @@ const RightSection = styled.div`
   flex-direction: column;
   align-items: center;
   background: ${({ theme }) => theme.formBackground};
-  border-radius: 40px;
-  padding: 40px;
+  border-radius: 20px; /* Scaled down to 50% */
+  padding: 20px; /* Scaled down to 50% */
   border: 5px solid ${({ theme }) => theme.formBorder};
   box-shadow: 0 30px 30px -20px ${({ theme }) => theme.formBoxShadow};
 
@@ -266,8 +266,8 @@ const RightSection = styled.div`
 `;
 
 const IntroText = styled.p`
-  font-size: 1.5rem;
-  margin-bottom: 2.5rem;
+  font-size: 0.75rem; /* Scaled down to 50% */
+  margin-bottom: 1.25rem; /* Scaled down to 50% */
   color: ${({ theme }) => theme.secondaryText};
 
   @media (max-width: 768px) {
@@ -277,7 +277,7 @@ const IntroText = styled.p`
 `;
 
 const ContactInfo = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem; /* Scaled down to 50% */
 
   @media (max-width: 768px) {
     margin-bottom: 2rem;
@@ -285,9 +285,9 @@ const ContactInfo = styled.div`
 `;
 
 const Icon = styled.span`
-  margin-right: 1.5rem;
+  margin-right: 0.75rem; /* Scaled down to 50% */
   color: ${({ theme }) => theme.iconColor};
-  font-size: 2.5rem;
+  font-size: 1.25rem; /* Scaled down to 50% */
   transition: all 0.5s ease;
   display: inline-block;
   position: relative;
@@ -299,8 +299,8 @@ const Icon = styled.span`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 30px; /* Scaled down to 50% */
+    height: 30px; /* Scaled down to 50% */
     background: ${({ theme }) => theme.cardBackground};
     border-radius: 50%;
     z-index: -1;
@@ -340,8 +340,8 @@ const Icon = styled.span`
 const InfoItem = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
+  margin-bottom: 0.75rem; /* Scaled down to 50% */
+  font-size: 0.6rem; /* Scaled down to 50% */
   transition: all 0.3s ease;
 
   &:hover {
@@ -356,7 +356,7 @@ const InfoItem = styled.div`
 
 const Form = styled.form`
   display: grid;
-  gap: 2rem;
+  gap: 1rem; /* Scaled down to 50% */
   width: 100%;
 
   @media (max-width: 768px) {
@@ -366,7 +366,7 @@ const Form = styled.form`
 
 const InputRow = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem; /* Scaled down to 50% */
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -383,10 +383,10 @@ const Input = styled.input`
   width: 100%;
   background: ${({ theme }) => theme.inputBackground};
   border: 2px solid ${({ theme }) => theme.inputBorder};
-  padding: 15px 20px;
+  padding: 7.5px 10px; /* Scaled down to 50% */
   border-radius: 20px;
   box-shadow: 0 4px 10px ${({ theme }) => theme.inputBoxShadow};
-  font-size: 1rem;
+  font-size: 0.5rem; /* Scaled down to 50% */
   transition: all 0.3s ease;
   color: ${({ theme }) => theme.text};
 
@@ -415,7 +415,7 @@ const Input = styled.input`
 `;
 
 const TextArea = styled(Input).attrs({ as: "textarea" })`
-  height: 150px;
+  height: 75px; /* Scaled down to 50% */
   resize: vertical;
 
   @media (max-width: 768px) {
@@ -427,7 +427,7 @@ const Label = styled.label`
   position: absolute;
   left: 20px;
   top: 15px;
-  font-size: 1rem;
+  font-size: 0.5rem; /* Scaled down to 50% */
   color: ${({ theme }) => theme.labelColor};
   pointer-events: none;
   transition: all 0.3s ease;
@@ -444,11 +444,11 @@ const Button = styled.button`
   justify-content: center;
   width: 100%;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 0.55rem; /* Scaled down to 50% */
   background: ${({ theme }) => theme.buttonGradient};
   color: ${({ theme }) => theme.buttonText};
-  padding: 15px;
-  margin: 20px auto 0;
+  padding: 7.5px; /* Scaled down to 50% */
+  margin: 10px auto 0; /* Scaled down to 50% */
   border-radius: 25px;
   box-shadow: 0 4px 10px ${({ theme }) => theme.buttonBoxShadow};
   border: none;
@@ -456,7 +456,7 @@ const Button = styled.button`
   cursor: pointer;
 
   svg {
-    margin-right: 10px;
+    margin-right: 5px; /* Scaled down to 50% */
   }
 
   &:hover {
@@ -477,8 +477,8 @@ const Button = styled.button`
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 1rem; /* Scaled down to 50% */
+  margin-top: 1.5rem; /* Scaled down to 50% */
 
   @media (max-width: 768px) {
     gap: 1rem;
@@ -490,8 +490,8 @@ const SocialIcon = styled.a`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.iconColor};
   background: ${({ theme }) => theme.cardBackground};
-  width: 60px;
-  height: 60px;
+  width: 30px; /* Scaled down to 50% */
+  height: 30px; /* Scaled down to 50% */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -640,7 +640,7 @@ const Contact = () => {
                   <Icon>
                     <FaMapMarkerAlt />
                   </Icon>
-                  Fossa Italica 17
+                  Houten, Utrecht
                 </InfoItem>
               </ContactInfo>
               <SocialLinks>
