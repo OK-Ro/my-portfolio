@@ -289,13 +289,13 @@ const Footer = () => {
           <FooterSection>
             <FooterTitle>Contact</FooterTitle>
             <ContactInfo>
-              <FaMapMarkerAlt /> Amsterdam, Netherlands
+              <FaMapMarkerAlt /> Houten, Utrecht
             </ContactInfo>
             <ContactInfo>
               <FaEnvelope /> o.robert1994@hotmail.com
             </ContactInfo>
             <ContactInfo>
-              <FaPhone /> +31 6 12345678
+              <FaPhone /> +31 6 87693145
             </ContactInfo>
           </FooterSection>
         </FooterContent>
