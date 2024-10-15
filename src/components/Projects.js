@@ -176,14 +176,13 @@ const Projects = () => {
     },
     {
       id: 6,
-      title: "AI-powered Chatbot",
+      title: "Fitness Tracker",
       description:
         "Intelligent chatbot using natural language processing for customer support",
-      image:
-        "https://cdn.dribbble.com/userupload/8783875/file/original-9a4074fda16ab73133bdd0af4ee0308c.png?resize=1024x768&vertical=center",
+      image: "/fitprooz.jpeg",
       likes: 51,
       rating: 4.6,
-      link: "https://github.com/yourusername/ai-chatbot",
+      link: "https://fiitpro.netlify.app",
     },
     {
       id: 7,

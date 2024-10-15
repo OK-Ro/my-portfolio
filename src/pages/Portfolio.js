@@ -464,19 +464,16 @@ const Portfolio = () => {
     {
       id: 1,
       title: "E-commerce Platform",
-      image:
-        "https://cdn.dribbble.com/userupload/8957039/file/original-369cfc1847437d7b4d1beab9e1c652e3.png?resize=1504x1128&vertical=center",
-      github: "https://github.com/OK-Ro/lumia-funiture",
+      image: "/lumiaz.jpeg",
       live: "https://lumiaz.netlify.app/",
       category: "web",
     },
     {
       id: 2,
-      title: "Task Management App",
-      image:
-        "https://cdn.dribbble.com/userupload/12866230/file/original-114c2c9a57b77724ee84f94f4a3bbb33.png?resize=1200x901&vertical=center",
-      github: "https://github.com/yourusername/task-management-app",
-      live: "https://example.com/task-app",
+      title: "Fitness Tracker",
+      image: "/fitprooz.jpeg",
+      github: "https://github.com/OK-Ro/Fitpro",
+      live: "https://fiitpro.netlify.app",
       category: "mobile",
     },
     {
@@ -497,13 +494,11 @@ const Portfolio = () => {
     },
     {
       id: 5,
-      title: "Fitness Tracker",
-      image:
-        "https://cdn.dribbble.com/userupload/11663757/file/original-626702a4d7db49ff2a3eb5022cf1211c.png?resize=1200x900",
-      github:
-        "https://cdn.dribbble.com/userupload/11663757/file/original-626702a4d7db49ff2a3eb5022cf1211c.png?resize=1200x900",
-      live: "https://example.com/fitness",
-      category: "mobile",
+      title: "Cryptocurrency Portfolio Tracker",
+      image: "/cripto.jpeg",
+      github: "https://github.com/OK-Ro/cripto",
+      live: "https://criipto.netlify.app",
+      category: "data",
     },
     {
       id: 6,
@@ -525,11 +520,12 @@ const Portfolio = () => {
     },
     {
       id: 8,
-      title: "Cryptocurrency Portfolio Tracker",
-      image: "/cripto.jpeg",
-      github: "https://github.com/OK-Ro/cripto",
-      live: "https://criipto.netlify.app",
-      category: "data",
+      title: "Task Management App",
+      image:
+        "https://cdn.dribbble.com/userupload/12866230/file/original-114c2c9a57b77724ee84f94f4a3bbb33.png?resize=1200x901&vertical=center",
+      github: "https://github.com/yourusername/task-management-app",
+      live: "https://example.com/task-app",
+      category: "mobile",
     },
     {
       id: 9,
