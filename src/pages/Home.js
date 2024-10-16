@@ -61,6 +61,7 @@ const ProfileCard = styled(BaseCard)`
     width: 100%;
     margin-bottom: 0.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+    margin-top: 5rem;
   }
 `;
 
@@ -76,7 +77,7 @@ const WorkExperienceCard = styled(BaseCard)`
   @media (max-width: 768px) {
     grid-column: 1;
     grid-row: 2;
-    height: 25rem;
+    height: 46rem;
   }
 
   &::-webkit-scrollbar {
@@ -106,7 +107,7 @@ const SkillsCard = styled(BaseCard)`
 const ProjectsCard = styled(BaseCard)`
   grid-column: 3;
   grid-row: 1 / span 2;
-  height: 27.5rem;
+  height: 28.5rem;
   overflow-y: auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   border: 2px solid ${(props) => props.theme.inputBackground};
@@ -123,6 +124,21 @@ const ProjectsCard = styled(BaseCard)`
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+`;
+
+const CardHeader = styled.h2`
+  font-size: 1.2rem;
+  color: ${(props) => props.theme.text || "#333333"};
+
+  text-align: center;
+  background: linear-gradient(45deg, #ff6f61, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const ServicesCard = styled(BaseCard)`
@@ -144,7 +160,7 @@ const ContactCard = styled(BaseCard)`
   grid-column: 3;
   grid-row: 3;
   height: auto;
-  width: 30rem;
+  width: 40rem;
   padding: 1rem;
   position: relative;
   overflow: hidden;
@@ -291,6 +307,7 @@ function Home({ toggleTheme, isDarkTheme }) {
               <Skills />
             </SkillsCard>
             <ProjectsCard>
+              <CardHeader>Recient Projects</CardHeader>
               <Projects />
             </ProjectsCard>
             <ServicesCard>

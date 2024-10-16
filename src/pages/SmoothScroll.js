@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
+import { throttle } from "lodash";
 
 const ScrollContainer = styled.div`
   height: 100vh;
@@ -23,7 +24,7 @@ const PageContainer = styled(motion.div)`
 
 const ContentContainer = styled(motion.div)`
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) translateZ(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
 `;
 
@@ -58,7 +59,7 @@ const SmoothScroll = ({ children }) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       const sections = document.querySelectorAll(".scroll-section");
       const newVisibleSections = {};
 
@@ -66,15 +67,12 @@ const SmoothScroll = ({ children }) => {
         const rect = section.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        if (rect.top < windowHeight * 0.75 && rect.bottom > 0) {
-          newVisibleSections[index] = true;
-        } else {
-          newVisibleSections[index] = false;
-        }
+        newVisibleSections[index] =
+          rect.top < windowHeight * 0.75 && rect.bottom > 0;
       });
 
       setVisibleSections(newVisibleSections);
-    };
+    }, 100); // Call every 100ms
 
     const container = scrollingContainerRef.current;
     container.addEventListener("scroll", handleScroll);

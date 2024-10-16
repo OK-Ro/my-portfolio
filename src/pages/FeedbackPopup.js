@@ -19,7 +19,8 @@ const FeedbackCard = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  height: 200px;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   position: relative;
 

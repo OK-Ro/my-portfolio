@@ -38,7 +38,7 @@ const ServicesContainer = styled.div`
   background: ${({ theme }) => theme.resumeBackground};
   color: ${(props) => props.theme.text};
   margin: 0 auto;
-  padding: 2.5rem;
+  padding: 3.5rem;
   animation: ${fadeIn} 0.5s ease-in;
 
   @media (max-width: 768px) {
@@ -92,81 +92,52 @@ const RightColumn = styled.div`
 `;
 
 const BackToHome = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  margin-top: 2.5rem;
-  width: 96px;
-  height: 28px;
-  border-radius: 16px;
-  position: relative;
-  color: black;
-  font-size: 8px;
-  font-weight: 600;
+  display: inline-block;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
   text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
   overflow: hidden;
-  border: 4px solid transparent;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to right, #6dd5ed, #2193b0);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
+  border: 3px solid ${(props) => props.theme.cardBackground};
 
   &::before {
     content: "";
-    background: linear-gradient(to right, #6dd5ed, #2193b0);
-    border-radius: 12px;
-    height: 22.5px;
-    width: 30px;
     position: absolute;
-    left: 4px;
-    top: 2px;
-    z-index: 1;
-    transition: width 0.5s;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: all 0.6s;
   }
 
   &:hover::before {
-    width: 89px;
+    left: 100%;
   }
 
-  svg {
-    position: absolute;
-    left: 8px;
-    z-index: 2;
-    height: 10px;
-    width: 10px;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover svg {
-    transform: translateX(-1.5px);
-  }
-
-  span {
-    position: relative;
-    z-index: 2;
-    transition: color 0.3s ease;
-  }
-
-  &:hover span {
-    color: white;
+  &:hover {
+    background-color: #ff8787;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
   @media (max-width: 768px) {
-    width: 80px;
-    height: 24px;
-    font-size: 7px;
-    margin-top: 0;
-
-    &::before {
-      height: 19px;
-      width: 25px;
-    }
-
-    &:hover::before {
-      width: 74px;
-    }
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+    margin-top: 4rem;
   }
 `;
 
@@ -525,16 +496,16 @@ const CTAText = styled.p`
 
 const CTAButton = styled(Link)`
   display: inline-block;
-  background-color: #ff6b6b;
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
   color: white;
-  padding: 0.375rem 0.75rem;
+  padding: 0.5rem 1rem;
   text-decoration: none;
-  border-radius: 15px;
+  border-radius: 25px;
   font-weight: bold;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   transition: all 0.3s ease;
   border: none;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 
@@ -542,35 +513,31 @@ const CTAButton = styled(Link)`
     content: "";
     position: absolute;
     top: 0;
-    left: -50%;
+    left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent,
-      rgba(255, 255, 255, 0.4),
-      transparent
-    );
+    background: rgba(255, 255, 255, 0.3);
     transition: all 0.6s;
+    z-index: 0;
   }
 
   &:hover::before {
-    left: 50%;
+    left: 100%;
   }
 
   &:hover {
-    background-color: #ff8787;
-    transform: translateY(-1.5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #ff8787, #ff6b6b);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
   }
 
   @media (min-width: 768px) {
-    padding: 0.5rem 1rem;
-    font-size: 0.55rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.65rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 `;
 

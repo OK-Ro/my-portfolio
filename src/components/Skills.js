@@ -13,6 +13,7 @@ import { SiMongodb, SiExpress } from "react-icons/si";
 const SkillsContainer = styled.div`
   width: 100%;
   margin: 0 auto;
+  height:100%
   padding: 10px;
   text-align: center;
   background-color: ${(props) => props.theme.cardBackground};

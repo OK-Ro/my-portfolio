@@ -17,23 +17,21 @@ import { useTheme } from "./ThemeProvider";
 
 const NavContainer = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
   z-index: 1000;
-  padding: 0.5rem;
+  padding: 0.1rem 2.5rem;
 
-  @media (min-width: 768px) {
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
+  @media (max-width: 768px) {
+    padding: 0.2rem 0.1rem;
   }
 `;
 
 const Nav = styled.nav`
   background-color: ${(props) => props.theme.navBackgroundSolid};
   color: ${(props) => props.theme.navText};
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
@@ -41,6 +39,10 @@ const Nav = styled.nav`
   box-shadow: 0 2px 15px ${(props) => props.theme.boxShadow};
   border: 1px solid ${(props) => props.theme.navBorder};
   transition: all 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+  }
 `;
 
 const MobileMenu = styled.div`
@@ -67,7 +69,7 @@ const Logo = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: ${(props) => props.theme.logoText};
@@ -75,10 +77,6 @@ const Logo = styled(Link)`
 
   &:hover {
     transform: scale(1.03);
-  }
-
-  @media (min-width: 768px) {
-    font-size: 1.5rem;
   }
 `;
 
@@ -101,21 +99,25 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   color: ${(props) => props.theme.text};
-  font-size: 1.2rem;
+
   cursor: pointer;
   align-self: flex-end;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const NavList = styled.ul`
   list-style-type: none;
   padding: 0.1rem;
   margin: 0;
-  display: none;
+  display: flex;
+  flex-direction: row;
 
-  @media (min-width: 768px) {
-    display: flex;
-    flex-direction: row;
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -132,6 +134,9 @@ const NavItem = styled.li`
   @media (max-width: 768px) {
     margin-bottom: 1rem;
     margin-right: 0;
+    padding: 2rem;
+    font-size: 1rem;
+    font-weight: 900;
   }
 `;
 
@@ -145,6 +150,10 @@ const NavLink = styled(Link)`
   transition: all 0.3s ease;
   font-weight: 700;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
 
   &:before {
     content: "";
@@ -345,6 +354,11 @@ const LetsTalkButton = styled(Link)`
   transition: all 0.3s ease;
   box-shadow: 0 3px 10px ${(props) => props.theme.boxShadow};
 
+  @media (max-width: 768px) {
+    padding: 2rem;
+    font-size: 1rem;
+  }
+
   &:before {
     content: "";
     position: absolute;
@@ -410,11 +424,12 @@ const ResumeLink = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
     border-width: 2px;
     width: 7rem;
-    margin-left: 4rem;
+    margin-left: 2.5rem;
+    font-weight: 900;
     margin-bottom: 1rem;
 
     svg {
@@ -429,7 +444,7 @@ const MenuToggle = styled.button`
   background: none;
   border: none;
   color: ${(props) => props.theme.text};
-  font-size: 1.2rem;
+  font-size: 2rem;
   cursor: pointer;
 
   @media (min-width: 768px) {
