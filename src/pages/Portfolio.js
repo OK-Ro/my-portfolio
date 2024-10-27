@@ -508,7 +508,7 @@ const Portfolio = () => {
         "https://cdn.dribbble.com/userupload/9008964/file/original-17abfae69faaeaac8a8b42059d3118a5.png?resize=1200x1200&vertical=center",
       github:
         "https://cdn.dribbble.com/userupload/9008964/file/original-17abfae69faaeaac8a8b42059d3118a5.png?resize=1200x1200&vertical=center",
-      live: "https://example.com/smart-home",
+      live: "https://smarthius.netlify.app/",
       category: "iot",
     },
     {
