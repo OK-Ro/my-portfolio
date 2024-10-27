@@ -204,7 +204,7 @@ const Projects = () => {
         "https://cdn.dribbble.com/userupload/9008964/file/original-17abfae69faaeaac8a8b42059d3118a5.png?resize=1200x1200&vertical=center",
       likes: 37,
       rating: 4.2,
-      link: "https://github.com/yourusername/smart-home",
+      link: "https://smarthius.netlify.app/",
     },
     {
       id: 9,
